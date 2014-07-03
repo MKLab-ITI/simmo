@@ -7,7 +7,7 @@ package gr.iti.mklab.simmo.items;
  * @see gr.iti.mklab.simmo.items.Media
  *
  * @version 1.0.0
- * @since Jyly 3, 2014
+ * @since July 3, 2014
  * @author kandreadou
  */
 public class Video extends Media {

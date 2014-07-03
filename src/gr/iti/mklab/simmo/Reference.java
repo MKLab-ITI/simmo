@@ -1,10 +1,15 @@
 package gr.iti.mklab.simmo;
 
 /**
+ * The Reference describes the relationship between {@link gr.iti.mklab.simmo.Document} objects using the
+ * ReferenceType enumeration. Each Document contains a list of References to other Documents. Since a Reference
+ * always belongs to a Document, it only needs to hold information concerning the type of relation and
+ * the referenced Document.
  *
+ * @see gr.iti.mklab.simmo.Document
  * @author kandreadou
  * @version 1.0.0
- * @since Jyly 3, 2014
+ * @since July 3, 2014
  */
 public class Reference {
 
