@@ -6,10 +6,17 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by kandreadou on 7/3/14.
+ * A generic super class which is instantiated as either {@link gr.iti.mklab.simmo.items.Media} or {@link gr.iti.mklab.simmo.Document}
+ *
+ * @author kandreadou
+ * @version 1.0.0
+ * @since Jyly 3, 2014
  */
 public abstract class Object {
 
+    /**
+     * The object unique id
+     */
     protected String id;
     protected URL url;
     protected String title;

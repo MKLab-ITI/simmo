@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by kandreadou on 7/3/14.
+ * An Item interface
+ *
+ * @author kandreadou
+ * @version 1.0.0
+ * @since Jyly 3, 2014
  */
 public interface Item {
 

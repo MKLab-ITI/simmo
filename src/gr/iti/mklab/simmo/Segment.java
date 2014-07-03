@@ -1,7 +1,10 @@
 package gr.iti.mklab.simmo;
 
 /**
- * Created by kandreadou on 7/3/14.
+ *
+ * @author kandreadou
+ * @version 1.0.0
+ * @since Jyly 3, 2014
  */
 public class Segment {
 }
