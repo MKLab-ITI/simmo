@@ -12,8 +12,13 @@ import java.util.List;
  */
 public interface Item {
 
+    /** The unique Item id */
     public String id = null;
+
+    /** A list of segments, representing the content of the Item at a finer level of granularity */
     public List<Segment> segments = new ArrayList<Segment>();
+
+    /** The Item language */
     public String language = null;
 
 }

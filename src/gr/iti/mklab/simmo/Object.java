@@ -18,6 +18,7 @@ public abstract class Object {
      * The object unique id
      */
     protected String id;
+
     protected URL url;
     protected String title;
     protected String description;

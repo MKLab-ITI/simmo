@@ -6,6 +6,7 @@ import gr.iti.mklab.simmo.util.Location;
 
 /**
  * An abstract media item.
+ * TODO: As Media id, shall we use the Object or the Item id?
  *
  * @see gr.iti.mklab.simmo.Item
  * @see gr.iti.mklab.simmo.Object
