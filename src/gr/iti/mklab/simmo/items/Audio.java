@@ -1,7 +1,7 @@
 package gr.iti.mklab.simmo.items;
 
 /**
- * A video item
+ * An audio item
  *
  * @see gr.iti.mklab.simmo.Item
  * @see gr.iti.mklab.simmo.items.Media

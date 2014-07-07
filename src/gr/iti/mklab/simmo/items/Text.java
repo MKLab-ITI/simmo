@@ -8,8 +8,8 @@ import gr.iti.mklab.simmo.Item;
  * @see gr.iti.mklab.simmo.Item
  *
  * @version 1.0.0
- * @since July 3, 2014
- * @author kandreadou
+ * @since July 7, 2014
+ * @author amoumtzidou
  */
 public class Text implements Item {
 	

@@ -1,13 +1,13 @@
 package gr.iti.mklab.simmo.items;
 
 /**
- * A video item
+ * An image item
  *
  * @see gr.iti.mklab.simmo.Item
  * @see gr.iti.mklab.simmo.items.Media
  *
  * @version 1.0.0
- * @since July 3, 2014
+ * @since July 7, 2014
  * @author amoumtzidou
  */
 public class Image extends Media {
