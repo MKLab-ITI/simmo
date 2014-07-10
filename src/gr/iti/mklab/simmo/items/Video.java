@@ -15,9 +15,14 @@ public class Video extends Media {
     /** The size of the video in bytes */
     private long size;
 
-    /**
-     * TODO: A path to the image thumbnail or a URL?
-     */
+    
+    /** The width of the video */
+    private int width;
+    
+    /** The height of the video */
+    private int height;
+    
+    /** A path (or URL) to the image thumbnail  */
     private String thumbnail;
 
     /** The number of frames in the video*/
@@ -78,5 +83,21 @@ public class Video extends Media {
 
     public void setCodec(String codec) {
         this.codec = codec;
+    }
+    
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.widht = width;
+    }
+    
+    public int getHeight() {
+        return height;
+    }
+    
+    public void setHeight(int height) {
+        this.height = height;
     }
 }

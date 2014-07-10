@@ -32,12 +32,10 @@ public class UserAccount {
     /** The number of followers */
     protected int numFollowers;
 
-    /** Big avatar image path
-     * TODO: Does this need to be a URL instead? */
+    /** Big avatar image path (or URL) */
     protected String avatarBig;
 
-    /** Small avatar image path
-     * TODO: Does this need to be a URL instead? */
+    /** Small avatar image path (or URL) */
     protected String avatarSmall;
 
     public String getId() {

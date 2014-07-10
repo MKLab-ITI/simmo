@@ -13,13 +13,16 @@ import gr.iti.mklab.simmo.Item;
  */
 public class Text implements Item {
 	
+	
+    /** * The item unique id */
+    protected String id;
+	
+	
 	/** Types of text */
-    private enum TEXT_TYPE{ASR,OCR,TXT,HTML};
+    public enum TEXT_TYPE{ASR,OCR,TXT,HTML};
 
     
-    /**
-     * TODO: A path to the image thumbnail or a URL?
-     */
+    /** The text type */
     private TEXT_TYPE txtType;
 
     
