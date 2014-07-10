@@ -1,5 +1,8 @@
 package gr.iti.mklab.simmo.items;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * An image item
  *
@@ -31,8 +34,8 @@ public class Image extends Media {
     private String alternateText;
 
     
-    /** The EXIF data for jpg images */
-    private String exif;
+    /** The EXIF metadata for JPEG images */
+    private Map<String, String> exif = new HashMap<String, String>();
     
     
     public String getThumbnail() {
@@ -65,7 +68,7 @@ public class Image extends Media {
     }
 
     public void setWidth(int width) {
-        this.widht = width;
+        this.width = width;
     }
     
     public int getHeight() {
@@ -77,12 +80,16 @@ public class Image extends Media {
     }
     
     
-    public String getExif() {
-        return exif;
+    public String getExifMetadataField(String exifField) {
+        return exif.get(exifField);
     }
     
-    public void setExif(String exif) {
-        this.exif = exif;
+    public void setExifMetadataField(String exifField, String valueforField) {
+        exif.put(exifField, valueforField);
+    }
+
+    public Map<String, String> getExifMetadata(){
+        return exif;
     }
     
 }

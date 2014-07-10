@@ -4,6 +4,9 @@ import gr.iti.mklab.simmo.Document;
 import gr.iti.mklab.simmo.UserAccount;
 import gr.iti.mklab.simmo.util.Location;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A Post is a {@link gr.iti.mklab.simmo.Document} and it may also contain other {@link gr.iti.mklab.simmo.Item} objects.
  * Posts do not contain other Documents but simply link to them using a {@link gr.iti.mklab.simmo.Reference}
@@ -45,6 +48,9 @@ public class Post extends Document {
 
     /** The user who created this post */
     private UserAccount userAccount;
+
+    /** A list of news hounds */
+    private List<String> newsHounds = new ArrayList<String>();
 
     
     public String getPostId() {
@@ -125,5 +131,13 @@ public class Post extends Document {
 
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
+    }
+
+    public void addNewsHound(String nhound){
+        newsHounds.add(nhound);
+    }
+
+    public List<String> getNewsHounds(){
+        return newsHounds;
     }
 }

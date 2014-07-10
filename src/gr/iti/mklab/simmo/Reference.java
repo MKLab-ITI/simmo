@@ -13,7 +13,7 @@ package gr.iti.mklab.simmo;
  */
 public class Reference {
 
-    public enum ReferenceType {
+    public static enum ReferenceType {
         LINK, REPLY, COMMENT, UNDEFINED
     }
 
