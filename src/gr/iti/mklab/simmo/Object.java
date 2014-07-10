@@ -22,6 +22,12 @@ public abstract class Object {
     protected URL url;
     protected String title;
     protected String description;
+    protected String author;
+
+    /**
+     * A list of tags in case of a social media item or a list of keywords
+     * in case of an html based item
+     */
     protected List<String> tags = new ArrayList<String>();
     protected Date creationDate;
     protected Date lastModifiedDate;
@@ -57,6 +63,14 @@ public abstract class Object {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public List<String> getTags() {
