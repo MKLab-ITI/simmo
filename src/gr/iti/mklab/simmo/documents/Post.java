@@ -1,6 +1,7 @@
 package gr.iti.mklab.simmo.documents;
 
 import gr.iti.mklab.simmo.Document;
+import gr.iti.mklab.simmo.UserAccount;
 import gr.iti.mklab.simmo.util.Location;
 
 /**
