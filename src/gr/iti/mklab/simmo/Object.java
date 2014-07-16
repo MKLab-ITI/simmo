@@ -12,7 +12,7 @@ import java.util.List;
  * @version 1.0.0
  * @since July 3, 2014
  */
-public abstract class Object {
+public abstract class Object implements Annotatable{
 
     /**
      * The object unique id

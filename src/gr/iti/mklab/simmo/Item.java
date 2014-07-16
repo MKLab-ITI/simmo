@@ -10,7 +10,7 @@ import java.util.List;
  * @version 1.0.0
  * @since July 3, 2014
  */
-public interface Item {
+public interface Item extends Annotatable {
 
     /** A list of segments, representing the content of the Item at a finer level of granularity */
     public List<Segment> segments = new ArrayList<Segment>();

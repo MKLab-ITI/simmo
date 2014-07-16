@@ -10,7 +10,7 @@ import java.util.List;
  * @version 1.0.0
  * @since July 10, 2014
  */
-public class Topic {
+public class Topic  implements Annotatable {
     /**
      * The topic unique id
      */
@@ -18,10 +18,11 @@ public class Topic {
 
     /** The topic featured title */
     protected String featuredTitle;
-
-    /** The topic's associated annotations */
-    protected List<Annotation> associatedAnnotations = new ArrayList<Annotation>();
-
+    
+    /** The topic's associated collections */
+    protected List<Collection> associatedAnnotations = new ArrayList<Collection>();
+    
+    
     public String getId() {
         return id;
     }

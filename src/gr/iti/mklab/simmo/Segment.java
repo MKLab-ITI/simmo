@@ -6,7 +6,7 @@ package gr.iti.mklab.simmo;
  * @version 1.0.0
  * @since July 8, 2014
  */
-public interface Segment {
+public interface Segment extends Annotatable {
 	
 	
     /** The unique internal Item id */
