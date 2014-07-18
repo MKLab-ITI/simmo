@@ -7,7 +7,7 @@ package gr.iti.mklab.simmo;
  * @version 1.0.0
  * @since July 3, 2014
  */
-public class Collection {
+public class Collection implements Annotatable {
 	
 	
     /**
