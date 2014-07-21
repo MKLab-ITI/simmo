@@ -20,7 +20,7 @@ public class Topic  implements Annotatable {
     protected String featuredTitle;
     
     /** The topic's associated collections */
-    protected List<Collection> associatedAnnotations = new ArrayList<Collection>();
+    protected List<Collection> associatedCollections = new ArrayList<Collection>();
     
     
     public String getId() {
@@ -42,25 +42,25 @@ public class Topic  implements Annotatable {
     /**
      * Associates this topic to the specified annotation
      *
-     * @param annotation
+     * @param collection
      */
-    public void associate(Annotation annotation){
-        associatedAnnotations.add(annotation);
+    public void associate(Collection collection){
+        associatedCollections.add(collection);
     }
 
     /**
      * Disassociates this topic from the specified annotation
      *
-     * @param annotation
+     * @param collection
      */
-    public void disassociate(Annotation annotation){
-        associatedAnnotations.remove(annotation);
+    public void disassociate(Collection collection){
+        associatedCollections.remove(collection);
     }
 
     /**
-     * @return the list of annotations
+     * @return the list of collections
      */
-    public List<Annotation> getAnnotations(){
-        return associatedAnnotations;
+    public List<Collection> getCollections(){
+        return associatedCollections;
     }
 }
