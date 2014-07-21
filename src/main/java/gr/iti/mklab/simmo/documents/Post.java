@@ -43,6 +43,9 @@ public class Post extends Document {
     /** The number of negative votes */
     private int negativeVotes;
 
+    /** The number of subscriptions */
+    private int numSubscriptions;
+
     /** The location for this post */
     private Location location;
 
@@ -116,6 +119,15 @@ public class Post extends Document {
     public void setNegativeVotes(int negativeVotes) {
         this.negativeVotes = negativeVotes;
     }
+
+    public int getNumSubscriptions() {
+        return numSubscriptions;
+    }
+
+    public void setNumSubscriptions(int numSubscriptions) {
+        this.numSubscriptions = numSubscriptions;
+    }
+
 
     public Location getLocation() {
         return location;

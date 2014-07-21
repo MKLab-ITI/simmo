@@ -12,8 +12,7 @@ import gr.iti.mklab.simmo.Item;
  * @author amoumtzidou
  */
 public class Text implements Item {
-	
-	
+
     /** * The item unique id */
     protected String id;
 	
@@ -46,6 +45,13 @@ public class Text implements Item {
     public void setTextType(TEXT_TYPE txtType) {
         this.txtType = txtType;
     }
-    
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     
 }

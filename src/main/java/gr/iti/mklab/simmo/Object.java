@@ -19,7 +19,7 @@ public abstract class Object implements Annotatable {
      */
     protected String id;
 
-    protected URL url;
+    protected String url;
     protected String title;
     protected String description;
     protected String author;
@@ -41,11 +41,11 @@ public abstract class Object implements Annotatable {
         this.id = id;
     }
 
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public void setUrl(URL url) {
+    public void setUrl(String url) {
         this.url = url;
     }
 

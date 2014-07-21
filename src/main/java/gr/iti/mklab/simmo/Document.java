@@ -39,16 +39,24 @@ public abstract class Document extends Object {
         return items;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void addItem(Item item){
+        items.add(item);
+    }
+
+    public void removeItem(Item item){
+        items.remove(item);
     }
 
     public List<Reference> getReferences() {
         return references;
     }
 
-    public void setReferences(List<Reference> references) {
-        this.references = references;
+    public void addReferece(Reference reference){
+        references.add(reference);
+    }
+
+    public void removeReference(Reference reference){
+        references.remove(reference);
     }
 
     public String getLanguage() {
