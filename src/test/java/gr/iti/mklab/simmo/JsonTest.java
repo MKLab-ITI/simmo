@@ -4,10 +4,8 @@ import com.google.gson.Gson;
 import gr.iti.mklab.simmo.documents.Post;
 import gr.iti.mklab.simmo.items.Text;
 import gr.iti.mklab.simmo.items.Video;
-import gr.iti.mklab.simmo.documents.Webpage;
 
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Created by kandreadou on 7/21/14.
@@ -17,6 +15,7 @@ public class JsonTest {
     public static void main(String[] args){
         Gson gson = new Gson();
         Post post = new Post();
+        post.setId("wtt2aSV8wdw");
         post.setUrl("https://www.youtube.com/watch?v=wtt2aSV8wdw");
         post.setDescription("Internet Citizens: Defend Net Neutrality");
         post.setAuthor("CGP Grey");
@@ -28,7 +27,7 @@ public class JsonTest {
         post.setNumSubscriptions(1359322);
 
         Calendar cal = Calendar.getInstance();
-        cal.set(2014,7,21);
+        cal.set(2014,6,21);
         post.setCrawlDate(cal.getTime());
 
         //The central video item
@@ -42,32 +41,45 @@ public class JsonTest {
         video.setThumbnail("https://i1.ytimg.com/vi/wtt2aSV8wdw/maxresdefault.jpg");
         video.setAuthor("CGP Grey");
         cal = Calendar.getInstance();
-        cal.set(2014, 5, 5);
+        cal.set(2014, 4, 5);
         video.setCreationDate(cal.getTime());
         cal = Calendar.getInstance();
-        cal.set(2014, 7, 21);
+        cal.set(2014, 6, 21);
         video.setCrawlDate(cal.getTime());
         post.addItem(video);
 
+        UserAccount account = new UserAccount();
+        account.setId("acc98754");
+        account.setName("CGP Grey");
+        account.setNumFollowers(1361024);
+        account.setAvatarSmall("https://yt3.ggpht.com/-hcwBgBwDiuk/AAAAAAAAAAI/AAAAAAAAAAA/eQENCQCzV4w/s100-c-k-no/photo.jpg");
+        post.setUserAccount(account);
+
+        Post commentLink = new Post();
+        commentLink.setId("409sfh");
+        commentLink.setNumLikes(739);
+        commentLink.setNumComments(72);
+        commentLink.setAuthor("The Game Theorists");
         Text comment = new Text();
         comment.setContent("<div class=\"Ct\">Learn about this and pass it on! Remember SOPA and PIPA? This is BIGGER. Net neutrality is imperative for an open internet.<br><br><a rel=\"nofollow\" target=\"_blank\" href=\"https://www.youtube.com/watch?v=wtt2aSV8wdw\" class=\"ot-anchor aaTEdf\">Internet Citizens: Defend Net Neutrality</a>﻿</div>");
         comment.setTextType(Text.TEXT_TYPE.HTML);
-        comment.setId("409sfh");
+        commentLink.addItem(comment);
         Reference ref = new Reference("409sfh", Reference.ReferenceType.COMMENT);
         post.addReferece(ref);
 
-        Post videoLink = new Post();
-        videoLink.setUrl("https://www.youtube.com/watch?v=tk862BbjWx4");
-        videoLink.setDescription("Copyright: Forever Less one Day");
-        videoLink.setAuthor("CGP Grey");
-        videoLink.setNumViews(2101670);
-        videoLink.setId("tr452");
-
-        Reference ref2 = new Reference("tr452", Reference.ReferenceType.LINK);
-        post.addReferece(ref2);
+        Post comment2 = new Post();
+        comment2.setId("101reyk");
+        comment2.setNumLikes(63);
+        comment2.setNumComments(5);
+        comment2.setAuthor("ZombieGoBoom");
+        comment = new Text();
+        comment.setContent("Friggin' excellent video, man!  Net neutrality...  FOREVER");
+        comment.setTextType(Text.TEXT_TYPE.HTML);
+        comment2.addItem(comment);
+        ref = new Reference("101reyk", Reference.ReferenceType.COMMENT);
+        post.addReferece(ref);
 
         System.out.println(gson.toJson(post));
-        System.out.println(gson.toJson(comment));
-        System.out.println(gson.toJson(videoLink));
+        System.out.println(gson.toJson(commentLink));
     }
 }

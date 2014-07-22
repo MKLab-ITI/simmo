@@ -14,7 +14,6 @@ public class Video extends Media {
 
     /** The size of the video in bytes */
     private long size;
-
     
     /** The width of the video */
     private int width;
@@ -36,6 +35,10 @@ public class Video extends Media {
 
     /** The video codec */
     private String codec;
+
+    public Video(){
+        this.type = ITEM_TYPE.VIDEO;
+    }
 
     public long getSize() {
         return size;
@@ -100,4 +103,5 @@ public class Video extends Media {
     public void setHeight(int height) {
         this.height = height;
     }
+
 }

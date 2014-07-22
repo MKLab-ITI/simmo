@@ -15,7 +15,13 @@ public interface Item extends Annotatable {
     /** A list of segments, representing the content of the Item at a finer level of granularity */
     public List<Segment> segments = new ArrayList<Segment>();
 
+    public static enum ITEM_TYPE{
+        TEXT, IMAGE, VIDEO, AUDIO, UNDEFINED;
+    }
+
     /** The Item language */
     public String language = null;
+
+    public ITEM_TYPE getType();
 
 }

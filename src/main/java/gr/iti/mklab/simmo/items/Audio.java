@@ -1,5 +1,7 @@
 package gr.iti.mklab.simmo.items;
 
+import gr.iti.mklab.simmo.Item;
+
 /**
  * An audio item
  *
@@ -15,7 +17,6 @@ public class Audio extends Media {
     /** The audio duration in seconds */
     private long duration;
 
-
     public long getDuration() {
         return duration;
     }
@@ -24,5 +25,7 @@ public class Audio extends Media {
         this.duration = duration;
     }
 
-    
+    public Audio(){
+        this.type = ITEM_TYPE.AUDIO;
+    }
 }

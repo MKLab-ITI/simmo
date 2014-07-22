@@ -36,7 +36,10 @@ public class Image extends Media {
     
     /** The EXIF metadata for JPEG images */
     private Map<String, String> exif = new HashMap<String, String>();
-    
+
+    public Image(){
+        this.type = ITEM_TYPE.IMAGE;
+    }
     
     public String getThumbnail() {
         return thumbnail;

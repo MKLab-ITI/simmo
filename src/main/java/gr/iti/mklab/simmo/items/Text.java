@@ -20,16 +20,14 @@ public class Text implements Item {
 	/** Types of text */
     public enum TEXT_TYPE{ASR,OCR,TXT,HTML};
 
-    
     /** The text type */
     private TEXT_TYPE txtType;
-
     
     /** The content itself */
     private String content;
 
-    
-    
+    private ITEM_TYPE type = ITEM_TYPE.TEXT;
+
     public String getContent() {
         return content;
     }
@@ -52,6 +50,11 @@ public class Text implements Item {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public ITEM_TYPE getType() {
+        return type;
     }
     
 }

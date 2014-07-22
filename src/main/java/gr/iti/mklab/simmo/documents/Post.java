@@ -51,10 +51,6 @@ public class Post extends Document {
 
     /** The user who created this post */
     private UserAccount userAccount;
-
-    /** A list of news hounds */
-    private List<String> newsHounds = new ArrayList<String>();
-
     
     public String getPostId() {
         return postId;
@@ -143,13 +139,5 @@ public class Post extends Document {
 
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
-    }
-
-    public void addNewsHound(String nhound){
-        newsHounds.add(nhound);
-    }
-
-    public List<String> getNewsHounds(){
-        return newsHounds;
     }
 }

@@ -19,11 +19,18 @@ public abstract class Media extends Object implements Item {
 
     protected Location location;
 
+    public ITEM_TYPE type = ITEM_TYPE.UNDEFINED;
+
     public Location getLocation() {
         return location;
     }
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    @Override
+    public ITEM_TYPE getType() {
+        return type;
     }
 }
