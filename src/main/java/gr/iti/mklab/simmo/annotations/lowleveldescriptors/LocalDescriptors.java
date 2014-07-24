@@ -1,7 +1,9 @@
 package gr.iti.mklab.simmo.annotations.lowleveldescriptors;
 
+import gr.iti.mklab.simmo.annotations.LowLevelDescriptors;
 
-public class LocalDescriptors {
+
+public class LocalDescriptors implements LowLevelDescriptors {
 
 
 	/** * The item unique id */
