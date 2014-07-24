@@ -1,10 +1,13 @@
 package gr.iti.mklab.simmo;
 
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import gr.iti.mklab.simmo.documents.Post;
 import gr.iti.mklab.simmo.items.Text;
 import gr.iti.mklab.simmo.items.Video;
 
+import java.text.DateFormat;
 import java.util.Calendar;
 
 /**
@@ -13,7 +16,14 @@ import java.util.Calendar;
 public class JsonTest {
 
     public static void main(String[] args){
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder()
+                .serializeNulls()
+                .setDateFormat(DateFormat.LONG)
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .setPrettyPrinting()
+                .setVersion(1.0)
+                .create();
+
         Post post = new Post();
         post.setId("wtt2aSV8wdw");
         post.setUrl("https://www.youtube.com/watch?v=wtt2aSV8wdw");
@@ -24,7 +34,6 @@ public class JsonTest {
         post.setPositiveVotes(42609);
         post.setNegativeVotes(394);
         post.setNumComments(4538);
-        post.setNumSubscriptions(1359322);
 
         Calendar cal = Calendar.getInstance();
         cal.set(2014,6,21);
