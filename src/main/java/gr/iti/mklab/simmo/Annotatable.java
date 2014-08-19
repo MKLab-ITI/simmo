@@ -1,5 +1,7 @@
 package gr.iti.mklab.simmo;
 
+import gr.iti.mklab.simmo.associations.Annotation;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,11 +13,7 @@ import java.util.List;
  * @since July 3, 2014
  */
 public interface Annotatable {
-	
-	
-    /**
-     * A list of annotations 
-     */
+
     public List<Annotation> annotations = new ArrayList<Annotation>();
 
 }

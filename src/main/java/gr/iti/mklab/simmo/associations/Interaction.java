@@ -1,4 +1,7 @@
-package gr.iti.mklab.simmo;
+package gr.iti.mklab.simmo.associations;
+
+import gr.iti.mklab.simmo.*;
+import gr.iti.mklab.simmo.Object;
 
 import java.util.Date;
 
@@ -20,7 +23,7 @@ public class Interaction {
         MENTIONS, COMMENTS, LIKES, DISLIKES, FAVORITES, UPVOTES, DOWNVOTES, UNDEFINED
     }
 
-    private Object objectOfInteraction;
+    private gr.iti.mklab.simmo.Object objectOfInteraction;
 
     private UserAccount interactingUser;
 

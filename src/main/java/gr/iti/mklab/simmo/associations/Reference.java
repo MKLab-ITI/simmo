@@ -1,4 +1,4 @@
-package gr.iti.mklab.simmo;
+package gr.iti.mklab.simmo.associations;
 
 /**
  * The Reference describes the relationship between {@link gr.iti.mklab.simmo.Document} objects using the
@@ -11,7 +11,7 @@ package gr.iti.mklab.simmo;
  * @version 1.0.0
  * @since July 3, 2014
  */
-public class Reference {
+public class Reference  {
 
     public static enum ReferenceType {
         LINK, REPLY, COMMENT, UNDEFINED

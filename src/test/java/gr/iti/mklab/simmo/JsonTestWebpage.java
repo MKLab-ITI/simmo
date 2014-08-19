@@ -2,9 +2,9 @@ package gr.iti.mklab.simmo;
 
 import com.google.gson.Gson;
 
-import gr.iti.mklab.simmo.annotations.LowLevelDescriptors;
 import gr.iti.mklab.simmo.annotations.Summary;
 import gr.iti.mklab.simmo.annotations.lowleveldescriptors.LocalDescriptors;
+import gr.iti.mklab.simmo.associations.Annotation;
 import gr.iti.mklab.simmo.items.Image;
 import gr.iti.mklab.simmo.items.Text;
 import gr.iti.mklab.simmo.documents.Webpage;

@@ -4,11 +4,9 @@ import gr.iti.mklab.simmo.Document;
 import gr.iti.mklab.simmo.UserAccount;
 import gr.iti.mklab.simmo.util.Location;
 
-
-
 /**
  * A Post is a {@link gr.iti.mklab.simmo.Document} and it may also contain other {@link gr.iti.mklab.simmo.Item} objects.
- * Posts do not contain other Documents but simply link to them using a {@link gr.iti.mklab.simmo.Reference}
+ * Posts do not contain other Documents but simply link to them using a {@link gr.iti.mklab.simmo.associations.Reference}
  *
  * @author kandreadou
  * @version 1.0.0

@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import gr.iti.mklab.simmo.documents.Post;
 import gr.iti.mklab.simmo.items.Text;
 import gr.iti.mklab.simmo.items.Video;
+import gr.iti.mklab.simmo.associations.Reference;
 
 import java.text.DateFormat;
 import java.util.Calendar;
