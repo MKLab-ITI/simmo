@@ -1,6 +1,7 @@
 package gr.iti.mklab.simmo;
 
-import java.net.URL;
+import gr.iti.mklab.simmo.associations.Interaction;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,6 +33,12 @@ public abstract class Object implements Annotatable {
     protected Date creationDate;
     protected Date lastModifiedDate;
     protected Date crawlDate;
+
+    /**
+     * A list of interactions of UserAccounts with this Object
+     */
+    protected List<Interaction> interactions = new ArrayList<Interaction>();
+
 
     public String getId() {
         return id;
@@ -77,8 +84,12 @@ public abstract class Object implements Annotatable {
         return tags;
     }
 
-    public void setTags(List<String> tags) {
-        this.tags = tags;
+    public void addTag(String tag){
+        tags.add(tag);
+    }
+
+    public void removeTag(String tag){
+        tags.remove(tag);
     }
 
     public Date getCreationDate() {
@@ -103,5 +114,17 @@ public abstract class Object implements Annotatable {
 
     public void setCrawlDate(Date crawlDate) {
         this.crawlDate = crawlDate;
+    }
+
+    public void addInteraction(Interaction interaction){
+        interactions.add(interaction);
+    }
+
+    public void removeInteraction(Interaction interaction){
+        interactions.remove(interaction);
+    }
+
+    public List<Interaction> getInteractions(){
+        return interactions;
     }
 }

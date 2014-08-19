@@ -4,23 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * An Annotation interface which can be instantiated in many different ways.
+ * A Collection models aggregates of Objects such as corpora of Web documents,
+ * sets of tweets, and image collections. As it is already an ArrayList of Objects,
+ * all utility methods are inherited from ArrayList, so they are not implemented
+ * specifically for the Collection.
  *
- * @author amoumtzidou
- * @version 1.0.0
- * @since July 3, 2014
+ * @author kandreadou
+ * @version 2.0.0
+ * @since August 19, 2014
  */
-public class Collection implements Annotatable {
+public class Collection extends ArrayList<Object> implements Annotatable {
 	
 	
     /**
      * The Collection unique id
      */
     protected String id;
-	
-	 /**
-     * A list of documents that the Collection contains
-     */
-    protected List<Document> items = new ArrayList<Document>();
-    
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

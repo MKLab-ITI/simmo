@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A topic is container associated with a Collection and specific {@link gr.iti.mklab.simmo.Annotation} objects
+ * A topic is container associated with a Collection and specific {@link gr.iti.mklab.simmo.associations.Annotation} objects
  *
  * @author kandreadou
  * @version 1.0.0
