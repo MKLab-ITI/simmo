@@ -11,10 +11,8 @@ import gr.iti.mklab.simmo.Item;
  * @since July 7, 2014
  * @author amoumtzidou
  */
-public class Text implements Item {
+public class Text extends Item {
 
-    /** * The item unique id */
-    protected String id;
 	
 	
 	/** Types of text */
@@ -44,13 +42,6 @@ public class Text implements Item {
         this.txtType = txtType;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     @Override
     public ITEM_TYPE getType() {

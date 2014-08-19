@@ -56,7 +56,6 @@ public class JsonTestWebpage {
 
 		//The central video item
 		Image img = new Image();
-		img.setId("");
 		img.setAlternateText("World Cup winner Germany was a big hit on Twitter during the tournament.");
 		img.setSize((long)57.59);
 		img.setWidth(620);
@@ -64,11 +63,7 @@ public class JsonTestWebpage {
 		img.setUrl("http://i.guim.co.uk/w-620/h--/q-95/sys-images/Guardian/Pix/pictures/2014/7/15/1405409761872/c483154b-eb11-4ea5-a4bf-2a685c7f13ed-620x372.jpeg");
 
 
-		
-
-
 		Text txt = new Text();
-		txt.setId("");
 		txt.setContent("Germany may have beaten Argentina to win the World Cup, but Twitter and Facebook have been engaged in their own battle for social supremacy during the football tournament. This particular competition is stretching beyond the final, as the two social networks continue to release stats on how popular the World Cup was among their users. Twitter's latest salvo focuses on the 672m related tweets sent during the competition. \"While this is the highest number we’ve announced related to an event, it’s hard to compare the 32-day, 64-match World Cup to, for example, the single-game Super Bowl, the one-night Oscars, or the 16-day Olympics,\" wrote data editor Simon Rogers in a blog post. Advertisement The most popular match on Twitter was Germany\'s 7-1 victory over Brazil in the semi-final, which sparked 35.6m tweets: more than the final's 32.1m. However, Germany's defeat of Argentina was the World Cup's biggest moment, generating more than 618,000 tweets per minute, ahead of the 580,000 tweets per minute sparked by the team's fifth goal against Brazil in the semi-final. The Brazilian star Neymar Jr was the most-mentioned player during the tournament, followed by Argentina's Lionel Messi and Urugay's Luis Suarez – the latter more due to his infamous biting episode in a group match against Italy, rather than his footballing skills. Facebook has already announced that 88m people generated more than 280m posts, comments and likes on its social network during the World Cup final, beating its previous record of 245m \"interactions\" set by the Super Bowl in 2013. The two companies have been keen to flag up the use of their apps by players during the competition, from Mario Götze on Instagram and Wayne Rooney apologising to England fans on Facebook, to Rihanna's new sideline as a Twitter pundit.");
 		txt.setTextType(Text.TEXT_TYPE.HTML);
 

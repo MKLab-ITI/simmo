@@ -1,7 +1,6 @@
 package gr.iti.mklab.simmo.items;
 
 import gr.iti.mklab.simmo.*;
-import gr.iti.mklab.simmo.Object;
 import gr.iti.mklab.simmo.util.Location;
 
 /**
@@ -15,7 +14,7 @@ import gr.iti.mklab.simmo.util.Location;
  * @since July 3, 2014
  * @author kandreadou
  */
-public abstract class Media extends Object implements Item {
+public abstract class Media extends Item {
 
     protected Location location;
 

@@ -4,8 +4,7 @@ import gr.iti.mklab.simmo.Document;
 import gr.iti.mklab.simmo.UserAccount;
 import gr.iti.mklab.simmo.util.Location;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * A Post is a {@link gr.iti.mklab.simmo.Document} and it may also contain other {@link gr.iti.mklab.simmo.Item} objects.
