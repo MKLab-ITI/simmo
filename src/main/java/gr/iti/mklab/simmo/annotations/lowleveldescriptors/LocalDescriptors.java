@@ -35,8 +35,14 @@ public class LocalDescriptors implements LowLevelDescriptors {
 
 	
 	/** The values of the descriptor */
+	// MAYBE List of feature encoding values or class FeatureEncoding and create a list of FeatureEncodings
 	private String featureEncodingLibrary;
 	
+	
+	/** The values of the descriptor */
+	// MAYBE List of feature encoding values
+	private String featureEncodingValue;
+
 	
 	public String getDescriptorValue() {
 		return descriptorValue;
@@ -85,5 +91,13 @@ public class LocalDescriptors implements LowLevelDescriptors {
 	
 	public void setFeatureEncodingLibrary(String featureEncodingLibrary) {
 		this.featureEncodingLibrary = featureEncodingLibrary;
+	}
+	
+	public String getFeatureEncodingValue() {
+		return featureEncodingValue;
+	}
+
+	public void setFeatureEncodingValue(String featureEncodingValue) {
+		this.featureEncodingValue = featureEncodingValue;
 	}
 }

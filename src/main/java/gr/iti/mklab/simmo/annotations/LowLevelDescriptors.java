@@ -1,5 +1,9 @@
 package gr.iti.mklab.simmo.annotations;
 
-public interface LowLevelDescriptors {
+import gr.iti.mklab.simmo.Annotation;
+
+
+
+public interface LowLevelDescriptors extends Annotation {
 
 }

@@ -14,8 +14,8 @@ public interface Annotatable {
 	
 	
     /**
-     * A list of annotatios 
+     * A list of annotations 
      */
-    public List<Annotation> tags = new ArrayList<Annotation>();
+    public List<Annotation> annotations = new ArrayList<Annotation>();
 
 }
