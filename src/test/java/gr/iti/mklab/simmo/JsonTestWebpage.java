@@ -21,18 +21,7 @@ public class JsonTestWebpage {
 
 	public static void main(String[] args){
 
-		List<String> tags = new ArrayList<String>();
-		tags.add("Twitter");
-		tags.add("World Cup");
-		tags.add("Social networking");
-		tags.add("Social media");
-		tags.add("Technology");
-		tags.add("Media");
-		tags.add("Football");
-		tags.add("Sport");
-		tags.add("World Cup 2014");
-		tags.add("Digital media");
-		tags.add("Internet");
+		
 
 		Calendar cal = Calendar.getInstance();
 
@@ -49,8 +38,18 @@ public class JsonTestWebpage {
 		cal.set(2014, 7, 15, 8, 1, 20);
 		wp.setCreationDate(cal.getTime());
 		wp.setDescription("Germany&#x27;s demolition of Brazil was biggest match on social network, but final victory saw peak tweets-per-minute. By Stuart Dredge");
-		wp.setTags(tags);
-
+		wp.addTag("Twitter");
+		wp.addTag("Twitter");
+		wp.addTag("World Cup");
+		wp.addTag("Social networking");
+		wp.addTag("Social media");
+		wp.addTag("Technology");
+		wp.addTag("Media");
+		wp.addTag("Football");
+		wp.addTag("Sport");
+		wp.addTag("World Cup 2014");
+		wp.addTag("Digital media");
+		wp.addTag("Internet");
 
 
 

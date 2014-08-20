@@ -13,12 +13,16 @@ public interface Segment extends Annotatable {
     public String id = null;
 
     
-	/** Types of segments */
-    public enum SEGMENT_TYPE{SHOT, SCENE, UNDEFINED};
+	/** Types of frame blocks */
+    public enum FRAMES_BLOCK_TYPE{SHOT, SCENE, UNDEFINED};
 
     
-    /** The segment type */
-    SEGMENT_TYPE segmentType = SEGMENT_TYPE.UNDEFINED;
+    /** The frame block type */
+    FRAMES_BLOCK_TYPE framesBlockType = FRAMES_BLOCK_TYPE.UNDEFINED;
+
+	
+    /** Types of frame blocks */
+    public enum SEGMENT_TYPE{LINEAR, SPATIAL, TEMPORAL, SPATIOTEMPORAL};
 
     
     

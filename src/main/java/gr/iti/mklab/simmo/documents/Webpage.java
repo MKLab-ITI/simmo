@@ -18,7 +18,7 @@ import gr.iti.mklab.simmo.Document;
 public class Webpage extends Document {
 
     /**
-     * A list of items that the Documents contains
+     * A list of posts that the Webpage contains
      */
     protected List<Post> posts = new ArrayList<Post>();
 

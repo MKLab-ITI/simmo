@@ -1,7 +1,7 @@
 package gr.iti.mklab.simmo;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * A Collection models aggregates of Objects such as corpora of Web documents,
