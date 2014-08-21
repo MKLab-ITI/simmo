@@ -4,7 +4,7 @@ import gr.iti.mklab.simmo.*;
 import gr.iti.mklab.simmo.Object;
 
 /**
- * The generation of media objects is modelled through a Creation association between Source and Object.
+ * The generation of media objects is modeled through a Creation association between Source and Object.
  *
  * @author kandreadou
  * @version 1.0.0
@@ -22,4 +22,17 @@ public class Creation {
         this.creation = creation;
         this.creator = creator;
     }
+    
+    public String getId(){
+    	return id;
+    }
+    
+    public Source getCreator(){
+    	return creator;
+    }
+    
+    public Object getCreation(){
+    	return creation;
+    }
+    
 }

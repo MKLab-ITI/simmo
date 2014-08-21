@@ -16,6 +16,9 @@ import java.util.Date;
  */
 public class Interaction {
 
+	
+    private String id;
+	
     /**
      * The ways in which a UserAccount interacts with a content Object
      */
@@ -23,7 +26,7 @@ public class Interaction {
         MENTIONS, COMMENTS, LIKES, DISLIKES, FAVORITES, UPVOTES, DOWNVOTES, UNDEFINED
     }
 
-    private gr.iti.mklab.simmo.Object objectOfInteraction;
+    private Object objectOfInteraction;
 
     private UserAccount interactingUser;
 
@@ -68,5 +71,9 @@ public class Interaction {
 
     public void setType(InteractionType interactionType) {
         this.interactionType = interactionType;
+    }
+    
+    public String getId(){
+    	return id;
     }
 }

@@ -63,8 +63,8 @@ public class JsonTest {
         account.setName("CGP Grey");
         account.setNumFollowers(1361024);
         account.setAvatarSmall("https://yt3.ggpht.com/-hcwBgBwDiuk/AAAAAAAAAAI/AAAAAAAAAAA/eQENCQCzV4w/s100-c-k-no/photo.jpg");
-        post.setUserAccount(account);
-
+                
+        
         Post commentLink = new Post();
         commentLink.setId("409sfh");
         commentLink.setNumLikes(739);

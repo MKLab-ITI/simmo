@@ -34,4 +34,9 @@ public class Affiliation {
         this.affiliationType = type;
         this.affiliationDate = date;
     }
+    
+    public String getId(){
+    	return id;
+    }
+    
 }

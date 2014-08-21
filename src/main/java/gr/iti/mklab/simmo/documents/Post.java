@@ -1,7 +1,6 @@
 package gr.iti.mklab.simmo.documents;
 
 import gr.iti.mklab.simmo.Document;
-import gr.iti.mklab.simmo.UserAccount;
 import gr.iti.mklab.simmo.util.Location;
 
 /**
@@ -46,8 +45,6 @@ public class Post extends Document {
     /** The location for this post */
     private Location location;
 
-    /** The user who created this post */
-    private UserAccount userAccount;
     
     public String getPostId() {
         return postId;
@@ -130,11 +127,5 @@ public class Post extends Document {
         this.location = location;
     }
     
-    public UserAccount getUserAccount() {
-        return userAccount;
-    }
 
-    public void setUserAccount(UserAccount userAccount) {
-        this.userAccount = userAccount;
-    }
 }

@@ -39,5 +39,9 @@ public class Similarity {
     public float getSimilarityScore() {
         return similarityScore;
     }
+    
+    public String getId(){
+    	return id;
+    }
 
 }
