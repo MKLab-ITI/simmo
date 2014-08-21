@@ -34,11 +34,6 @@ public abstract class Object implements Annotatable {
     protected Date lastModifiedDate;
     protected Date crawlDate;
 
-    /**
-     * A list of interactions of UserAccounts with this Object
-     */
-    protected List<Interaction> interactions = new ArrayList<Interaction>();
-
 
     public String getId() {
         return id;
@@ -114,17 +109,5 @@ public abstract class Object implements Annotatable {
 
     public void setCrawlDate(Date crawlDate) {
         this.crawlDate = crawlDate;
-    }
-
-    public void addInteraction(Interaction interaction){
-        interactions.add(interaction);
-    }
-
-    public void removeInteraction(Interaction interaction){
-        interactions.remove(interaction);
-    }
-
-    public List<Interaction> getInteractions(){
-        return interactions;
     }
 }
