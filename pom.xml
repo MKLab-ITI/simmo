@@ -11,7 +11,9 @@
 
     <name>simmo</name>
     <url>https://github.com/MKLab-ITI/simmo</url>
-    <description>Socially interconnected/interlinked and multimedia-enriched objects: A model for representing multimedia content in the context of the Web and Social Media.</description>
+    <description>Socially interconnected/interlinked and multimedia-enriched objects: A model for representing
+        multimedia content in the context of the Web and Social Media.
+    </description>
 
     <developers>
         <developer>
@@ -35,11 +37,17 @@
     </licenses>
 
     <dependencies>
-    <dependency>
-        <groupId>com.google.code.gson</groupId>
-        <artifactId>gson</artifactId>
-        <version>2.2.4</version>
-    </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb.morphia</groupId>
+            <artifactId>morphia</artifactId>
+            <version>0.108</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>
@@ -50,7 +58,7 @@
             <releases>
                 <enabled>true</enabled>
             </releases>
-            <snapshots />
+            <snapshots/>
         </repository>
         <repository>
             <id>clojars.org</id>
@@ -58,7 +66,7 @@
         </repository>
     </repositories>
 
-    <pluginRepositories />
+    <pluginRepositories/>
 
     <build>
         <plugins>

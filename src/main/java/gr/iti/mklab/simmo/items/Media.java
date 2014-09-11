@@ -18,8 +18,6 @@ public abstract class Media extends Item {
 
     protected Location location;
 
-    public ITEM_TYPE type = ITEM_TYPE.UNDEFINED;
-
     public Location getLocation() {
         return location;
     }

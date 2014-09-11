@@ -1,5 +1,7 @@
 package gr.iti.mklab.simmo.items;
 
+import org.mongodb.morphia.annotations.Entity;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +15,7 @@ import java.util.Map;
  * @since July 7, 2014
  * @author amoumtzidou
  */
+@Entity
 public class Image extends Media {
 
     /** The size of the image in bytes */
