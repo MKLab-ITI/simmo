@@ -1,5 +1,8 @@
 package gr.iti.mklab.simmo;
 
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+
 /**
  * A User Account.
  * TODO: Decide whether we need distinct classes for the various social networks or an enum.
@@ -9,9 +12,11 @@ package gr.iti.mklab.simmo;
  * @see gr.iti.mklab.simmo.Document
  * @since July 3, 2014
  */
+@Entity
 public class UserAccount {
 
     /** The internal unique id for this user account */
+    @Id
     protected String id;
 
     /** The user account id obtained from the source, i.e. facebook id, twitter id */

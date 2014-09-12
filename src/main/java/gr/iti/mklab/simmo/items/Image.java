@@ -15,7 +15,7 @@ import java.util.Map;
  * @since July 7, 2014
  * @author amoumtzidou
  */
-@Entity
+@Entity(noClassnameStored=true)
 public class Image extends Media {
 
     /** The size of the image in bytes */

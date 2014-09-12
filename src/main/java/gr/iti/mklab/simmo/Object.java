@@ -3,6 +3,7 @@ package gr.iti.mklab.simmo;
 import gr.iti.mklab.simmo.associations.Interaction;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Indexed;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,6 +22,7 @@ public abstract class Object implements Annotatable {
      * The object unique id
      */
     @Id
+    @Indexed
     protected String id;
 
     protected String url;

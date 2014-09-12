@@ -1,5 +1,7 @@
 package gr.iti.mklab.simmo.util;
 
+import org.mongodb.morphia.annotations.Embedded;
+
 /**
  * A Location utility class
  *
@@ -7,11 +9,12 @@ package gr.iti.mklab.simmo.util;
  * @version 1.0.0
  * @since July 3, 2014
  */
+@Embedded
 public class Location {
 
-    private long latitude;
+    private double latitude;
 
-    private long longitude;
+    private double longitude;
 
     private String country;
 
@@ -25,24 +28,24 @@ public class Location {
 
     private boolean inferred;
 
-    public Location(long longitude, long latitude){
+    public Location(double longitude, double latitude){
         this.longitude = longitude;
         this.latitude = latitude;
     }
 
-    public long getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(long latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public long getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(long longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 

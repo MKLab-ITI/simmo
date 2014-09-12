@@ -2,6 +2,7 @@ package gr.iti.mklab.simmo.items;
 
 import gr.iti.mklab.simmo.*;
 import gr.iti.mklab.simmo.util.Location;
+import org.mongodb.morphia.annotations.Embedded;
 
 /**
  * An abstract media item.
@@ -16,6 +17,7 @@ import gr.iti.mklab.simmo.util.Location;
  */
 public abstract class Media extends Item {
 
+    @Embedded
     protected Location location;
 
     public Location getLocation() {
