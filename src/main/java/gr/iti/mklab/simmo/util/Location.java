@@ -1,6 +1,8 @@
 package gr.iti.mklab.simmo.util;
 
 import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Indexed;
+import org.mongodb.morphia.utils.IndexDirection;
 
 /**
  * A Location utility class
@@ -12,9 +14,12 @@ import org.mongodb.morphia.annotations.Embedded;
 @Embedded
 public class Location {
 
-    private double latitude;
-
-    private double longitude;
+    /**
+     * IMPORTANT: Do not change this or split the array into two doubles, longitude and latitude.
+     * It is necessary for morphia to do GEO indexing.
+     */
+    @Indexed(IndexDirection.GEO2D)
+    private double[] coordinates = new double[2];
 
     private String country;
 
@@ -28,25 +33,18 @@ public class Location {
 
     private boolean inferred;
 
+    public Location(){
+
+    }
+
     public Location(double longitude, double latitude){
-        this.longitude = longitude;
-        this.latitude = latitude;
+
+        coordinates[0] = longitude;
+        coordinates[1] = latitude;
     }
 
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public double[] getCoordinates(){
+        return coordinates;
     }
 
     public String getCountry() {
