@@ -40,7 +40,7 @@ public class MockObjectFactory {
     }
 
     public static Affiliation getAffiliation() {
-        Affiliation affiliation = new Affiliation(getUserAccount("test1", "Joe"), getUserAccount("test2", "Jane"), Affiliation.AFFILIATION_TYPE.FOLLOWS, new Date(System.currentTimeMillis()));
+        Affiliation affiliation = new Affiliation(getUserAccount("test145", "Joe"), getUserAccount("test2", "Jane"), Affiliation.AFFILIATION_TYPE.FOLLOWS, new Date(System.currentTimeMillis()));
         return affiliation;
     }
 

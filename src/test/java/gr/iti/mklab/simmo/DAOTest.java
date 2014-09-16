@@ -1,21 +1,25 @@
 package gr.iti.mklab.simmo;
 
-import gr.iti.mklab.simmo.associations.Affiliation;
-import gr.iti.mklab.simmo.mocks.MockObjectFactory;
 import gr.iti.mklab.simmo.morphia.MorphiaManager;
-import org.bson.types.ObjectId;
-import org.mongodb.morphia.dao.BasicDAO;
-import org.mongodb.morphia.dao.DAO;
+import org.junit.After;
+import org.junit.Before;
+import org.mongodb.morphia.mapping.MappedClass;
 
 /**
  * Created by kandreadou on 9/12/14.
  */
 public class DAOTest {
 
-    public static void main(String[] args){
+    @Before
+    public void setUp() {
         MorphiaManager.setup("morphia");
-        DAO<Affiliation,ObjectId> afDAO = new BasicDAO<Affiliation, ObjectId>(Affiliation.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB().getName());
-        afDAO.save(MockObjectFactory.getAffiliation());
+    }
+
+    @After
+    public void tearDown() {
+        /*for (final MappedClass mc : MorphiaManager.getMorphia().getMapper().getMappedClasses()) {
+            MorphiaManager.getDB().getCollection(mc.getCollectionName()).drop();
+        }*/
         MorphiaManager.tearDown();
     }
 }
