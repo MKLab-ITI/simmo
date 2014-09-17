@@ -2,6 +2,7 @@ package gr.iti.mklab.simmo.util;
 
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Indexed;
+import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.utils.IndexDirection;
 
 /**
@@ -19,13 +20,14 @@ public class Location {
      * It is necessary for morphia to do GEO indexing.
      */
     @Indexed(IndexDirection.GEO2D)
+    @Property
     private double[] coordinates = new double[2];
 
     private String country;
 
     private String city;
 
-    private String adress;
+    private String address;
 
     private double radius;
 
@@ -37,10 +39,10 @@ public class Location {
 
     }
 
-    public Location(double longitude, double latitude){
+    public Location(double latitude, double longitude){
 
-        coordinates[0] = longitude;
-        coordinates[1] = latitude;
+        coordinates[0] = latitude;
+        coordinates[1] = longitude;
     }
 
     public double[] getCoordinates(){
@@ -64,11 +66,11 @@ public class Location {
     }
 
     public String getAdress() {
-        return adress;
+        return address;
     }
 
     public void setAdress(String adress) {
-        this.adress = adress;
+        this.address = adress;
     }
 
     public double getRadius() {

@@ -1,7 +1,5 @@
 package gr.iti.mklab.simmo;
 
-import gr.iti.mklab.simmo.associations.Interaction;
-import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Indexed;
 
@@ -84,11 +82,11 @@ public abstract class Object implements Annotatable {
         return tags;
     }
 
-    public void addTag(String tag){
+    public void addTag(String tag) {
         tags.add(tag);
     }
 
-    public void removeTag(String tag){
+    public void removeTag(String tag) {
         tags.remove(tag);
     }
 

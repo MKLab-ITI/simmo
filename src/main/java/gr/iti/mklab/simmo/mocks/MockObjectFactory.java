@@ -13,6 +13,10 @@ import java.util.Date;
 public class MockObjectFactory {
 
     public static Image getImage(String id) {
+        return getImage(id,0,0);
+    }
+
+    public static Image getImage(String id, double longitude, double latitude) {
         Image img = new Image();
         img.setWidth(800);
         img.setHeight(500);
@@ -26,7 +30,7 @@ public class MockObjectFactory {
         img.setLastModifiedDate(new Date(System.currentTimeMillis()));
         img.setTitle("OMG");
         img.setUrl("http://fake.url");
-        img.setLocation(new Location(45.67, 36.78));
+        img.setLocation(new Location(longitude, latitude));
         return img;
     }
 
