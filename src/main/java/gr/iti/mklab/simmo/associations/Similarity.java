@@ -1,6 +1,9 @@
 package gr.iti.mklab.simmo.associations;
 
 import gr.iti.mklab.simmo.Object;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Reference;
 
 /**
  * Similarity models an implicit relation between {@link gr.iti.mklab.simmo.Object} items
@@ -11,18 +14,24 @@ import gr.iti.mklab.simmo.Object;
  * @version 1.0.0
  * @since August 21, 2014
  */
+@Entity
 public class Similarity {
 
-
+    @Reference
     private Object firstObject;
 
+    @Reference
     private Object secondObject;
 
-    private float similarityScore;
+    private double similarityScore;
 
-    private String id;
+    @Id
+    private String id = "test";
 
-    public Similarity(Object object, Object similar, float score) {
+    public Similarity(){}
+
+
+    public Similarity(Object object, Object similar, double score) {
         this.firstObject = object;
         this.secondObject = similar;
         this.similarityScore = score;
@@ -36,7 +45,7 @@ public class Similarity {
         return secondObject;
     }
 
-    public float getSimilarityScore() {
+    public double getSimilarityScore() {
         return similarityScore;
     }
     

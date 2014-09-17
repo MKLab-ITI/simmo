@@ -9,12 +9,13 @@ import java.util.List;
 
 /**
  * A generic super class which is instantiated as either {@link gr.iti.mklab.simmo.items.Media} or {@link gr.iti.mklab.simmo.Document}
+ * This class is not abstract any more because morphia has problems with abstract classes.
  *
  * @author kandreadou
  * @version 1.0.0
  * @since July 3, 2014
  */
-public abstract class Object implements Annotatable {
+public class Object implements Annotatable {
 
     /**
      * The object unique id

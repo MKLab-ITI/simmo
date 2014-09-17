@@ -3,7 +3,6 @@ package gr.iti.mklab.simmo;
 import gr.iti.mklab.simmo.morphia.MorphiaManager;
 import org.junit.After;
 import org.junit.Before;
-import org.mongodb.morphia.mapping.MappedClass;
 
 /**
  * Created by kandreadou on 9/12/14.

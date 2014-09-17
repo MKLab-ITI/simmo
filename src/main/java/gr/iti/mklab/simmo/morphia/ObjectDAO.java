@@ -1,5 +1,7 @@
 package gr.iti.mklab.simmo.morphia;
 
+import gr.iti.mklab.simmo.associations.Similarity;
+import gr.iti.mklab.simmo.items.Image;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.dao.BasicDAO;
 import gr.iti.mklab.simmo.Object;
@@ -30,16 +32,16 @@ public class ObjectDAO<O extends Object> extends BasicDAO<O, ObjectId> {
      * @param dateField
      * @param start
      * @param end
-     * @param numImages
+     * @param numObjects
      * @param asc
      * @return
      */
-    private List<O> findByDate(String dateField, Date start, Date end, int numImages, boolean asc) {
+    private List<O> findByDate(String dateField, Date start, Date end, int numObjects, boolean asc) {
         if (start == null)
             start = new Date(0);
         if (end == null)
             end = new Date();
-        return getDatastore().find(clazz).filter(dateField + " >", start).filter(dateField + " <", end).limit(numImages).order(asc ? dateField : '-' + dateField).asList();
+        return getDatastore().find(clazz).filter(dateField + " >", start).filter(dateField + " <", end).order(asc ? dateField : '-' + dateField).limit(numObjects).asList();
     }
 
     /**
@@ -69,11 +71,15 @@ public class ObjectDAO<O extends Object> extends BasicDAO<O, ObjectId> {
      *
      * @param start
      * @param end
-     * @param numImages
+     * @param numObjects
      * @return
      */
-    public List<O> createdInPeriod(Date start, Date end, int numImages){
-        return findByDate("creationDate", start, end, numImages, true);
+    public List<O> createdInPeriod(Date start, Date end, int numObjects){
+        return findByDate("creationDate", start, end, numObjects, true);
+    }
+
+    public List<Similarity> similar(Image object, int numObjects){
+        return getDatastore().find(Similarity.class).field("firstObject").equal(object).order("similarityScore").asList();
     }
 
 }
