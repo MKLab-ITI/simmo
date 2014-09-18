@@ -26,7 +26,7 @@ public class Similarity {
     private double similarityScore;
 
     @Id
-    private String id = "test";
+    private String id;
 
     public Similarity(){}
 

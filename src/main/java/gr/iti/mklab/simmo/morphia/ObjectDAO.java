@@ -5,6 +5,7 @@ import gr.iti.mklab.simmo.items.Image;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.dao.BasicDAO;
 import gr.iti.mklab.simmo.Object;
+import org.mongodb.morphia.query.Query;
 
 import java.util.Date;
 import java.util.List;
@@ -74,12 +75,26 @@ public class ObjectDAO<O extends Object> extends BasicDAO<O, ObjectId> {
      * @param numObjects
      * @return
      */
-    public List<O> createdInPeriod(Date start, Date end, int numObjects){
+    public List<O> createdInPeriod(Date start, Date end, int numObjects) {
         return findByDate("creationDate", start, end, numObjects, true);
     }
 
-    public List<Similarity> similar(Image object, int numObjects){
-        return getDatastore().find(Similarity.class).field("firstObject").equal(object).order("similarityScore").asList();
+    /**
+     * Returns a list of objects that are similar to the specified object
+     *
+     * @param object
+     * @param threshold
+     * @return
+     */
+    public List<Similarity> similar(Image object, double threshold) {
+        //return getDatastore().find(Similarity.class).field("firstObject").equal(object).order("similarityScore").asList();
+        Query<Similarity> q = getDatastore().createQuery(Similarity.class);
+        q.or(
+                q.criteria("firstObject").equal(object),
+                q.criteria("secondObject").equal(object)
+        );
+        return q.order("-similarityScore").filter("similarityScore >",threshold).asList();
+
     }
 
 }

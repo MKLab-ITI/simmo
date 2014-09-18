@@ -59,14 +59,14 @@ public class ImageTest extends DAOTest {
     }
 
     public void testSimilarity(){
-        Image im1 = MockObjectFactory.getImage("object1", 48.8567, 2.3508);
-        Image im2 = MockObjectFactory.getImage("object2", 51.5072, 0.1275);
+        Image im1 = MockObjectFactory.getImage("object3", 48.8567, 2.3508);
+        Image im2 = MockObjectFactory.getImage("object1",1.5072, 0.1275);
         MediaDAO<Image> dao = new MediaDAO<Image>(Image.class);
-        dao.save(im1);
+        /*dao.save(im1);
         dao.save(im2);
         DAO<Similarity, ObjectId> sDAO = new BasicDAO<Similarity, ObjectId>(Similarity.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB().getName());
-        sDAO.save(new Similarity(im1, im2, 0.76));
-        List<Similarity> slist = dao.similar(im1, 100);
+        sDAO.save(new Similarity(im1, im2, 0.89));*/
+        List<Similarity> slist = dao.similar(im2, 0.8);
         for(Similarity s:slist){
             System.out.println("similarity score "+s.getSimilarityScore());
         }
