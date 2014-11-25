@@ -10,7 +10,7 @@ import java.util.List;
  * @version 1.0.0
  * @since July 10, 2014
  */
-public class Topic implements Annotatable {
+public class Topic extends Annotatable {
     /**
      * The topic unique id
      */

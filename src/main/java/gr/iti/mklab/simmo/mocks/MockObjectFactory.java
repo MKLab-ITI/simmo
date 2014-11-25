@@ -1,6 +1,7 @@
 package gr.iti.mklab.simmo.mocks;
 
 import gr.iti.mklab.simmo.UserAccount;
+import gr.iti.mklab.simmo.annotations.Original;
 import gr.iti.mklab.simmo.associations.Affiliation;
 import gr.iti.mklab.simmo.items.Image;
 import gr.iti.mklab.simmo.util.Location;
@@ -31,6 +32,8 @@ public class MockObjectFactory {
         img.setTitle("OMG");
         img.setUrl("http://fake.url");
         img.setLocation(new Location(longitude, latitude));
+        Original or = new Original(true);
+        img.addAnnotation(or);
         return img;
     }
 

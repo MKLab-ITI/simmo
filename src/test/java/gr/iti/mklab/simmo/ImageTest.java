@@ -1,15 +1,10 @@
 package gr.iti.mklab.simmo;
 
-import gr.iti.mklab.simmo.associations.Affiliation;
 import gr.iti.mklab.simmo.associations.Similarity;
 import gr.iti.mklab.simmo.items.Image;
 import gr.iti.mklab.simmo.mocks.MockObjectFactory;
 import gr.iti.mklab.simmo.morphia.MediaDAO;
-import gr.iti.mklab.simmo.morphia.MorphiaManager;
-import org.bson.types.ObjectId;
 import org.junit.Test;
-import org.mongodb.morphia.dao.BasicDAO;
-import org.mongodb.morphia.dao.DAO;
 
 import java.util.Calendar;
 import java.util.List;
@@ -29,7 +24,16 @@ public class ImageTest extends DAOTest {
 
     @Test
     public void test() {
-        testSimilarity();
+        testSaveImage();
+    }
+
+    public void testInheritance(){
+
+    }
+
+    public void testSaveImage(){
+        MediaDAO<Image> dao = new MediaDAO<Image>(Image.class);
+        dao.save(MockObjectFactory.getImage("wt2!"));
     }
 
     public void testCrawledAfter() {

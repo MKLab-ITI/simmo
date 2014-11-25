@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SegmentGroup implements Segment {
+public class SegmentGroup extends Segment {
 
 	
     /**

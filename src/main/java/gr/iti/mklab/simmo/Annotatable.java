@@ -1,6 +1,8 @@
 package gr.iti.mklab.simmo;
 
 import gr.iti.mklab.simmo.associations.Annotation;
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +14,21 @@ import java.util.List;
  * @version 1.0.0
  * @since July 3, 2014
  */
-public interface Annotatable {
+public abstract class Annotatable {
 
-    public List<Annotation> annotations = new ArrayList<Annotation>();
+    @Embedded
+    private List<Annotation> annotations = new ArrayList<Annotation>();
+
+    public void addAnnotation(Annotation a){
+        annotations.add(a);
+    }
+
+    public void removeAnnotation(Annotation a){
+        annotations.remove(a);
+    }
+
+    public void setAnnotations(List<Annotation> annotations){
+        this.annotations = annotations;
+    }
 
 }

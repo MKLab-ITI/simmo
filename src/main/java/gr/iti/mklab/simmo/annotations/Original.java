@@ -1,6 +1,7 @@
 package gr.iti.mklab.simmo.annotations;
 
 import gr.iti.mklab.simmo.associations.Annotation;
+import org.mongodb.morphia.annotations.Entity;
 
 /**
  * Original signifies if the {@link gr.iti.mklab.simmo.Object} is authentic or the product of processing or manipulation. This
@@ -13,6 +14,7 @@ import gr.iti.mklab.simmo.associations.Annotation;
  * @version 1.0.0
  * @since August 22, 2014
  */
+@Entity
 public class Original implements Annotation {
 
     private boolean isOriginal = false;

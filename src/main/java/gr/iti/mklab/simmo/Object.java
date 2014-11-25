@@ -15,7 +15,7 @@ import java.util.List;
  * @version 1.0.0
  * @since July 3, 2014
  */
-public class Object implements Annotatable {
+public class Object extends Annotatable {
 
     /**
      * The object unique id

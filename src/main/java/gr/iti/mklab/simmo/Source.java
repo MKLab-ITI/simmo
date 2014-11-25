@@ -10,7 +10,7 @@ import java.util.List;
  * @see gr.iti.mklab.simmo
  * @since July 10, 2014
  */
-public interface Source extends Annotatable {
+public abstract class Source extends Annotatable {
 
 	 /**
      * A list of Objects that the Source contains

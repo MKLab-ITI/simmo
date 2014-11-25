@@ -91,12 +91,12 @@ public class JsonTestWebpage {
 		
 		List<Annotation> textAnno = new ArrayList<Annotation>();
 		textAnno.add(summary);
-		txt.annotations.addAll(textAnno);
+		txt.setAnnotations(textAnno);
 		
 		
 		List<Annotation> imgAnno = new ArrayList<Annotation>();
 		imgAnno.add(local);
-		img.annotations.add(local);
+		img.addAnnotation(local);
 		
 		
 		wp.addItem(txt);

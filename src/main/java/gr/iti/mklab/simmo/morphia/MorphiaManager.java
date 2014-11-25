@@ -5,7 +5,6 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import gr.iti.mklab.simmo.associations.Similarity;
 import gr.iti.mklab.simmo.items.Image;
-import gr.iti.mklab.simmo.items.Media;
 import gr.iti.mklab.simmo.util.Location;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;

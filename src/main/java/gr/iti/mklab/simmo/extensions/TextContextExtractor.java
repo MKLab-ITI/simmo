@@ -25,5 +25,4 @@ public interface TextContextExtractor {
 
     public TextualRelation[] getRelationsOfType(String htmlStr, String type);
 
-
 }
