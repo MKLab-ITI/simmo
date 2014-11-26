@@ -6,6 +6,7 @@ import java.util.List;
 import gr.iti.mklab.simmo.Document;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Reference;
 
 
 /**
@@ -23,7 +24,7 @@ public class Webpage extends Document {
     /**
      * A list of posts that the Webpage contains
      */
-    @Embedded
+    @Reference
     protected List<Post> posts = new ArrayList<Post>();
 
     public Webpage(){}

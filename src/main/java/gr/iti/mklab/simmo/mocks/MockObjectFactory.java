@@ -4,6 +4,7 @@ import gr.iti.mklab.simmo.UserAccount;
 import gr.iti.mklab.simmo.annotations.Original;
 import gr.iti.mklab.simmo.associations.Affiliation;
 import gr.iti.mklab.simmo.documents.Post;
+import gr.iti.mklab.simmo.documents.Webpage;
 import gr.iti.mklab.simmo.items.Image;
 import gr.iti.mklab.simmo.util.Location;
 
@@ -16,6 +17,15 @@ public class MockObjectFactory {
 
     public static Image getImage(String id) {
         return getImage(id, 0, 0);
+    }
+
+    public static Webpage getWebpage(String url) {
+        Webpage p = new Webpage();
+        p.setUrl(url);
+        p.setAuthor("me");
+        p.setDescription("oh how boring");
+        p.addPost(getPost("twitterpost456"));
+        return p;
     }
 
     public static Post getPost(String postId) {
