@@ -3,7 +3,11 @@ package gr.iti.mklab.simmo.morphia;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import gr.iti.mklab.simmo.annotations.Original;
+import gr.iti.mklab.simmo.associations.Annotation;
 import gr.iti.mklab.simmo.associations.Similarity;
+import gr.iti.mklab.simmo.documents.Post;
+import gr.iti.mklab.simmo.documents.Webpage;
 import gr.iti.mklab.simmo.items.Image;
 import gr.iti.mklab.simmo.util.Location;
 import org.mongodb.morphia.Datastore;
@@ -27,7 +31,7 @@ public class MorphiaManager {
             mongoClient = new MongoClient(new MongoClientURI(System.getProperty("MONGO_URI", "mongodb://localhost:27017")));
             db = mongoClient.getDB(dbName);
             ds = morphia.createDatastore(mongoClient, db.getName());
-            morphia.map(Image.class).map(Location.class).map(Similarity.class);
+            morphia.map(Image.class).map(Location.class).map(Similarity.class).map(Post.class).map(Webpage.class);
             ds.ensureCaps();
             ds.ensureIndexes();
         } catch (Exception e) {

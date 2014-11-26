@@ -31,4 +31,8 @@ public abstract class Annotatable {
         this.annotations = annotations;
     }
 
+    public Annotation getAnnotation(int position){
+        return annotations.get(position);
+    }
+
 }

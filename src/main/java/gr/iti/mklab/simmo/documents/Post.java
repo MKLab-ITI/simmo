@@ -2,6 +2,8 @@ package gr.iti.mklab.simmo.documents;
 
 import gr.iti.mklab.simmo.Document;
 import gr.iti.mklab.simmo.util.Location;
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Entity;
 
 /**
  * A Post is a {@link gr.iti.mklab.simmo.Document} and it may also contain other {@link gr.iti.mklab.simmo.Item} objects.
@@ -12,6 +14,7 @@ import gr.iti.mklab.simmo.util.Location;
  * @see gr.iti.mklab.simmo.Document
  * @since July 3, 2014
  */
+@Entity(noClassnameStored=true)
 public class Post extends Document {
 
     /** The id of the Post in the original web page or social network where it was posted.
@@ -43,8 +46,14 @@ public class Post extends Document {
     private int numSubscriptions;
 
     /** The location for this post */
+    @Embedded
     private Location location;
 
+    public Post(){}
+
+    public Post(String postId){
+        this.postId = postId;
+    }
     
     public String getPostId() {
         return postId;

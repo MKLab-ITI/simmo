@@ -17,11 +17,11 @@ import java.util.Map;
  * @since July 7, 2014
  * @author amoumtzidou
  */
-@Entity(noClassnameStored=true)
 /*@Indexes({
         @Index("id"),
         @Index("location.coordinates")
 })*/
+@Entity
 public class Image extends Media {
 
     /** The size of the image in bytes */

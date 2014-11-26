@@ -1,6 +1,7 @@
 package gr.iti.mklab.simmo;
 
 import gr.iti.mklab.simmo.associations.Reference;
+import org.mongodb.morphia.annotations.Embedded;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +19,13 @@ public abstract class Document extends Object {
     /**
      * A list of items that the Documents contains
      */
+    @org.mongodb.morphia.annotations.Reference
     protected List<Item> items = new ArrayList<Item>();
 
     /**
      * A list of references to other Documents
      */
+    @Embedded
     protected List<Reference> references = new ArrayList<Reference>();
 
     /**
@@ -39,6 +42,10 @@ public abstract class Document extends Object {
 
     public List<Item> getItems() {
         return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 
     public void addItem(Item item){

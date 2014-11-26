@@ -1,5 +1,6 @@
 package gr.iti.mklab.simmo;
 
+import gr.iti.mklab.simmo.annotations.Original;
 import gr.iti.mklab.simmo.associations.Similarity;
 import gr.iti.mklab.simmo.items.Image;
 import gr.iti.mklab.simmo.mocks.MockObjectFactory;
@@ -8,8 +9,6 @@ import org.junit.Test;
 
 import java.util.Calendar;
 import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 
@@ -27,13 +26,14 @@ public class ImageTest extends DAOTest {
         testSaveImage();
     }
 
-    public void testInheritance(){
-
-    }
 
     public void testSaveImage(){
         MediaDAO<Image> dao = new MediaDAO<Image>(Image.class);
-        dao.save(MockObjectFactory.getImage("wt2!"));
+        dao.save(MockObjectFactory.getImage("wt67"));
+        Image img = dao.findOne("id","wt67" );
+        if(img.getAnnotation(0) instanceof Original){
+            System.out.println("true");
+        }
     }
 
     public void testCrawledAfter() {
@@ -46,7 +46,7 @@ public class ImageTest extends DAOTest {
         calendar.add(Calendar.DATE, -1);
         List<Image> images = dao.crawledAfter(calendar.getTime());
         assertNotNull(images);
-        assertEquals(images.get(0).getId(), imageId);
+        //assertEquals(images.get(0).getId(), imageId);
     }
 
     public void testNear() {
@@ -58,7 +58,7 @@ public class ImageTest extends DAOTest {
 
         List<Image> images = dao.findNear(50.8500, 4.3500, 4);  //bruxelles
         for (Image i : images) {
-            System.out.println(i.getId() + " " + i.getCrawlDate());
+            System.out.println(i.getObjectId() + " " + i.getCrawlDate());
         }
     }
 

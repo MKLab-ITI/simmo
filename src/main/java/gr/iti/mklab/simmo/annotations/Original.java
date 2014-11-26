@@ -20,6 +20,8 @@ public class Original implements Annotation {
     private boolean isOriginal = false;
 
 
+    public Original(){}
+
     public Original(boolean isOriginal){
         this.isOriginal = isOriginal;
     }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gr.iti.mklab.simmo.Document;
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Entity;
 
 
 /**
@@ -15,13 +17,16 @@ import gr.iti.mklab.simmo.Document;
  * @see gr.iti.mklab.simmo.Document
  * @since July 7, 2014
  */
+@Entity(noClassnameStored=true)
 public class Webpage extends Document {
 
     /**
      * A list of posts that the Webpage contains
      */
+    @Embedded
     protected List<Post> posts = new ArrayList<Post>();
 
+    public Webpage(){}
     
     public List<Post> getPosts() {
         return posts;

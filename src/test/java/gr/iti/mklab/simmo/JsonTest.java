@@ -26,7 +26,6 @@ public class JsonTest {
                 .create();
 
         Post post = new Post();
-        post.setId("wtt2aSV8wdw");
         post.setUrl("https://www.youtube.com/watch?v=wtt2aSV8wdw");
         post.setDescription("Internet Citizens: Defend Net Neutrality");
         post.setAuthor("CGP Grey");
@@ -66,7 +65,6 @@ public class JsonTest {
                 
         
         Post commentLink = new Post();
-        commentLink.setId("409sfh");
         commentLink.setNumLikes(739);
         commentLink.setNumComments(72);
         commentLink.setAuthor("The Game Theorists");
@@ -78,14 +76,13 @@ public class JsonTest {
         post.addReferece(ref);
 
         Post comment2 = new Post();
-        comment2.setId("101reyk");
         comment2.setNumLikes(63);
         comment2.setNumComments(5);
         comment2.setAuthor("ZombieGoBoom");
         comment = new Text();
         comment.setContent("Friggin' excellent video, man!  Net neutrality...  FOREVER");
         comment.setTextType(Text.TEXT_TYPE.HTML);
-        comment2.addItem(comment);
+        //comment2.addItem(comment);
         ref = new Reference("101reyk", Reference.ReferenceType.COMMENT);
         post.addReferece(ref);
 

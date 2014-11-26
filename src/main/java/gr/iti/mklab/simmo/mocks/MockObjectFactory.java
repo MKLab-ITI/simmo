@@ -3,6 +3,7 @@ package gr.iti.mklab.simmo.mocks;
 import gr.iti.mklab.simmo.UserAccount;
 import gr.iti.mklab.simmo.annotations.Original;
 import gr.iti.mklab.simmo.associations.Affiliation;
+import gr.iti.mklab.simmo.documents.Post;
 import gr.iti.mklab.simmo.items.Image;
 import gr.iti.mklab.simmo.util.Location;
 
@@ -14,14 +15,33 @@ import java.util.Date;
 public class MockObjectFactory {
 
     public static Image getImage(String id) {
-        return getImage(id,0,0);
+        return getImage(id, 0, 0);
+    }
+
+    public static Post getPost(String postId) {
+        Post p = new Post(postId);
+        p.setNumViews(56);
+        p.setNumComments(78);
+        p.setNumLikes(4);
+        p.setUrl("http://www.great.com");
+        p.setTitle("this is a title");
+        p.setLastModifiedDate(new Date(System.currentTimeMillis()));
+        p.setNegativeVotes(7);
+        p.setNumSubscriptions(90);
+        p.setAuthor("Some author");
+        p.setLanguage("EN-en");
+        p.setLocation(new Location(48.8577, 2.4567));
+        p.addItem(getImage("image09990"));
+        p.addTag("a tag");
+        p.addAnnotation(new Original(false));
+        return p;
     }
 
     public static Image getImage(String id, double longitude, double latitude) {
         Image img = new Image();
         img.setWidth(800);
         img.setHeight(500);
-        img.setId(id);
+        //img.setId(id);
         img.setThumbnail("/home/fake/path");
         img.setDescription("this is not an image");
         img.setAuthor("me");

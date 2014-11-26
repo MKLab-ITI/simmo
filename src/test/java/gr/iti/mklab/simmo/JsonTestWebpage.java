@@ -27,7 +27,6 @@ public class JsonTestWebpage {
 
 		Gson gson = new Gson();
 		Webpage wp = new Webpage();
-		wp.setId("180444840287");
 		wp.setTitle("World Cup was biggest event yet for Twitter with 672m tweets | Technology | The Guardian");
 		wp.setUrl("http://www.theguardian.com/technology/2014/jul/15/twitter-world-cup-tweets-germany-brazil");
 		wp.setAuthor("Stuart Dredge");

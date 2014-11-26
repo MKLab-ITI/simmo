@@ -1,5 +1,6 @@
 package gr.iti.mklab.simmo;
 
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Indexed;
 
@@ -15,14 +16,13 @@ import java.util.List;
  * @version 1.0.0
  * @since July 3, 2014
  */
-public class Object extends Annotatable {
+public abstract class Object extends Annotatable {
 
     /**
      * The object unique id
      */
     @Id
-    @Indexed
-    protected String id;
+    private ObjectId objectId;
 
     protected String url;
     protected String title;
@@ -38,13 +38,8 @@ public class Object extends Annotatable {
     protected Date lastModifiedDate;
     protected Date crawlDate;
 
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public ObjectId getObjectId(){
+        return objectId;
     }
 
     public String getUrl() {
