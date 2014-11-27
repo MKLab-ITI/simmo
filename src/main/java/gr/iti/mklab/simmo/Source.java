@@ -1,10 +1,10 @@
 package gr.iti.mklab.simmo;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Id;
 
 /**
- * 
  * @author amoumtzidou
  * @version 1.0.0
  * @see gr.iti.mklab.simmo
@@ -12,9 +12,12 @@ import java.util.List;
  */
 public abstract class Source extends Annotatable {
 
-	 /**
-     * A list of Objects that the Source contains
-     */
-    List<Object> items = new ArrayList<Object>();
-    
+    /** The internal unique id for this source */
+    @Id
+    private ObjectId objectId;
+
+    public ObjectId getObjectId(){
+        return objectId;
+    }
+
 }

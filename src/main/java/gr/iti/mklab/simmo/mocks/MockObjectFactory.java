@@ -3,10 +3,12 @@ package gr.iti.mklab.simmo.mocks;
 import gr.iti.mklab.simmo.UserAccount;
 import gr.iti.mklab.simmo.annotations.Original;
 import gr.iti.mklab.simmo.associations.Affiliation;
+import gr.iti.mklab.simmo.associations.Creation;
 import gr.iti.mklab.simmo.associations.Reference;
 import gr.iti.mklab.simmo.documents.Post;
 import gr.iti.mklab.simmo.documents.Webpage;
 import gr.iti.mklab.simmo.items.Image;
+import gr.iti.mklab.simmo.morphia.DAOManager;
 import gr.iti.mklab.simmo.util.Location;
 
 import java.util.Date;
@@ -18,6 +20,10 @@ public class MockObjectFactory {
 
     public static Image getImage(String id) {
         return getImage(id, 0, 0);
+    }
+
+    public static Creation getCreation(){
+        return new Creation(getUserAccount("John Doe"), getPost("somewhereonepost"));
     }
 
     public static Webpage getWebpage(String url) {
@@ -70,9 +76,8 @@ public class MockObjectFactory {
         return img;
     }
 
-    public static UserAccount getUserAccount(String id, String name) {
+    public static UserAccount getUserAccount(String name) {
         UserAccount ua = new UserAccount();
-        ua.setId(id);
         ua.setName(name);
         ua.setNumFollowers(56000);
         ua.setAvatarSmall("/fake/path/to/a/avatar");
@@ -80,7 +85,7 @@ public class MockObjectFactory {
     }
 
     public static Affiliation getAffiliation() {
-        Affiliation affiliation = new Affiliation(getUserAccount("test145", "Joe"), getUserAccount("test2", "Jane"), Affiliation.AFFILIATION_TYPE.FOLLOWS, new Date(System.currentTimeMillis()));
+        Affiliation affiliation = new Affiliation(getUserAccount( "Joe"), getUserAccount( "Jane"), Affiliation.AFFILIATION_TYPE.FOLLOWS, new Date(System.currentTimeMillis()));
         return affiliation;
     }
 

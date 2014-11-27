@@ -58,7 +58,6 @@ public class JsonTest {
         post.addItem(video);
 
         UserAccount account = new UserAccount();
-        account.setId("acc98754");
         account.setName("CGP Grey");
         account.setNumFollowers(1361024);
         account.setAvatarSmall("https://yt3.ggpht.com/-hcwBgBwDiuk/AAAAAAAAAAI/AAAAAAAAAAA/eQENCQCzV4w/s100-c-k-no/photo.jpg");

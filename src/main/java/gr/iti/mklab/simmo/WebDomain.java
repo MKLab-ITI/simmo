@@ -1,5 +1,7 @@
 package gr.iti.mklab.simmo;
 
+import org.mongodb.morphia.annotations.Entity;
+
 /**
  * 
  * @author amoumtzidou
@@ -7,7 +9,8 @@ package gr.iti.mklab.simmo;
  * @see gr.iti.mklab.simmo
  * @since July 10, 2014
  */
-public class WebDomain {
+@Entity
+public class WebDomain extends Source {
 
 
 }

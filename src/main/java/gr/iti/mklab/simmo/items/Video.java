@@ -1,5 +1,7 @@
 package gr.iti.mklab.simmo.items;
 
+import org.mongodb.morphia.annotations.Entity;
+
 /**
  * A video item
  *
@@ -10,6 +12,7 @@ package gr.iti.mklab.simmo.items;
  * @since July 3, 2014
  * @author kandreadou
  */
+@Entity
 public class Video extends Media {
 
     /** The size of the video in bytes */

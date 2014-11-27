@@ -15,7 +15,11 @@ public class DAOManagerTest extends DAOTest {
 
     @Test
     public void test() {
-        testWebpage();
+        testCreation();
+    }
+
+    public void testCreation(){
+        DAOManager.saveCreation(MockObjectFactory.getCreation());
     }
 
     public void testPost(){

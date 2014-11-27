@@ -1,6 +1,7 @@
 package gr.iti.mklab.simmo.items;
 
 import gr.iti.mklab.simmo.Item;
+import org.mongodb.morphia.annotations.Entity;
 
 /**
  * A text item
@@ -11,9 +12,8 @@ import gr.iti.mklab.simmo.Item;
  * @since July 7, 2014
  * @author amoumtzidou
  */
+@Entity
 public class Text extends Item {
-
-	
 	
 	/** Types of text */
     public enum TEXT_TYPE{ASR,OCR,TXT,HTML};
@@ -24,7 +24,9 @@ public class Text extends Item {
     /** The content itself */
     private String content;
 
-    private ITEM_TYPE type = ITEM_TYPE.TEXT;
+    public Text(){
+        this.type = ITEM_TYPE.TEXT;
+    }
 
     public String getContent() {
         return content;

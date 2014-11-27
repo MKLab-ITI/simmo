@@ -1,5 +1,6 @@
 package gr.iti.mklab.simmo;
 
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
@@ -13,11 +14,7 @@ import org.mongodb.morphia.annotations.Id;
  * @since July 3, 2014
  */
 @Entity
-public class UserAccount {
-
-    /** The internal unique id for this user account */
-    @Id
-    protected String id;
+public class UserAccount extends Source {
 
     /** The user account id obtained from the source, i.e. facebook id, twitter id */
     protected String sourceId;
@@ -43,13 +40,7 @@ public class UserAccount {
     /** Small avatar image path (or URL) */
     protected String avatarSmall;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    public UserAccount(){}
 
     public String getSourceId() {
         return sourceId;
