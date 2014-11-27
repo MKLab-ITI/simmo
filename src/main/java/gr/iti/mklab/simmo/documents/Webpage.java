@@ -18,7 +18,7 @@ import org.mongodb.morphia.annotations.Reference;
  * @see gr.iti.mklab.simmo.Document
  * @since July 7, 2014
  */
-@Entity(noClassnameStored=true)
+@Entity
 public class Webpage extends Document {
 
     /**

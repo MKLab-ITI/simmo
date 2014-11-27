@@ -29,4 +29,5 @@ public class DAOManagerTest extends DAOTest {
         Webpage page = DAOManager.pageDAO.findOne("url","http://www.wtf.eu");
         int m = 5;
     }
+
 }

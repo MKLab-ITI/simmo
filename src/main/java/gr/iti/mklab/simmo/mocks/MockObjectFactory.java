@@ -3,6 +3,7 @@ package gr.iti.mklab.simmo.mocks;
 import gr.iti.mklab.simmo.UserAccount;
 import gr.iti.mklab.simmo.annotations.Original;
 import gr.iti.mklab.simmo.associations.Affiliation;
+import gr.iti.mklab.simmo.associations.Reference;
 import gr.iti.mklab.simmo.documents.Post;
 import gr.iti.mklab.simmo.documents.Webpage;
 import gr.iti.mklab.simmo.items.Image;
@@ -25,6 +26,8 @@ public class MockObjectFactory {
         p.setAuthor("me");
         p.setDescription("oh how boring");
         p.addPost(getPost("twitterpost456"));
+        p.addReferece(new Reference(getPost("instagram789"), Reference.ReferenceType.REPLY));
+        p.addAnnotation(new Original(false));
         return p;
     }
 

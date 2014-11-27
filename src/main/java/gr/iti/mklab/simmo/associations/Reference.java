@@ -1,5 +1,8 @@
 package gr.iti.mklab.simmo.associations;
 
+import gr.iti.mklab.simmo.Document;
+import org.mongodb.morphia.annotations.Embedded;
+
 /**
  * The Reference describes the relationship between {@link gr.iti.mklab.simmo.Document} objects using the
  * ReferenceType enumeration. Each Document contains a list of References to other Documents. Since a Reference
@@ -18,10 +21,14 @@ public class Reference  {
     }
 
     private ReferenceType type;
-    private String referencedDocumentId;
 
-    public Reference(String id, ReferenceType type){
-        this.referencedDocumentId = id;
+    @org.mongodb.morphia.annotations.Reference
+    private Document refDocument;
+
+    public Reference(){}
+
+    public Reference(Document doc, ReferenceType type){
+        this.refDocument = doc;
         this.type = type;
     }
 
@@ -33,11 +40,11 @@ public class Reference  {
         this.type = type;
     }
 
-    public String getReferencedDocumentId() {
-        return referencedDocumentId;
+    public Document getDocument() {
+        return refDocument;
     }
 
-    public void setReferencedDocumentId(String referencedDocumentId) {
-        this.referencedDocumentId = referencedDocumentId;
+    public void setDocument(Document doc) {
+        this.refDocument = doc;
     }
 }

@@ -72,8 +72,8 @@ public class JsonTest {
         comment.setContent("<div class=\"Ct\">Learn about this and pass it on! Remember SOPA and PIPA? This is BIGGER. Net neutrality is imperative for an open internet.<br><br><a rel=\"nofollow\" target=\"_blank\" href=\"https://www.youtube.com/watch?v=wtt2aSV8wdw\" class=\"ot-anchor aaTEdf\">Internet Citizens: Defend Net Neutrality</a>﻿</div>");
         comment.setTextType(Text.TEXT_TYPE.HTML);
         commentLink.addItem(comment);
-        Reference ref = new Reference("409sfh", Reference.ReferenceType.COMMENT);
-        post.addReferece(ref);
+        //Reference ref = new Reference("409sfh", Reference.ReferenceType.COMMENT);
+        //post.addReferece(ref);
 
         Post comment2 = new Post();
         comment2.setNumLikes(63);
@@ -83,8 +83,8 @@ public class JsonTest {
         comment.setContent("Friggin' excellent video, man!  Net neutrality...  FOREVER");
         comment.setTextType(Text.TEXT_TYPE.HTML);
         //comment2.addItem(comment);
-        ref = new Reference("101reyk", Reference.ReferenceType.COMMENT);
-        post.addReferece(ref);
+        //ref = new Reference("101reyk", Reference.ReferenceType.COMMENT);
+        //post.addReferece(ref);
 
         System.out.println(gson.toJson(post));
         System.out.println(gson.toJson(commentLink));

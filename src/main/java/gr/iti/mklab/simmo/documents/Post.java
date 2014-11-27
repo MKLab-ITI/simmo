@@ -14,7 +14,7 @@ import org.mongodb.morphia.annotations.Entity;
  * @see gr.iti.mklab.simmo.Document
  * @since July 3, 2014
  */
-@Entity(noClassnameStored=true)
+@Entity
 public class Post extends Document {
 
     /** The id of the Post in the original web page or social network where it was posted.
