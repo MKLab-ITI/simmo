@@ -4,6 +4,7 @@ import gr.iti.mklab.simmo.UserAccount;
 import gr.iti.mklab.simmo.annotations.Original;
 import gr.iti.mklab.simmo.associations.Affiliation;
 import gr.iti.mklab.simmo.associations.Creation;
+import gr.iti.mklab.simmo.associations.Interaction;
 import gr.iti.mklab.simmo.associations.Reference;
 import gr.iti.mklab.simmo.documents.Post;
 import gr.iti.mklab.simmo.documents.Webpage;
@@ -22,7 +23,11 @@ public class MockObjectFactory {
         return getImage(id, 0, 0);
     }
 
-    public static Creation getCreation(){
+    public static Interaction getInteraction() {
+        return new Interaction(getPost("somewhereonepost"), getUserAccount("John Doe"), new Date(), Interaction.InteractionType.DOWNVOTES);
+    }
+
+    public static Creation getCreation() {
         return new Creation(getUserAccount("John Doe"), getPost("somewhereonepost"));
     }
 
@@ -85,7 +90,7 @@ public class MockObjectFactory {
     }
 
     public static Affiliation getAffiliation() {
-        Affiliation affiliation = new Affiliation(getUserAccount( "Joe"), getUserAccount( "Jane"), Affiliation.AFFILIATION_TYPE.FOLLOWS, new Date(System.currentTimeMillis()));
+        Affiliation affiliation = new Affiliation(getUserAccount("Joe"), getUserAccount("Jane"), Affiliation.AFFILIATION_TYPE.FOLLOWS, new Date(System.currentTimeMillis()));
         return affiliation;
     }
 

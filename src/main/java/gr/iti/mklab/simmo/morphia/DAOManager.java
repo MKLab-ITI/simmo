@@ -5,6 +5,7 @@ import gr.iti.mklab.simmo.Item;
 import gr.iti.mklab.simmo.UserAccount;
 import gr.iti.mklab.simmo.associations.Affiliation;
 import gr.iti.mklab.simmo.associations.Creation;
+import gr.iti.mklab.simmo.associations.Interaction;
 import gr.iti.mklab.simmo.associations.Reference;
 import gr.iti.mklab.simmo.documents.Post;
 import gr.iti.mklab.simmo.documents.Webpage;
@@ -30,6 +31,19 @@ public class DAOManager {
     public final static ObjectDAO<Webpage> pageDAO = new ObjectDAO<Webpage>(Webpage.class);
     public final static DAO<UserAccount, ObjectId> userDAO = new BasicDAO<UserAccount, ObjectId>(UserAccount.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB().getName());
     public final static DAO<Creation, ObjectId> creationDAO = new BasicDAO<Creation, ObjectId>(Creation.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB().getName());
+    public final static DAO<Interaction, ObjectId> interactionDAO = new BasicDAO<Interaction, ObjectId>(Interaction.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB().getName());
+
+    public static void saveInteraction(Interaction i){
+        Object o = i.getObject();
+        if(o instanceof Post)
+            savePost((Post)o);
+        else if (o instanceof Webpage)
+            saveWebpage((Webpage)o);
+        else if (o instanceof Item)
+            saveItem((Item)o);
+        userDAO.save(i.getUser());
+        interactionDAO.save(i);
+    }
 
     public static void saveCreation(Creation c){
         Object o = c.getCreation();

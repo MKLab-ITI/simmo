@@ -2,6 +2,9 @@ package gr.iti.mklab.simmo.associations;
 
 import gr.iti.mklab.simmo.*;
 import gr.iti.mklab.simmo.Object;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 
 import java.util.Date;
 
@@ -14,10 +17,12 @@ import java.util.Date;
  * @version 1.0.0
  * @since July 10, 2014
  */
+@Entity
 public class Interaction {
 
-	
-    private String id;
+
+    @Id
+    private ObjectId objectId;
 	
     /**
      * The ways in which a UserAccount interacts with a content Object
@@ -26,13 +31,17 @@ public class Interaction {
         MENTIONS, COMMENTS, LIKES, DISLIKES, FAVORITES, UPVOTES, DOWNVOTES, UNDEFINED
     }
 
+    @org.mongodb.morphia.annotations.Reference
     private Object objectOfInteraction;
 
+    @org.mongodb.morphia.annotations.Reference
     private UserAccount interactingUser;
 
     private Date interactionDate;
 
     private InteractionType interactionType;
+
+    public Interaction(){}
 
     public Interaction(Object objectOfInteraction, UserAccount interactingUser, Date interactionDate, InteractionType interactionType){
         this.objectOfInteraction = objectOfInteraction;
@@ -73,7 +82,7 @@ public class Interaction {
         this.interactionType = interactionType;
     }
     
-    public String getId(){
-    	return id;
+    public ObjectId getId(){
+    	return objectId;
     }
 }
