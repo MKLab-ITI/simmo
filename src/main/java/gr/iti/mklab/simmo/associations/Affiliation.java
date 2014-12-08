@@ -1,6 +1,7 @@
 package gr.iti.mklab.simmo.associations;
 
 import gr.iti.mklab.simmo.*;
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.*;
 import org.mongodb.morphia.annotations.Reference;
 
@@ -32,7 +33,9 @@ public class Affiliation {
     protected Date affiliationDate;
 
     @Id
-    private String id;
+    private ObjectId id;
+
+    public Affiliation(){}
 
     public Affiliation (UserAccount account, UserAccount affiliated, AFFILIATION_TYPE type, Date date){
         this.firstAccount = account;
@@ -41,8 +44,16 @@ public class Affiliation {
         this.affiliationDate = date;
     }
     
-    public String getId(){
+    public ObjectId getId(){
     	return id;
+    }
+
+    public UserAccount getFirstAccount(){
+        return firstAccount;
+    }
+
+    public UserAccount getSecondAccount(){
+        return secondAccount;
     }
     
 }

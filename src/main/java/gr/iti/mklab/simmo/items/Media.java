@@ -20,12 +20,22 @@ public abstract class Media extends Item {
     @Embedded
     protected Location location;
 
+    protected String webPageUrl;
+
     public Location getLocation() {
         return location;
     }
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public void setWebPageUrl(String url){
+        this.webPageUrl = url;
+    }
+
+    public String getWebPageUrl(){
+        return this.webPageUrl;
     }
 
     @Override

@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import java.util.Calendar;
 import java.util.List;
+
 import static org.junit.Assert.assertNotNull;
 
 
@@ -23,15 +24,15 @@ public class ImageTest extends DAOTest {
 
     @Test
     public void test() {
-        testSaveImage();
+
     }
 
 
-    public void testSaveImage(){
+    public void testSaveImage() {
         MediaDAO<Image> dao = new MediaDAO<Image>(Image.class);
         dao.save(MockObjectFactory.getImage("wt67"));
-        Image img = dao.findOne("id","wt67" );
-        if(img.getAnnotation(0) instanceof Original){
+        Image img = dao.findOne("id", "wt67");
+        if (img.getAnnotation(0) instanceof Original) {
             System.out.println("true");
         }
     }
@@ -62,17 +63,17 @@ public class ImageTest extends DAOTest {
         }
     }
 
-    public void testSimilarity(){
+    public void testSimilarity() {
         Image im1 = MockObjectFactory.getImage("object3", 48.8567, 2.3508);
-        Image im2 = MockObjectFactory.getImage("object1",1.5072, 0.1275);
+        Image im2 = MockObjectFactory.getImage("object1", 1.5072, 0.1275);
         MediaDAO<Image> dao = new MediaDAO<Image>(Image.class);
         /*dao.save(im1);
         dao.save(im2);
         DAO<Similarity, ObjectId> sDAO = new BasicDAO<Similarity, ObjectId>(Similarity.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB().getName());
         sDAO.save(new Similarity(im1, im2, 0.89));*/
         List<Similarity> slist = dao.similar(im2, 0.8);
-        for(Similarity s:slist){
-            System.out.println("similarity score "+s.getSimilarityScore());
+        for (Similarity s : slist) {
+            System.out.println("similarity score " + s.getSimilarityScore());
         }
     }
 }

@@ -42,6 +42,10 @@ public abstract class Object extends Annotatable {
         return objectId;
     }
 
+    public void setObjectId(ObjectId objectId){
+        this.objectId = objectId;
+    }
+
     public String getUrl() {
         return url;
     }
