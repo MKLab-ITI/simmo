@@ -2,6 +2,7 @@ package gr.iti.mklab.simmo.morphia;
 
 import gr.iti.mklab.simmo.items.Media;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,6 +21,7 @@ public class MediaDAO<M extends Media> extends ObjectDAO<M> {
 
     /**
      * Returns a list of media items that are geographically near the specified coordinates
+     *
      * @param latitude
      * @param longitude
      * @param numImages
@@ -27,5 +29,20 @@ public class MediaDAO<M extends Media> extends ObjectDAO<M> {
      */
     public List<M> findNear(double latitude, double longitude, int numImages) {
         return getDatastore().find(clazz).field("location.coordinates").near(latitude, longitude).limit(numImages).asList();
+    }
+
+    /**
+     * A search function
+     *
+     * @param date
+     * @param width
+     * @param height
+     * @param count
+     * @param offset
+     * @return
+     */
+    public List<M> search(Date date, int width, int height, int count, int offset) {
+        return getDatastore().find(clazz).filter("lastModifiedDate" + " >", date).filter("width" + " >", width).
+                filter("height" + " >", height).offset(offset).limit(count).asList();
     }
 }

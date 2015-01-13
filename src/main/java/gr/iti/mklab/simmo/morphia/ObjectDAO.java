@@ -27,6 +27,18 @@ public class ObjectDAO<O extends Object> extends BasicDAO<O, ObjectId> {
     }
 
     /**
+     * A helper method used for paging
+     * Example: for offset=5 and count=10, this method will return items 5 to 15
+     *
+     * @param count,  the number of items to retrieve
+     * @param offset, the initial offset
+     * @return
+     */
+    public List<O> getItems(int count, int offset) {
+        return getDatastore().find(clazz).offset(offset).limit(count).asList();
+    }
+
+    /**
      * A private helper method that can be applied to "creationDate", "crawledDate", "lastModifiedDate".
      * For usage sample see the methods below
      *
@@ -93,7 +105,7 @@ public class ObjectDAO<O extends Object> extends BasicDAO<O, ObjectId> {
                 q.criteria("firstObject").equal(object),
                 q.criteria("secondObject").equal(object)
         );
-        return q.order("-similarityScore").filter("similarityScore >",threshold).asList();
+        return q.order("-similarityScore").filter("similarityScore >", threshold).asList();
 
     }
 
