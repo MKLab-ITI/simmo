@@ -27,9 +27,9 @@ public class MorphiaManager {
     private static Datastore ds;
     private static final Morphia morphia = new Morphia();
 
-    private MorphiaManager(String dbName) {
+    private MorphiaManager(String dbName, String host) {
         try {
-            mongoClient = new MongoClient(new MongoClientURI(System.getProperty("MONGO_URI", "mongodb://localhost:27017")));
+            mongoClient = new MongoClient(new MongoClientURI(host != null ? "mongodb://" + host + ":27017" : "mongodb://localhost:27017"));
             db = mongoClient.getDB(dbName);
             ds = morphia.createDatastore(mongoClient, db.getName());
             morphia.map(Image.class).
@@ -46,8 +46,10 @@ public class MorphiaManager {
         }
     }
 
+    public static void setup(String dbName, String host){new MorphiaManager(dbName, host);}
+
     public static void setup(String dbName) {
-        new MorphiaManager(dbName);
+        new MorphiaManager(dbName, null);
     }
 
     public static void tearDown() {
