@@ -16,28 +16,28 @@ import org.mongodb.morphia.annotations.Entity;
 public class Video extends Media {
 
     /** The size of the video in bytes */
-    private long size;
+    protected long size;
     
     /** The width of the video */
-    private int width;
+    protected int width;
     
     /** The height of the video */
-    private int height;
+    protected int height;
     
     /** A path (or URL) to the image thumbnail  */
-    private String thumbnail;
+    protected String thumbnail;
 
     /** The number of frames in the video*/
-    private int numFrames;
+    protected int numFrames;
 
     /** The video duration in seconds */
-    private long duration;
+    protected long duration;
 
     /** The video quality */
-    private String quality;
+    protected String quality;
 
     /** The video codec */
-    private String codec;
+    protected String codec;
 
     public Video(){
         this.type = ITEM_TYPE.VIDEO;

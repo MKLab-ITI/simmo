@@ -41,8 +41,8 @@ public class MediaDAO<M extends Media> extends ObjectDAO<M> {
      * @param offset
      * @return
      */
-    public List<M> search(Date date, int width, int height, int count, int offset) {
-        return getDatastore().find(clazz).filter("lastModifiedDate" + " >", date).filter("width" + " >", width).
+    public List<M> search(String datefield, Date date, int width, int height, int count, int offset) {
+        return getDatastore().find(clazz).filter(datefield + " >", date).filter("width" + " >", width).
                 filter("height" + " >", height).offset(offset).limit(count).asList();
     }
 }
