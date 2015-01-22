@@ -21,8 +21,8 @@ public class ObjectDAO<O extends Object> extends BasicDAO<O, ObjectId> {
 
     protected Class<O> clazz;
 
-    public ObjectDAO(Class<O> clazz) {
-        super(clazz, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB().getName());
+    public ObjectDAO(Class<O> clazz, String dbName) {
+        super(clazz, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB(dbName).getName());
         this.clazz = clazz;
     }
 

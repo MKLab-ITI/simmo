@@ -15,6 +15,11 @@ import gr.iti.mklab.simmo.util.Location;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * @author kandreadou
  * @version 1.0.0
@@ -23,34 +28,25 @@ import org.mongodb.morphia.Morphia;
 public class MorphiaManager {
 
     private static MongoClient mongoClient;
-    private static DB db;
-    private static Datastore ds;
+    private static Map<String, DB> dbases = new HashMap<String, DB>();
     private static final Morphia morphia = new Morphia();
+    private static MorphiaManager instance;
 
-    private MorphiaManager(String dbName, String host) {
+    private MorphiaManager(String host) {
         try {
-            mongoClient = new MongoClient(new MongoClientURI(host != null ? "mongodb://" + host + ":27017" : "mongodb://localhost:27017"));
-            db = mongoClient.getDB(dbName);
-            ds = morphia.createDatastore(mongoClient, db.getName());
-            morphia.map(Image.class).
-                    map(Location.class).
-                    map(Similarity.class).
-                    map(Post.class).
-                    map(Webpage.class).
-                    map(Creation.class).
-                    map(Interaction.class);
-            ds.ensureCaps();
-            ds.ensureIndexes();
+            if (mongoClient == null)
+                mongoClient = new MongoClient(new MongoClientURI(host != null ? "mongodb://" + host + ":27017" : "mongodb://localhost:27017"));
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void setup(String dbName, String host){new MorphiaManager(dbName, host);}
-
-    public static void setup(String dbName) {
-        new MorphiaManager(dbName, null);
+    public synchronized static void setup(String host) {
+        if (instance == null)
+            instance = new MorphiaManager(host);
     }
+
 
     public static void tearDown() {
         mongoClient.close();
@@ -68,9 +64,21 @@ public class MorphiaManager {
         return morphia;
     }
 
-    public static DB getDB() {
-        if (db == null)
-            throw new RuntimeException("MorphiaManager has not been properly initialized. Call setup");
-        return db;
+    public static DB getDB(String dbName) {
+        if (!dbases.containsKey(dbName)) {
+            DB db = mongoClient.getDB(dbName);
+            dbases.put(dbName, db);
+            Datastore ds = morphia.createDatastore(mongoClient, db.getName());
+            morphia.map(Image.class).
+                    map(Location.class).
+                    map(Similarity.class).
+                    map(Post.class).
+                    map(Webpage.class).
+                    map(Creation.class).
+                    map(Interaction.class);
+            ds.ensureCaps();
+            ds.ensureIndexes();
+        }
+        return dbases.get(dbName);
     }
 }

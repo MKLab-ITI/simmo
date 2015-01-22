@@ -11,7 +11,7 @@ public class DAOTest {
 
     @Before
     public void setUp() {
-        MorphiaManager.setup("morphia");
+        MorphiaManager.setup("127.0.0.1");
     }
 
     @After

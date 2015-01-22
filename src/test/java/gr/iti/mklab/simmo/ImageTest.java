@@ -29,7 +29,7 @@ public class ImageTest extends DAOTest {
 
 
     public void testSaveImage() {
-        MediaDAO<Image> dao = new MediaDAO<Image>(Image.class);
+        MediaDAO<Image> dao = new MediaDAO<Image>(Image.class, "morphia");
         dao.save(MockObjectFactory.getImage("wt67"));
         Image img = dao.findOne("id", "wt67");
         if (img.getAnnotation(0) instanceof Original) {
@@ -39,7 +39,7 @@ public class ImageTest extends DAOTest {
 
     public void testCrawledAfter() {
         String imageId = "todayTuesday";
-        MediaDAO<Image> dao = new MediaDAO<Image>(Image.class);
+        MediaDAO<Image> dao = new MediaDAO<Image>(Image.class, "morphia");
         dao.save(MockObjectFactory.getImage(imageId));
         // Create a calendar object with today date. Calendar is in java.util pakage.
         Calendar calendar = Calendar.getInstance();
@@ -51,7 +51,7 @@ public class ImageTest extends DAOTest {
     }
 
     public void testNear() {
-        MediaDAO<Image> dao = new MediaDAO<Image>(Image.class);
+        MediaDAO<Image> dao = new MediaDAO<Image>(Image.class, "morphia");
         dao.save(MockObjectFactory.getImage("paris", 48.8567, 2.3508));
         dao.save(MockObjectFactory.getImage("london", 51.5072, 0.1275));
         dao.save(MockObjectFactory.getImage("barcelona", 41.3833, 2.1833));
@@ -66,7 +66,7 @@ public class ImageTest extends DAOTest {
     public void testSimilarity() {
         Image im1 = MockObjectFactory.getImage("object3", 48.8567, 2.3508);
         Image im2 = MockObjectFactory.getImage("object1", 1.5072, 0.1275);
-        MediaDAO<Image> dao = new MediaDAO<Image>(Image.class);
+        MediaDAO<Image> dao = new MediaDAO<Image>(Image.class, "morphia");
         /*dao.save(im1);
         dao.save(im2);
         DAO<Similarity, ObjectId> sDAO = new BasicDAO<Similarity, ObjectId>(Similarity.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB().getName());

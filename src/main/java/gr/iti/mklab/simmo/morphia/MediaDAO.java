@@ -15,8 +15,8 @@ import java.util.List;
 public class MediaDAO<M extends Media> extends ObjectDAO<M> {
 
 
-    public MediaDAO(Class<M> clazz) {
-        super(clazz);
+    public MediaDAO(Class<M> clazz, String dbName) {
+        super(clazz, dbName);
     }
 
     /**

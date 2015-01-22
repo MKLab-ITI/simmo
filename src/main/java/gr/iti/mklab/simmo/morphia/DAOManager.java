@@ -24,48 +24,59 @@ import org.mongodb.morphia.dao.DAO;
  */
 public class DAOManager {
 
-    public final static MediaDAO<Image> imageDAO = new MediaDAO<Image>(Image.class);
-    public final static MediaDAO<Video> videoDAO = new MediaDAO<Video>(Video.class);
-    public final static ObjectDAO<Text> textDAO = new ObjectDAO<Text>(Text.class);
-    public final static ObjectDAO<Post> postDAO = new ObjectDAO<Post>(Post.class);
-    public final static ObjectDAO<Webpage> pageDAO = new ObjectDAO<Webpage>(Webpage.class);
-    public final static DAO<UserAccount, ObjectId> userDAO = new BasicDAO<UserAccount, ObjectId>(UserAccount.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB().getName());
-    public final static DAO<Creation, ObjectId> creationDAO = new BasicDAO<Creation, ObjectId>(Creation.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB().getName());
-    public final static DAO<Interaction, ObjectId> interactionDAO = new BasicDAO<Interaction, ObjectId>(Interaction.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB().getName());
+    public final MediaDAO<Image> imageDAO;
+    public final MediaDAO<Video> videoDAO;
+    public final ObjectDAO<Text> textDAO;
+    public final ObjectDAO<Post> postDAO;
+    public final ObjectDAO<Webpage> pageDAO;
+    public final DAO<UserAccount, ObjectId> userDAO;
+    public final DAO<Creation, ObjectId> creationDAO;
+    public final DAO<Interaction, ObjectId> interactionDAO;
 
-    public static void saveInteraction(Interaction i){
+    public DAOManager(String dbName) {
+        imageDAO = new MediaDAO<Image>(Image.class, dbName);
+        videoDAO = new MediaDAO<Video>(Video.class, dbName);
+        textDAO = new ObjectDAO<Text>(Text.class, dbName);
+        postDAO = new ObjectDAO<Post>(Post.class, dbName);
+        pageDAO = new ObjectDAO<Webpage>(Webpage.class, dbName);
+        userDAO = new BasicDAO<UserAccount, ObjectId>(UserAccount.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB(dbName).getName());
+        creationDAO = new BasicDAO<Creation, ObjectId>(Creation.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB(dbName).getName());
+        interactionDAO = new BasicDAO<Interaction, ObjectId>(Interaction.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB(dbName).getName());
+    }
+
+    public void saveInteraction(Interaction i) {
         Object o = i.getObject();
-        if(o instanceof Post)
-            savePost((Post)o);
+        if (o instanceof Post)
+            savePost((Post) o);
         else if (o instanceof Webpage)
-            saveWebpage((Webpage)o);
+            saveWebpage((Webpage) o);
         else if (o instanceof Item)
-            saveItem((Item)o);
+            saveItem((Item) o);
         userDAO.save(i.getUser());
         interactionDAO.save(i);
     }
 
-    public static void saveCreation(Creation c){
+    public void saveCreation(Creation c) {
         Object o = c.getCreation();
-        if(o instanceof Post)
-            savePost((Post)o);
+        if (o instanceof Post)
+            savePost((Post) o);
         else if (o instanceof Webpage)
-            saveWebpage((Webpage)o);
+            saveWebpage((Webpage) o);
         else if (o instanceof Item)
-            saveItem((Item)o);
-        userDAO.save((UserAccount)c.getCreator());
+            saveItem((Item) o);
+        userDAO.save((UserAccount) c.getCreator());
         creationDAO.save(c);
     }
 
 
-    public static void savePost(Post post){
+    public void savePost(Post post) {
         saveDocument(post);
 
         //Then save the Post
         postDAO.save(post);
     }
 
-    public static void saveWebpage(Webpage page) {
+    public void saveWebpage(Webpage page) {
         //First save the inner Posts because they are just references in the Webpage
         for (Post p : page.getPosts())
             savePost(p);
@@ -78,27 +89,27 @@ public class DAOManager {
 
     }
 
-    private static void saveDocument(Document doc) {
+    private void saveDocument(Document doc) {
         //First save the inner Items because they are just references in the Document
         for (Item i : doc.getItems())
             saveItem(i);
 
         //First save the inner References because they are just references in the Document
-        for (Reference r : doc.getReferences()){
+        for (Reference r : doc.getReferences()) {
             Document d = r.getDocument();
-            if(d instanceof Post)
-                savePost((Post)d);
-            else if(d instanceof Webpage)
-                saveWebpage((Webpage)d);
+            if (d instanceof Post)
+                savePost((Post) d);
+            else if (d instanceof Webpage)
+                saveWebpage((Webpage) d);
         }
     }
 
-    private static void saveItem(Item i){
-        if(i instanceof Image)
-            imageDAO.save((Image)i);
+    private void saveItem(Item i) {
+        if (i instanceof Image)
+            imageDAO.save((Image) i);
         else if (i instanceof Video)
-            videoDAO.save((Video)i);
-        else if(i instanceof Text)
-            textDAO.save((Text)i);
+            videoDAO.save((Video) i);
+        else if (i instanceof Text)
+            textDAO.save((Text) i);
     }
 }
