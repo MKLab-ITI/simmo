@@ -22,7 +22,7 @@ public abstract class Object extends Annotatable {
      * The object unique id
      */
     @Id
-    private ObjectId objectId;
+    private String id;
 
     protected String url;
     protected String title;
@@ -38,12 +38,12 @@ public abstract class Object extends Annotatable {
     protected Date lastModifiedDate;
     protected Date crawlDate;
 
-    public ObjectId getObjectId(){
-        return objectId;
+    public String getId(){
+        return id;
     }
 
-    public void setObjectId(ObjectId objectId){
-        this.objectId = objectId;
+    public void setId(String id){
+        this.id = id;
     }
 
     public String getUrl() {

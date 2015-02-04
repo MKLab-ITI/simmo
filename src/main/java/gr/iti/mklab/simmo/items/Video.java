@@ -5,41 +5,71 @@ import org.mongodb.morphia.annotations.Entity;
 /**
  * A video item
  *
+ * @author kandreadou
+ * @version 1.0.0
  * @see gr.iti.mklab.simmo.Item
  * @see gr.iti.mklab.simmo.items.Media
- *
- * @version 1.0.0
  * @since July 3, 2014
- * @author kandreadou
  */
 @Entity
 public class Video extends Media {
 
-    /** The size of the video in bytes */
+    /**
+     * The size of the video in bytes
+     */
     protected long size;
-    
-    /** The width of the video */
+
+    /**
+     * The width of the video
+     */
     protected int width;
-    
-    /** The height of the video */
+
+    /**
+     * The height of the video
+     */
     protected int height;
-    
-    /** A path (or URL) to the image thumbnail  */
+
+    /**
+     * A path (or URL) to the image thumbnail
+     */
     protected String thumbnail;
 
-    /** The number of frames in the video*/
+    /**
+     * The number of frames in the video
+     */
     protected int numFrames;
 
-    /** The video duration in seconds */
+    /**
+     * The video duration in seconds
+     */
     protected long duration;
 
-    /** The video quality */
+    /**
+     * The video quality
+     */
     protected String quality;
 
-    /** The video codec */
+    /**
+     * The video codec
+     */
     protected String codec;
 
-    public Video(){
+    /**
+     * The number of likes
+     */
+    protected long numLikes;
+
+    /**
+     * The number of views
+     */
+    protected long numViews;
+
+    /**
+     * The rating
+     */
+    protected float rating;
+
+    public Video() {
         this.type = ITEM_TYPE.VIDEO;
     }
 
@@ -90,7 +120,7 @@ public class Video extends Media {
     public void setCodec(String codec) {
         this.codec = codec;
     }
-    
+
     public int getWidth() {
         return width;
     }
@@ -98,11 +128,11 @@ public class Video extends Media {
     public void setWidth(int width) {
         this.width = width;
     }
-    
+
     public int getHeight() {
         return height;
     }
-    
+
     public void setHeight(int height) {
         this.height = height;
     }

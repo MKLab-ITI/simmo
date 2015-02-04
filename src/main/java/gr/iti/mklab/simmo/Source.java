@@ -1,7 +1,6 @@
 package gr.iti.mklab.simmo;
 
 
-import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Id;
 
 /**
@@ -12,12 +11,48 @@ import org.mongodb.morphia.annotations.Id;
  */
 public abstract class Source extends Annotatable {
 
-    /** The internal unique id for this source */
+    /**
+     * The internal unique id for this source
+     */
     @Id
-    private ObjectId objectId;
+    private String id;
 
-    public ObjectId getObjectId(){
-        return objectId;
+    protected String pageUrl;
+
+    protected String location;
+
+    protected String description;
+
+    public String getPageUrl() {
+        return pageUrl;
+    }
+
+    public void setPageUrl(String pageUrl) {
+        this.pageUrl = pageUrl;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
 }

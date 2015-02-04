@@ -22,6 +22,17 @@ public abstract class Media extends Item {
 
     protected String webPageUrl;
 
+    /** The stream id */
+    protected String streamId;
+
+    public String getStreamId() {
+        return streamId;
+    }
+
+    public void setStreamId(String streamId) {
+        this.streamId = streamId;
+    }
+
     public Location getLocation() {
         return location;
     }
