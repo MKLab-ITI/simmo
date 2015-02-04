@@ -4,7 +4,7 @@ import gr.iti.mklab.simmo.Document;
 import gr.iti.mklab.simmo.Item;
 import gr.iti.mklab.simmo.UserAccount;
 import gr.iti.mklab.simmo.associations.Affiliation;
-import gr.iti.mklab.simmo.associations.Creation;
+import gr.iti.mklab.simmo.associations.Contribution;
 import gr.iti.mklab.simmo.associations.Interaction;
 import gr.iti.mklab.simmo.associations.Reference;
 import gr.iti.mklab.simmo.documents.Post;
@@ -30,7 +30,7 @@ public class DAOManager {
     public final ObjectDAO<Post> postDAO;
     public final ObjectDAO<Webpage> pageDAO;
     public final DAO<UserAccount, ObjectId> userDAO;
-    public final DAO<Creation, ObjectId> creationDAO;
+    public final DAO<Contribution, ObjectId> creationDAO;
     public final DAO<Interaction, ObjectId> interactionDAO;
 
     public DAOManager(String dbName) {
@@ -40,7 +40,7 @@ public class DAOManager {
         postDAO = new ObjectDAO<Post>(Post.class, dbName);
         pageDAO = new ObjectDAO<Webpage>(Webpage.class, dbName);
         userDAO = new BasicDAO<UserAccount, ObjectId>(UserAccount.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB(dbName).getName());
-        creationDAO = new BasicDAO<Creation, ObjectId>(Creation.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB(dbName).getName());
+        creationDAO = new BasicDAO<Contribution, ObjectId>(Contribution.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB(dbName).getName());
         interactionDAO = new BasicDAO<Interaction, ObjectId>(Interaction.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB(dbName).getName());
     }
 
@@ -56,15 +56,15 @@ public class DAOManager {
         interactionDAO.save(i);
     }
 
-    public void saveCreation(Creation c) {
-        Object o = c.getCreation();
+    public void saveCreation(Contribution c) {
+        Object o = c.getContribution();
         if (o instanceof Post)
             savePost((Post) o);
         else if (o instanceof Webpage)
             saveWebpage((Webpage) o);
         else if (o instanceof Item)
             saveItem((Item) o);
-        userDAO.save((UserAccount) c.getCreator());
+        userDAO.save((UserAccount) c.getContributor());
         creationDAO.save(c);
     }
 

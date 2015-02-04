@@ -13,34 +13,34 @@ import org.mongodb.morphia.annotations.*;
  * @since August 21, 2014
  */
 @Entity
-public class Creation {
+public class Contribution {
 
     @org.mongodb.morphia.annotations.Reference
-    private Source creator;
+    private Source contributor;
 
     @org.mongodb.morphia.annotations.Reference
-    private Object creation;
+    private Object contribution;
 
     @Id
     private ObjectId objectId;
 
-    public Creation(){}
+    public Contribution(){}
 
-    public Creation (Source creator, Object creation){
-        this.creation = creation;
-        this.creator = creator;
+    public Contribution (Source contributor, Object contribution){
+        this.contribution = contribution;
+        this.contributor = contributor;
     }
     
     public ObjectId getId(){
     	return objectId;
     }
     
-    public Source getCreator(){
-    	return creator;
+    public Source getContributor(){
+    	return contributor;
     }
     
-    public Object getCreation(){
-    	return creation;
+    public Object getContribution(){
+    	return contribution;
     }
     
 }

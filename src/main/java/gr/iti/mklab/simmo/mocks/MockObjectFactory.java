@@ -3,7 +3,7 @@ package gr.iti.mklab.simmo.mocks;
 import gr.iti.mklab.simmo.UserAccount;
 import gr.iti.mklab.simmo.annotations.Original;
 import gr.iti.mklab.simmo.associations.Affiliation;
-import gr.iti.mklab.simmo.associations.Creation;
+import gr.iti.mklab.simmo.associations.Contribution;
 import gr.iti.mklab.simmo.associations.Interaction;
 import gr.iti.mklab.simmo.associations.Reference;
 import gr.iti.mklab.simmo.documents.Post;
@@ -27,8 +27,8 @@ public class MockObjectFactory {
         return new Interaction(getPost("somewhereonepost"), getUserAccount("John Doe"), new Date(), Interaction.InteractionType.DOWNVOTES);
     }
 
-    public static Creation getCreation() {
-        return new Creation(getUserAccount("John Doe"), getPost("somewhereonepost"));
+    public static Contribution getCreation() {
+        return new Contribution(getUserAccount("John Doe"), getPost("somewhereonepost"));
     }
 
     public static Webpage getWebpage(String url) {

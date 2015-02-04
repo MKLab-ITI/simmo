@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.6" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="gr.iti.mklab.simmo.segments.LinearSegment" project="simmo" 
+    file="/simmo/src/main/java/gr/iti/mklab/simmo/segments/LinearSegment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="131" x="383" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="gr.iti.mklab.simmo.segments.SpatioTemporalSegment" project="simmo" 
+    file="/simmo/src/main/java/gr/iti/mklab/simmo/segments/SpatioTemporalSegment.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="164" x="554" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="gr.iti.mklab.simmo.segments.TemporalSegment" project="simmo" 
+    file="/simmo/src/main/java/gr/iti/mklab/simmo/segments/TemporalSegment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="131" x="212" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="gr.iti.mklab.simmo.segments.SpatialSegment" project="simmo" 
+    file="/simmo/src/main/java/gr/iti/mklab/simmo/segments/SpatialSegment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="131" x="907" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="gr.iti.mklab.simmo.SegmentGroup" project="simmo" 
+    file="/simmo/src/main/java/gr/iti/mklab/simmo/SegmentGroup.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="109" x="758" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <interface id="6" language="java" name="gr.iti.mklab.simmo.Segment" project="simmo" 
+    file="/simmo/src/main/java/gr/iti/mklab/simmo/Segment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="130" width="230" x="595" y="135"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <enumeration id="7" language="java" name="gr.iti.mklab.simmo.Segment.FRAMES_BLOCK_TYPE" project="simmo" 
+    file="/simmo/src/main/java/gr/iti/mklab/simmo/Segment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="202" x="474" y="305"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="8" language="java" name="gr.iti.mklab.simmo.Segment.SEGMENT_TYPE" project="simmo" 
+    file="/simmo/src/main/java/gr/iti/mklab/simmo/Segment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="130" width="202" x="716" y="305"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </enumeration>  
+  <realization id="9">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <realization id="10">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <realization id="11">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <nesting id="12">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="8"/>  
+  </nesting>  
+  <realization id="13">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <association id="14">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="15" name="segments"/>      
+      <multiplicity id="16" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="17">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <nesting id="18">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="7"/>  
+  </nesting>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="false" package="false" protected="false" private="false" static="false"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

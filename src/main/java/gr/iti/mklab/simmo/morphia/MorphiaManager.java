@@ -5,7 +5,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import gr.iti.mklab.simmo.annotations.Original;
 import gr.iti.mklab.simmo.associations.Annotation;
-import gr.iti.mklab.simmo.associations.Creation;
+import gr.iti.mklab.simmo.associations.Contribution;
 import gr.iti.mklab.simmo.associations.Interaction;
 import gr.iti.mklab.simmo.associations.Similarity;
 import gr.iti.mklab.simmo.documents.Post;
@@ -74,7 +74,7 @@ public class MorphiaManager {
                     map(Similarity.class).
                     map(Post.class).
                     map(Webpage.class).
-                    map(Creation.class).
+                    map(Contribution.class).
                     map(Interaction.class);
             ds.ensureCaps();
             ds.ensureIndexes();

@@ -1,7 +1,6 @@
 package gr.iti.mklab.simmo;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * A topic is container associated with a Collection and specific {@link gr.iti.mklab.simmo.associations.Annotation} objects
@@ -19,8 +18,6 @@ public class Topic extends Annotatable {
     /** The topic featured title */
     protected String featuredTitle;
     
-    /** The topic's associated collections */
-    protected List<Collection> associatedCollections = new ArrayList<Collection>();
     
     
     public String getId() {
@@ -39,28 +36,5 @@ public class Topic extends Annotatable {
         this.featuredTitle = featuredTitle;
     }
 
-    /**
-     * Associates this topic to the specified annotation
-     *
-     * @param collection
-     */
-    public void associate(Collection collection){
-        associatedCollections.add(collection);
-    }
 
-    /**
-     * Disassociates this topic from the specified annotation
-     *
-     * @param collection
-     */
-    public void disassociate(Collection collection){
-        associatedCollections.remove(collection);
-    }
-
-    /**
-     * @return the list of collections
-     */
-    public List<Collection> getCollections(){
-        return associatedCollections;
-    }
 }

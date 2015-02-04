@@ -19,6 +19,7 @@ public class Summary implements Annotation {
     private String content;
 	
 	
+    
 	public SUMMARY_METHOD getSummaryMethod() {
 		return summaryMethod;
 	}
@@ -27,6 +28,7 @@ public class Summary implements Annotation {
 	public void setSummaryMethod(SUMMARY_METHOD summaryMethod) {
 		this.summaryMethod = summaryMethod;
 	}
+
 	
 	
     public String getContent() {
@@ -37,4 +39,5 @@ public class Summary implements Annotation {
         this.content = content;
     }
 	
+
 }
