@@ -1,5 +1,7 @@
 package gr.iti.mklab.simmo;
 
+import gr.iti.mklab.simmo.documents.Post;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,4 +33,21 @@ public class Collection extends Annotatable {
     public void setId(String id) {
         this.id = id;
     }
+    
+    
+    public List<Object> getObjects() {
+        return objects;
+    }
+
+    
+    public void addObject(Object object){
+    	objects.add(object);
+    }
+
+    
+    public void removeObject(Object object){
+    	objects.remove(object);
+    }
+    
+    
 }
