@@ -3,6 +3,8 @@ package gr.iti.mklab.simmo;
 
 import org.mongodb.morphia.annotations.Id;
 
+import java.util.Date;
+
 /**
  * @author amoumtzidou
  * @version 1.0.0
@@ -22,6 +24,8 @@ public abstract class Source extends Annotatable {
     protected String location;
 
     protected String description;
+
+    protected Date creationDate;
 
     public String getPageUrl() {
         return pageUrl;

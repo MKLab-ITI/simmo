@@ -28,17 +28,29 @@ public class UserAccount extends Source {
     /** The author's full name */
     protected String name;
 
+    protected String username;
+
+    protected String userUrl;
+
     /** The number of friends*/
     protected int numFriends;
 
     /** The number of followers */
     protected int numFollowers;
 
+    protected int numListed;
+
+    protected int numItems;
+
+    protected int numFavourites;
+
     /** Big avatar image path (or URL) */
     protected String avatarBig;
 
     /** Small avatar image path (or URL) */
     protected String avatarSmall;
+
+    protected boolean isVerified;
 
     public UserAccount(){}
 
