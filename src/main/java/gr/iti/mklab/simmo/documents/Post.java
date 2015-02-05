@@ -17,50 +17,38 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity
 public class Post extends Document {
 
-    /** The id of the Post in the original web page or social network where it was posted.
-     *  Post also has a unique id inherited from its super class Object. */
-    private String postId;
-
     /** The number of likes */
-    private int numLikes;
+    protected int numLikes;
 
     /** The number of shares */
-    private int numShares;
+    protected int numShares;
 
     /** The number of comments */
-    private int numComments;
+    protected int numComments;
 
     /** The number of views */
-    private int numViews;
+    protected int numViews;
 
     /** The number of ratings */
-    private int numRatings;
+    protected int numRatings;
 
     /** The number of positive votes */
-    private int positiveVotes;
+    protected int positiveVotes;
 
     /** The number of negative votes */
-    private int negativeVotes;
+    protected int negativeVotes;
 
     /** The number of subscriptions */
-    private int numSubscriptions;
+    protected int numSubscriptions;
 
     /** The location for this post */
     @Embedded
-    private Location location;
+    protected Location location;
 
     public Post(){}
 
     public Post(String postId){
-        this.postId = postId;
-    }
-    
-    public String getPostId() {
-        return postId;
-    }
-
-    public void setPostId(String postId) {
-        this.postId = postId;
+        this.id = postId;
     }
 
     public int getNumLikes() {

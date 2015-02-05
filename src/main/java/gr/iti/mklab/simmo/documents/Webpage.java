@@ -27,6 +27,11 @@ public class Webpage extends Document {
     @Reference
     protected List<Post> posts = new ArrayList<Post>();
 
+    /**
+     * Where this webpage comes from, e.g. Twitter
+     */
+    protected String source;
+
     public Webpage(){}
     
     public List<Post> getPosts() {
@@ -41,4 +46,11 @@ public class Webpage extends Document {
     	posts.remove(post);
     }
 
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
 }
