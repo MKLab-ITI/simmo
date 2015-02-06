@@ -15,45 +15,35 @@ import java.util.Date;
  * @version 1.0.0
  * @since August 21, 2014
  */
-@Entity
-public class Affiliation {
+@Entity("Association")
+public class Affiliation extends Association {
 
     public enum AFFILIATION_TYPE {
         FRIENDS_WITH, FOLLOWS, UNDEFINED
     }
 
-    @Reference
-    protected UserAccount firstAccount;
+    private AFFILIATION_TYPE affiliationType;
 
-    @Reference
-    protected UserAccount secondAccount;
-
-    protected AFFILIATION_TYPE affiliationType;
-
-    protected Date affiliationDate;
-
-    @Id
-    private ObjectId id;
+    private Date affiliationDate;
 
     public Affiliation(){}
 
-    public Affiliation (UserAccount account, UserAccount affiliated, AFFILIATION_TYPE type, Date date){
-        this.firstAccount = account;
-        this.secondAccount = affiliated;
+    public Affiliation(UserAccount account, UserAccount affiliated, AFFILIATION_TYPE type, Date date) {
+        super(account, affiliated);
         this.affiliationType = type;
         this.affiliationDate = date;
     }
-    
-    public ObjectId getId(){
-    	return id;
+
+    public Affiliation(UserAccount account, UserAccount affiliated) {
+        super(account, affiliated);
     }
 
-    public UserAccount getFirstAccount(){
-        return firstAccount;
+    public UserAccount getFirstAccount() {
+        return (UserAccount) one;
     }
 
-    public UserAccount getSecondAccount(){
-        return secondAccount;
+    public UserAccount getSecondAccount() {
+        return (UserAccount) other;
     }
-    
+
 }

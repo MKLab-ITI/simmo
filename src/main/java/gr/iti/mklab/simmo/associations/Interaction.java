@@ -5,6 +5,7 @@ import gr.iti.mklab.simmo.Object;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Indexed;
 
 import java.util.Date;
 
@@ -17,53 +18,42 @@ import java.util.Date;
  * @version 1.0.0
  * @since July 10, 2014
  */
-@Entity
-public class Interaction {
+@Entity("Association")
+public class Interaction extends Association {
 
-
-    @Id
-    private ObjectId objectId;
-	
     /**
      * The ways in which a UserAccount interacts with a content Object
      */
-    public static enum InteractionType{
-        MENTIONS, COMMENTS, LIKES, DISLIKES, FAVORITES, UPVOTES, DOWNVOTES, UNDEFINED
+    public static enum InteractionType {
+        MENTION, COMMENT, LIKE, DISLIKE, FAVORITE, UPVOTE, DOWNVOTE, REPLY, RETWEET, UNDEFINED
     }
-
-    @org.mongodb.morphia.annotations.Reference
-    private Object objectOfInteraction;
-
-    @org.mongodb.morphia.annotations.Reference
-    private UserAccount interactingUser;
 
     private Date interactionDate;
 
     private InteractionType interactionType;
 
-    public Interaction(){}
+    public Interaction() {
+    }
 
-    public Interaction(Object objectOfInteraction, UserAccount interactingUser, Date interactionDate, InteractionType interactionType){
-        this.objectOfInteraction = objectOfInteraction;
-        this.interactingUser = interactingUser;
-        this.interactionDate = interactionDate;
+    public Interaction(Object objectOfInteraction, UserAccount interactingUser, InteractionType interactionType) {
+        super(objectOfInteraction, interactingUser);
         this.interactionType = interactionType;
     }
 
     public Object getObject() {
-        return objectOfInteraction;
+        return (Object) one;
     }
 
     public void setObject(Object objectOfInteraction) {
-        this.objectOfInteraction = objectOfInteraction;
+        this.one = objectOfInteraction;
     }
 
     public UserAccount getUser() {
-        return interactingUser;
+        return (UserAccount) other;
     }
 
     public void setUser(UserAccount interactingUser) {
-        this.interactingUser = interactingUser;
+        this.other = interactingUser;
     }
 
     public Date getDate() {
@@ -80,9 +70,5 @@ public class Interaction {
 
     public void setType(InteractionType interactionType) {
         this.interactionType = interactionType;
-    }
-    
-    public ObjectId getId(){
-    	return objectId;
     }
 }

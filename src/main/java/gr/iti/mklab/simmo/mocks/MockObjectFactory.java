@@ -5,14 +5,13 @@ import gr.iti.mklab.simmo.annotations.Original;
 import gr.iti.mklab.simmo.associations.Affiliation;
 import gr.iti.mklab.simmo.associations.Contribution;
 import gr.iti.mklab.simmo.associations.Interaction;
-import gr.iti.mklab.simmo.associations.Reference;
 import gr.iti.mklab.simmo.documents.Post;
 import gr.iti.mklab.simmo.documents.Webpage;
 import gr.iti.mklab.simmo.items.Image;
-import gr.iti.mklab.simmo.morphia.DAOManager;
 import gr.iti.mklab.simmo.util.Location;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by kandreadou on 9/12/14.
@@ -24,7 +23,7 @@ public class MockObjectFactory {
     }
 
     public static Interaction getInteraction() {
-        return new Interaction(getPost("somewhereonepost"), getUserAccount("John Doe"), new Date(), Interaction.InteractionType.DOWNVOTES);
+        return new Interaction(getPost("somewhereonepost"), getUserAccount("John Doe"), Interaction.InteractionType.COMMENT);
     }
 
     public static Contribution getCreation() {
@@ -37,7 +36,7 @@ public class MockObjectFactory {
         p.setAuthor("me");
         p.setDescription("oh how boring");
         p.addPost(getPost("twitterpost456"));
-        p.addReferece(new Reference(getPost("instagram789"), Reference.ReferenceType.REPLY));
+        //p.addReferece(new Reference(getPost("instagram789"), Reference.ReferenceType.REPLY));
         p.addAnnotation(new Original(false));
         return p;
     }
@@ -58,6 +57,9 @@ public class MockObjectFactory {
         p.addItem(getImage("image09990"));
         p.addTag("a tag");
         p.addAnnotation(new Original(false));
+        p.setContributor(getUserAccount("John Doe"));
+        p.setReplied(getUserAccount("Some person"));
+        p.addAssociation(new Interaction(p, getUserAccount("Some other person"), Interaction.InteractionType.DISLIKE));
         return p;
     }
 
@@ -83,6 +85,7 @@ public class MockObjectFactory {
 
     public static UserAccount getUserAccount(String name) {
         UserAccount ua = new UserAccount();
+        ua.setId(UUID.randomUUID().toString());
         ua.setName(name);
         ua.setNumFollowers(56000);
         ua.setAvatarSmall("/fake/path/to/a/avatar");

@@ -1,9 +1,11 @@
 package gr.iti.mklab.simmo.documents;
 
 import gr.iti.mklab.simmo.Document;
+import gr.iti.mklab.simmo.UserAccount;
 import gr.iti.mklab.simmo.util.Location;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Reference;
 
 /**
  * A Post is a {@link gr.iti.mklab.simmo.Document} and it may also contain other {@link gr.iti.mklab.simmo.Item} objects.
@@ -17,37 +19,62 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity
 public class Post extends Document {
 
-    /** The number of likes */
+    /**
+     * The number of likes
+     */
     protected int numLikes;
 
-    /** The number of shares */
+    /**
+     * The number of shares
+     */
     protected int numShares;
 
-    /** The number of comments */
+    /**
+     * The number of comments
+     */
     protected int numComments;
 
-    /** The number of views */
+    /**
+     * The number of views
+     */
     protected int numViews;
 
-    /** The number of ratings */
+    /**
+     * The number of ratings
+     */
     protected int numRatings;
 
-    /** The number of positive votes */
+    /**
+     * The number of positive votes
+     */
     protected int positiveVotes;
 
-    /** The number of negative votes */
+    /**
+     * The number of negative votes
+     */
     protected int negativeVotes;
 
-    /** The number of subscriptions */
+    /**
+     * The number of subscriptions
+     */
     protected int numSubscriptions;
 
-    /** The location for this post */
+    /**
+     * The location for this post
+     */
     @Embedded
     protected Location location;
 
-    public Post(){}
+    @Reference
+    protected UserAccount replied;
 
-    public Post(String postId){
+    @Reference
+    protected UserAccount shared;
+
+    public Post() {
+    }
+
+    public Post(String postId) {
         this.id = postId;
     }
 
@@ -123,6 +150,20 @@ public class Post extends Document {
     public void setLocation(Location location) {
         this.location = location;
     }
-    
 
+    public UserAccount getReplied() {
+        return replied;
+    }
+
+    public void setReplied(UserAccount replied) {
+        this.replied = replied;
+    }
+
+    public UserAccount getShared() {
+        return shared;
+    }
+
+    public void setShared(UserAccount shared) {
+        this.shared = shared;
+    }
 }

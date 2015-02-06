@@ -1,7 +1,8 @@
 package gr.iti.mklab.simmo;
 
-import gr.iti.mklab.simmo.associations.Reference;
-import org.mongodb.morphia.annotations.Embedded;
+import gr.iti.mklab.simmo.associations.Contribution;
+import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.Transient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,22 +24,15 @@ public abstract class Document extends Object {
     protected List<Item> items = new ArrayList<Item>();
 
     /**
-     * A list of references to other Documents
-     */
-    @Embedded
-    protected List<Reference> references = new ArrayList<Reference>();
-
-    /**
      * The document language
-     * TODO: Should this be an enum?
      */
     protected String language;
 
     /**
      * The document type
-     * TODO: If this refers to Webpage or Post, it should be removed as it is covered by inheritance
      */
     protected String type;
+
 
     public List<Item> getItems() {
         return items;
@@ -48,24 +42,12 @@ public abstract class Document extends Object {
         this.items = items;
     }
 
-    public void addItem(Item item){
+    public void addItem(Item item) {
         items.add(item);
     }
 
-    public void removeItem(Item item){
+    public void removeItem(Item item) {
         items.remove(item);
-    }
-
-    public List<Reference> getReferences() {
-        return references;
-    }
-
-    public void addReferece(Reference reference){
-        references.add(reference);
-    }
-
-    public void removeReference(Reference reference){
-        references.remove(reference);
     }
 
     public String getLanguage() {
@@ -74,5 +56,21 @@ public abstract class Document extends Object {
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    public void addAssociation(Association a){
+        associations.add(a);
+    }
+
+    public void removeAssociation(Association a){
+        associations.remove(a);
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

@@ -1,8 +1,11 @@
 package gr.iti.mklab.simmo.associations;
 
+import gr.iti.mklab.simmo.Association;
 import gr.iti.mklab.simmo.Object;
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Indexed;
 import org.mongodb.morphia.annotations.Reference;
 
 /**
@@ -14,43 +17,30 @@ import org.mongodb.morphia.annotations.Reference;
  * @version 1.0.0
  * @since August 21, 2014
  */
-@Entity
-public class Similarity {
-
-    @Reference
-    private Object firstObject;
-
-    @Reference
-    private Object secondObject;
+@Entity("Association")
+public class Similarity extends Association {
 
     private double similarityScore;
 
-    @Id
-    private String id;
-
-    public Similarity(){}
-
+    public Similarity() {
+    }
 
     public Similarity(Object object, Object similar, double score) {
-        this.firstObject = object;
-        this.secondObject = similar;
+        super(object, similar);
         this.similarityScore = score;
     }
 
     public Object getFirstObject() {
-        return firstObject;
+        return (Object) one;
     }
 
     public Object getSecondObject() {
-        return secondObject;
+        return (Object) other;
     }
 
     public double getSimilarityScore() {
         return similarityScore;
     }
-    
-    public String getId(){
-    	return id;
-    }
+
 
 }

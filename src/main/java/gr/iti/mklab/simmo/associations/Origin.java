@@ -1,5 +1,8 @@
 package gr.iti.mklab.simmo.associations;
 
+import gr.iti.mklab.simmo.Annotation;
+import gr.iti.mklab.simmo.Association;
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.*;
 import org.mongodb.morphia.annotations.Reference;
 
@@ -12,29 +15,22 @@ import org.mongodb.morphia.annotations.Reference;
  * @version 1.0.0
  * @since August 21, 2014
  */
-@Entity
-public class Origin {
+@Entity("Association")
+public class Origin extends Association {
 
-    @Reference
-    protected Annotation firstAnnotation;
-
-    @Reference
-    protected Annotation secondAnnotation;
-
-    public Origin(){}
-
-    public Origin (Annotation annotation, Annotation originated){
-        this.firstAnnotation = annotation;
-        this.secondAnnotation = originated;
+    public Origin() {
     }
 
-
-    public Annotation getFirstAnnotation(){
-        return firstAnnotation;
+    public Origin(Annotation annotation, Annotation originated) {
+        super(annotation, originated);
     }
 
-    public Annotation getSecondAnnotation(){
-        return secondAnnotation;
+    public Annotation getFirstAnnotation() {
+        return (Annotation) one;
     }
-    
+
+    public Annotation getSecondAnnotation() {
+        return (Annotation) other;
+    }
+
 }

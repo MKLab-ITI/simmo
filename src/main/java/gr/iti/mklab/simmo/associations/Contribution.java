@@ -6,41 +6,28 @@ import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.*;
 
 /**
- * The generation of media objects is modeled through a Creation association between Source and Object.
+ * The generation of media objects is modeled through a Contribution association between Source and Object.
  *
  * @author kandreadou
  * @version 1.0.0
  * @since August 21, 2014
  */
-@Entity
-public class Contribution {
+@Entity("Association")
+public class Contribution extends Association {
 
-    @org.mongodb.morphia.annotations.Reference
-    private Source contributor;
-
-    @org.mongodb.morphia.annotations.Reference
-    private Object contribution;
-
-    @Id
-    private ObjectId objectId;
-
-    public Contribution(){}
-
-    public Contribution (Source contributor, Object contribution){
-        this.contribution = contribution;
-        this.contributor = contributor;
+    public Contribution() {
     }
-    
-    public ObjectId getId(){
-    	return objectId;
+
+    public Contribution(Source contributor, Object contribution) {
+        super(contributor, contribution);
     }
-    
-    public Source getContributor(){
-    	return contributor;
+
+    public Source getContributor() {
+        return (Source) one;
     }
-    
-    public Object getContribution(){
-    	return contribution;
+
+    public Object getContribution() {
+        return (Object) other;
     }
-    
+
 }

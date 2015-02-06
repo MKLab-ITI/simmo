@@ -1,12 +1,9 @@
 package gr.iti.mklab.simmo;
 
-import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Id;
 
 /**
  * A User Account.
- * TODO: Decide whether we need distinct classes for the various social networks or an enum.
  *
  * @author kandreadou
  * @version 1.0.0
@@ -16,26 +13,35 @@ import org.mongodb.morphia.annotations.Id;
 @Entity
 public class UserAccount extends Source {
 
-    /** The user account id obtained from the source, i.e. facebook id, twitter id */
-    protected String sourceId;
+    /**
+     * The source network where this UserAccount is originating, e.g. twitter, facebook etc
+     */
+    protected String source;
 
-    /** The user category */
+    /**
+     * The user category
+     */
     protected String category;
 
-    /** The stream id */
-    protected String streamId;
-
-    /** The author's full name */
+    /**
+     * The author's full name
+     */
     protected String name;
 
     protected String username;
 
     protected String userUrl;
 
-    /** The number of friends*/
+    protected String userId;
+
+    /**
+     * The number of friends
+     */
     protected int numFriends;
 
-    /** The number of followers */
+    /**
+     * The number of followers
+     */
     protected int numFollowers;
 
     protected int numListed;
@@ -44,22 +50,27 @@ public class UserAccount extends Source {
 
     protected int numFavourites;
 
-    /** Big avatar image path (or URL) */
+    /**
+     * Big avatar image path (or URL)
+     */
     protected String avatarBig;
 
-    /** Small avatar image path (or URL) */
+    /**
+     * Small avatar image path (or URL)
+     */
     protected String avatarSmall;
 
     protected boolean isVerified;
 
-    public UserAccount(){}
-
-    public String getSourceId() {
-        return sourceId;
+    public UserAccount() {
     }
 
-    public void setSourceId(String sourceId) {
-        this.sourceId = sourceId;
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 
     public String getCategory() {
@@ -68,14 +79,6 @@ public class UserAccount extends Source {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public String getStreamId() {
-        return streamId;
-    }
-
-    public void setStreamId(String streamId) {
-        this.streamId = streamId;
     }
 
     public String getName() {
@@ -116,5 +119,61 @@ public class UserAccount extends Source {
 
     public void setAvatarSmall(String avatarSmall) {
         this.avatarSmall = avatarSmall;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public int getNumListed() {
+        return numListed;
+    }
+
+    public void setNumListed(int numListed) {
+        this.numListed = numListed;
+    }
+
+    public int getNumItems() {
+        return numItems;
+    }
+
+    public void setNumItems(int numItems) {
+        this.numItems = numItems;
+    }
+
+    public int getNumFavourites() {
+        return numFavourites;
+    }
+
+    public void setNumFavourites(int numFavourites) {
+        this.numFavourites = numFavourites;
+    }
+
+    public boolean isVerified() {
+        return isVerified;
+    }
+
+    public void setVerified(boolean isVerified) {
+        this.isVerified = isVerified;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUserUrl() {
+        return userUrl;
+    }
+
+    public void setUserUrl(String userUrl) {
+        this.userUrl = userUrl;
     }
 }

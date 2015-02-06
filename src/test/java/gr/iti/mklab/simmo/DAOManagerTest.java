@@ -1,6 +1,5 @@
 package gr.iti.mklab.simmo;
 
-import gr.iti.mklab.simmo.associations.Interaction;
 import gr.iti.mklab.simmo.documents.Post;
 import gr.iti.mklab.simmo.documents.Webpage;
 import gr.iti.mklab.simmo.mocks.MockObjectFactory;
@@ -19,30 +18,20 @@ public class DAOManagerTest extends DAOTest {
     private DAOManager mgr2;
 
     @Before
-    public void setup(){
+    public void setup() {
         mgr = new DAOManager("morphia");
-        mgr2 = new DAOManager("morphia2");
+        //mgr2 = new DAOManager("morphia2");
     }
 
     @Test
     public void test() {
-        testInteraction();
-    }
-
-    public void testInteraction() {
-        Interaction i = MockObjectFactory.getInteraction();
-        mgr.saveInteraction(MockObjectFactory.getInteraction());
-        mgr2.saveInteraction(MockObjectFactory.getInteraction());
-    }
-
-    public void testCreation() {
-        mgr.saveCreation(MockObjectFactory.getCreation());
+        testPost();
     }
 
     public void testPost() {
-        mgr.savePost(MockObjectFactory.getPost("testid"));
-        Post post = mgr.postDAO.findOne("numLikes", 4);
-        int m = 5;
+        //mgr.savePost(MockObjectFactory.getPost("testid"));
+        Post post = mgr.postDAO.get("testid");
+        post.associations = mgr.associationDAO.findAssociationsForObject(post);
     }
 
     public void testWebpage() {

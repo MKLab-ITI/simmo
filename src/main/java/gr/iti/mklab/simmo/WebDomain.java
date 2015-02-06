@@ -12,5 +12,4 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity
 public class WebDomain extends Source {
 
-
 }

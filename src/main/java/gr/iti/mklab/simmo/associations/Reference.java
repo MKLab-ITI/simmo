@@ -1,7 +1,12 @@
 package gr.iti.mklab.simmo.associations;
 
+import gr.iti.mklab.simmo.Association;
 import gr.iti.mklab.simmo.Document;
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Indexed;
 
 /**
  * The Reference describes the relationship between {@link gr.iti.mklab.simmo.Document} objects using the
@@ -9,12 +14,13 @@ import org.mongodb.morphia.annotations.Embedded;
  * always belongs to a Document, it only needs to hold information concerning the type of relation and
  * the referenced Document.
  *
- * @see gr.iti.mklab.simmo.Document
  * @author kandreadou
  * @version 1.0.0
+ * @see gr.iti.mklab.simmo.Document
  * @since July 3, 2014
  */
-public class Reference  {
+@Entity("Association")
+public class Reference extends Association  {
 
     public static enum ReferenceType {
         LINK, REPLY, COMMENT, UNDEFINED
@@ -22,13 +28,11 @@ public class Reference  {
 
     private ReferenceType type;
 
-    @org.mongodb.morphia.annotations.Reference
-    private Document refDocument;
+    public Reference() {
+    }
 
-    public Reference(){}
-
-    public Reference(Document doc, ReferenceType type){
-        this.refDocument = doc;
+    public Reference(Document origDoc, Document refDoc, ReferenceType type) {
+        super(origDoc, refDoc);
         this.type = type;
     }
 
@@ -40,11 +44,20 @@ public class Reference  {
         this.type = type;
     }
 
-    public Document getDocument() {
-        return refDocument;
+    public Document getRefDocument() {
+        return (Document) other;
     }
 
-    public void setDocument(Document doc) {
-        this.refDocument = doc;
+    public void setRefDocument(Document doc) {
+        this.other = doc;
     }
+
+    public Document getOriginalDocument() {
+        return (Document) one;
+    }
+
+    public void setOriginalDocument(Document doc) {
+        this.one = doc;
+    }
+
 }

@@ -16,7 +16,7 @@ import java.util.List;
  * @version 2.0.0
  * @since August 19, 2014
  */
-public class Collection extends Annotatable {
+public class Collection extends Annotatable implements Associated {
 	
 	
     /**

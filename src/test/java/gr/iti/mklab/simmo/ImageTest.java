@@ -59,7 +59,7 @@ public class ImageTest extends DAOTest {
 
         List<Image> images = dao.findNear(50.8500, 4.3500, 4);  //bruxelles
         for (Image i : images) {
-            System.out.println(i.getObjectId() + " " + i.getCrawlDate());
+            //System.out.println(i.getObjectId() + " " + i.getCrawlDate());
         }
     }
 

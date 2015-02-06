@@ -1,5 +1,6 @@
 package gr.iti.mklab.simmo.morphia;
 
+import gr.iti.mklab.simmo.Association;
 import gr.iti.mklab.simmo.associations.Similarity;
 import gr.iti.mklab.simmo.items.Image;
 import org.bson.types.ObjectId;
@@ -7,6 +8,7 @@ import org.mongodb.morphia.dao.BasicDAO;
 import gr.iti.mklab.simmo.Object;
 import org.mongodb.morphia.query.Query;
 
+import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +19,7 @@ import java.util.List;
  * @version 1.0.0
  * @since September 17, 2014
  */
-public class ObjectDAO<O extends Object> extends BasicDAO<O, ObjectId> {
+public class ObjectDAO<O extends Object> extends BasicDAO<O, String> {
 
     protected Class<O> clazz;
 
@@ -106,7 +108,15 @@ public class ObjectDAO<O extends Object> extends BasicDAO<O, ObjectId> {
                 q.criteria("secondObject").equal(object)
         );
         return q.order("-similarityScore").filter("similarityScore >", threshold).asList();
+    }
 
+    public List<? extends Association> getAssociationsOfType(Object object, Class clazz) {
+        Query<Association> q = getDatastore().createQuery(Association.class);
+        q.and(
+                q.criteria("one").equal(object.getId()),
+                q.criteria("class").equal(clazz)
+        );
+        return q.asList();
     }
 
 }

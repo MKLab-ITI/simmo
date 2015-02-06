@@ -1,6 +1,7 @@
 package gr.iti.mklab.simmo.associations;
 
 import gr.iti.mklab.simmo.*;
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.*;
 
 /**
@@ -10,26 +11,22 @@ import org.mongodb.morphia.annotations.*;
  * @version 1.0.0
  * @since August 21, 2014
  */
-@Entity
-public class Description {
+@Entity("Association")
+public class Description extends Association {
 
-    private Annotation describes;
-    private Annotatable isDescribed;
-
-
-    public Description(){}
-
-    public Description (Annotatable isDescribed, Annotation describes){
-        this.isDescribed = isDescribed;
-        this.describes = describes;
+    public Description() {
     }
-    
-    public Annotatable getIsDescribed(){
-    	return isDescribed;
+
+    public Description(Annotatable isDescribed, Annotation describes) {
+        super(isDescribed, describes);
     }
-    
-    public Annotation getDescribes(){
-    	return describes;
+
+    public Annotatable getIsDescribed() {
+        return (Annotatable) one;
     }
-    
+
+    public Annotation getDescribes() {
+        return (Annotation) other;
+    }
+
 }

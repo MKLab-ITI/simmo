@@ -1,4 +1,4 @@
-package gr.iti.mklab.simmo.associations;
+package gr.iti.mklab.simmo;
 
 
 import org.mongodb.morphia.annotations.Entity;
@@ -13,5 +13,5 @@ import org.mongodb.morphia.annotations.Entity;
  * @since July 3, 2014
  */
 @Entity
-public interface Annotation {
+public interface Annotation extends Associated {
 }

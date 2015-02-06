@@ -1,6 +1,9 @@
 package gr.iti.mklab.simmo;
 
+import gr.iti.mklab.simmo.associations.Contribution;
 import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.Transient;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,6 +38,16 @@ public abstract class Object extends Annotatable {
     protected Date creationDate;
     protected Date lastModifiedDate;
     protected Date crawlDate;
+
+    @Reference
+    protected UserAccount contributor;
+
+    /**
+     * This is a transient field, not stored in the respective collection.
+     * Its only use is for helping data parsing and storing.
+     */
+    @Transient
+    protected List<Association> associations = new ArrayList<Association>();
 
     public String getId() {
         return id;
@@ -110,5 +123,25 @@ public abstract class Object extends Annotatable {
 
     public void setCrawlDate(Date crawlDate) {
         this.crawlDate = crawlDate;
+    }
+
+    public void addAssociation(Association a) {
+        associations.add(a);
+    }
+
+    public void removeAssociation(Association a) {
+        associations.remove(a);
+    }
+
+    public List<Association> getAssociations() {
+        return associations;
+    }
+
+    public UserAccount getContributor() {
+        return contributor;
+    }
+
+    public void setContributor(UserAccount contributor) {
+        this.contributor = contributor;
     }
 }

@@ -1,6 +1,7 @@
 package gr.iti.mklab.simmo.associations;
 
 import gr.iti.mklab.simmo.*;
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.*;
 
 /**
@@ -10,29 +11,22 @@ import org.mongodb.morphia.annotations.*;
  * @version 1.0.0
  * @since August 21, 2014
  */
-@Entity
-public class Aggregation {
+@Entity("Association")
+public class Aggregation extends Association {
 
-    @org.mongodb.morphia.annotations.Reference
-    private Topic aggregator;
-
-    @org.mongodb.morphia.annotations.Reference
-    private Collection aggregation;
-
-
-    public Aggregation(){}
-
-    public Aggregation (Topic aggregator, Collection aggregation){
-        this.aggregator = aggregator;
-        this.aggregation = aggregation;
+    public Aggregation() {
     }
-    
-    public Topic getAggregator(){
-    	return aggregator;
+
+    public Aggregation(Topic aggregator, Collection aggregation) {
+        super(aggregator, aggregation);
     }
-    
-    public Collection getAggregation(){
-    	return aggregation;
+
+    public Topic getAggregator() {
+        return (Topic) one;
     }
-    
+
+    public Collection getAggregation() {
+        return (Collection) other;
+    }
+
 }

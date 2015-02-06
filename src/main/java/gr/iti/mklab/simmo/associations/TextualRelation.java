@@ -1,6 +1,8 @@
 package gr.iti.mklab.simmo.associations;
 
+import gr.iti.mklab.simmo.Association;
 import gr.iti.mklab.simmo.annotations.NamedEntity;
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
@@ -13,37 +15,28 @@ import org.mongodb.morphia.annotations.Reference;
  * @version 1.0.0
  * @since November 5, 2014
  */
-@Entity
-public class TextualRelation {
-
-    @Reference
-    private NamedEntity first;
-
-    @Reference
-    private NamedEntity second;
+@Entity("Association")
+public class TextualRelation extends Association {
 
     private String relation;
 
-    @Id
-    private String id;
+    public TextualRelation() {
+    }
 
-    public TextualRelation(){}
-
-    public TextualRelation(NamedEntity first, NamedEntity second, String relation){
-        this.first = first;
-        this.second = second;
+    public TextualRelation(NamedEntity first, NamedEntity second, String relation) {
+        super(first, second);
         this.relation = relation;
     }
 
-    public NamedEntity getFirstEntity(){
-        return first;
+    public NamedEntity getFirstEntity() {
+        return (NamedEntity) one;
     }
 
-    public NamedEntity getSecondEntity(){
-        return second;
+    public NamedEntity getSecondEntity() {
+        return (NamedEntity) other;
     }
 
-    public String getRelation(){
+    public String getRelation() {
         return relation;
     }
 }

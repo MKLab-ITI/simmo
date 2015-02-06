@@ -3,6 +3,7 @@ package gr.iti.mklab.simmo.associations;
 import gr.iti.mklab.simmo.*;
 import gr.iti.mklab.simmo.documents.Post;
 
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.*;
 
 /**
@@ -12,28 +13,22 @@ import org.mongodb.morphia.annotations.*;
  * @version 1.0.0
  * @since August 21, 2014
  */
-@Entity
-public class Mention {
+@Entity("Association")
+public class Mention extends Association {
 
-    @org.mongodb.morphia.annotations.Reference
-    private Post mentions;
-
-    @org.mongodb.morphia.annotations.Reference
-    private UserAccount isMentioned;
-
-    public Mention(){}
-
-    public Mention (Post mentions, UserAccount isMentioned){
-        this.isMentioned = isMentioned;
-        this.mentions = mentions;
+    public Mention() {
     }
-    
-    public Post getMentions(){
-    	return mentions;
+
+    public Mention(Post mentions, UserAccount isMentioned) {
+        super(mentions, isMentioned);
     }
-    
-    public UserAccount getIsMentioned(){
-    	return isMentioned;
+
+    public Post getMentions() {
+        return (Post) one;
     }
-    
+
+    public UserAccount getIsMentioned() {
+        return (UserAccount) other;
+    }
+
 }
