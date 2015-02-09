@@ -24,6 +24,31 @@ public abstract class Media extends Item {
     /** The social network source id */
     protected String source;
 
+    /**
+     * The number of likes
+     */
+    protected int numLikes;
+
+    /**
+     * The number of shares
+     */
+    protected int numShares;
+
+    /**
+     * The number of comments
+     */
+    protected int numComments;
+
+    /**
+     * The number of views
+     */
+    protected int numViews;
+
+    /**
+     * The number of ratings
+     */
+    protected int numRatings;
+
 
     public String getSource() {
         return source;
@@ -54,5 +79,43 @@ public abstract class Media extends Item {
         return type;
     }
 
+    public int getNumLikes() {
+        return numLikes;
+    }
 
+    public void setNumLikes(int numLikes) {
+        this.numLikes = numLikes;
+    }
+
+    public int getNumShares() {
+        return numShares;
+    }
+
+    public void setNumShares(int numShares) {
+        this.numShares = numShares;
+    }
+
+    public int getNumComments() {
+        return numComments;
+    }
+
+    public void setNumComments(int numComments) {
+        this.numComments = numComments;
+    }
+
+    public int getNumViews() {
+        return numViews;
+    }
+
+    public void setNumViews(int numViews) {
+        this.numViews = numViews;
+    }
+
+    public int getNumRatings() {
+        return numRatings;
+    }
+
+    public void setNumRatings(int numRatings) {
+        this.numRatings = numRatings;
+    }
 }

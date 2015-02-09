@@ -53,17 +53,6 @@ public class Video extends Media {
      * The video codec
      */
     protected String codec;
-
-    /**
-     * The number of likes
-     */
-    protected long numLikes;
-
-    /**
-     * The number of views
-     */
-    protected long numViews;
-
     /**
      * The rating
      */

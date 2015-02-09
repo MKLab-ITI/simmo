@@ -27,7 +27,6 @@ public abstract class Object extends Annotatable {
     protected String url;
     protected String title;
     protected String description;
-    protected String author;
 
     /**
      * A list of tags in case of a social media item or a list of keywords
@@ -78,14 +77,6 @@ public abstract class Object extends Annotatable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public List<String> getTags() {
