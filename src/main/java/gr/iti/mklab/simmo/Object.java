@@ -1,6 +1,5 @@
 package gr.iti.mklab.simmo;
 
-import gr.iti.mklab.simmo.associations.Contribution;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
 import org.mongodb.morphia.annotations.Transient;
@@ -92,6 +91,8 @@ public abstract class Object extends Annotatable {
     public List<String> getTags() {
         return tags;
     }
+
+    public void setTags(List<String> tags){this.tags = tags;}
 
     public void addTag(String tag) {
         tags.add(tag);

@@ -6,7 +6,6 @@ import org.mongodb.morphia.annotations.Embedded;
 
 /**
  * An abstract media item.
- * TODO: As Media id, shall we use the Object or the Item id?
  *
  * @see gr.iti.mklab.simmo.Item
  * @see gr.iti.mklab.simmo.Object
@@ -22,15 +21,16 @@ public abstract class Media extends Item {
 
     protected String webPageUrl;
 
-    /** The stream id */
-    protected String streamId;
+    /** The social network source id */
+    protected String source;
 
-    public String getStreamId() {
-        return streamId;
+
+    public String getSource() {
+        return source;
     }
 
-    public void setStreamId(String streamId) {
-        this.streamId = streamId;
+    public void setSource(String sourceId) {
+        this.source = sourceId;
     }
 
     public Location getLocation() {
@@ -53,4 +53,6 @@ public abstract class Media extends Item {
     public ITEM_TYPE getType() {
         return type;
     }
+
+
 }

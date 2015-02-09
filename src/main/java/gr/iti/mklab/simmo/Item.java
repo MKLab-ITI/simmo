@@ -12,20 +12,37 @@ import java.util.List;
  */
 public abstract class Item extends Object {
 
-	 public ITEM_TYPE type;
-	
-    /** A list of segments, representing the content of the Item at a finer level of granularity */
+    public ITEM_TYPE type;
+
+    /**
+     * A list of segments, representing the content of the Item at a finer level of granularity
+     */
     public List<Segment> segments = new ArrayList<Segment>();
 
-    public static enum ITEM_TYPE{
+    /**
+     * The id of the document where this item is originating from *
+     */
+    protected String sourceDocumentId;
+
+    public static enum ITEM_TYPE {
         TEXT, IMAGE, VIDEO, AUDIO, UNDEFINED;
     }
 
-    /** The Item language */
+    /**
+     * The Item language
+     */
     public String language = null;
 
-    public ITEM_TYPE getType(){
-    	return type;
+    public ITEM_TYPE getType() {
+        return type;
+    }
+
+    public String getSourceDocumentId() {
+        return sourceDocumentId;
+    }
+
+    public void setSourceDocumentId(String sourceDocumentId) {
+        this.sourceDocumentId = sourceDocumentId;
     }
 
 }
