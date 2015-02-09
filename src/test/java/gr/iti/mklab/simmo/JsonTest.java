@@ -28,7 +28,6 @@ public class JsonTest {
         Post post = new Post();
         post.setUrl("https://www.youtube.com/watch?v=wtt2aSV8wdw");
         post.setDescription("Internet Citizens: Defend Net Neutrality");
-        post.setAuthor("CGP Grey");
         post.setDescription("Tell the FCC to reclassify broadband internet as a title II common carrier telecommunications service: http://goo.gl/xHnB4n");
         post.setNumViews(919353);
         post.setPositiveVotes(42609);
@@ -48,7 +47,6 @@ public class JsonTest {
         video.setHeight(720);
         video.setDescription("Tell the FCC to reclassify broadband internet as a title II common carrier telecommunications service: http://goo.gl/xHnB4n");
         video.setThumbnail("https://i1.ytimg.com/vi/wtt2aSV8wdw/maxresdefault.jpg");
-        video.setAuthor("CGP Grey");
         cal = Calendar.getInstance();
         cal.set(2014, 4, 5);
         video.setCreationDate(cal.getTime());
@@ -66,7 +64,6 @@ public class JsonTest {
         Post commentLink = new Post();
         commentLink.setNumLikes(739);
         commentLink.setNumComments(72);
-        commentLink.setAuthor("The Game Theorists");
         Text comment = new Text();
         comment.setContent("<div class=\"Ct\">Learn about this and pass it on! Remember SOPA and PIPA? This is BIGGER. Net neutrality is imperative for an open internet.<br><br><a rel=\"nofollow\" target=\"_blank\" href=\"https://www.youtube.com/watch?v=wtt2aSV8wdw\" class=\"ot-anchor aaTEdf\">Internet Citizens: Defend Net Neutrality</a>﻿</div>");
         comment.setTextType(Text.TEXT_TYPE.HTML);
@@ -77,7 +74,6 @@ public class JsonTest {
         Post comment2 = new Post();
         comment2.setNumLikes(63);
         comment2.setNumComments(5);
-        comment2.setAuthor("ZombieGoBoom");
         comment = new Text();
         comment.setContent("Friggin' excellent video, man!  Net neutrality...  FOREVER");
         comment.setTextType(Text.TEXT_TYPE.HTML);

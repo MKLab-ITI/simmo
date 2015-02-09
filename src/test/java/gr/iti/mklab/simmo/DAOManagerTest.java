@@ -29,9 +29,9 @@ public class DAOManagerTest extends DAOTest {
     }
 
     public void testPost() {
-        //mgr.savePost(MockObjectFactory.getPost("testid"));
-        Post post = mgr.postDAO.get("testid");
-        post.associations = mgr.associationDAO.findAssociationsForObject(post);
+        mgr.savePost(MockObjectFactory.getPost("testid"));
+        //Post post = mgr.postDAO.get("testid");
+        //post.associations = mgr.associationDAO.findAssociationsForObject(post);
     }
 
     public void testWebpage() {

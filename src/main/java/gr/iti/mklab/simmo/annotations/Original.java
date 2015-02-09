@@ -14,11 +14,9 @@ import org.mongodb.morphia.annotations.Entity;
  * @version 1.0.0
  * @since August 22, 2014
  */
-@Entity
 public class Original implements Annotation {
 
     private boolean isOriginal = false;
-
 
     public Original(){}
 

@@ -33,7 +33,7 @@ public class MockObjectFactory {
     public static Webpage getWebpage(String url) {
         Webpage p = new Webpage();
         p.setUrl(url);
-        p.setAuthor("me");
+        //p.setAuthor("me");
         p.setDescription("oh how boring");
         p.addPost(getPost("twitterpost456"));
         //p.addReferece(new Reference(getPost("instagram789"), Reference.ReferenceType.REPLY));
@@ -51,7 +51,7 @@ public class MockObjectFactory {
         p.setLastModifiedDate(new Date(System.currentTimeMillis()));
         p.setNegativeVotes(7);
         p.setNumSubscriptions(90);
-        p.setAuthor("Some author");
+        //p.setAuthor("Some author");
         p.setLanguage("EN-en");
         p.setLocation(new Location(48.8577, 2.4567));
         p.addItem(getImage("image09990"));
@@ -70,7 +70,7 @@ public class MockObjectFactory {
         //img.setId(id);
         img.setThumbnail("/home/fake/path");
         img.setDescription("this is not an image");
-        img.setAuthor("me");
+        //img.setAuthor("me");
         img.setAlternateText("wtf?!");
         img.setExifMetadataField("codec", "jpeg");
         img.setCrawlDate(new Date(System.currentTimeMillis()));
