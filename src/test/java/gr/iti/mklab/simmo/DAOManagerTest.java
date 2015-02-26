@@ -25,7 +25,7 @@ public class DAOManagerTest extends DAOTest {
 
     @Test
     public void test() {
-        testPost();
+        //testPost();
     }
 
     public void testPost() {
