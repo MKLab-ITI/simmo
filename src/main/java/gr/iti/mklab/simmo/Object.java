@@ -7,6 +7,7 @@ import org.mongodb.morphia.annotations.Transient;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * A generic super class which is instantiated as either {@link gr.iti.mklab.simmo.items.Media} or {@link gr.iti.mklab.simmo.Document}
@@ -135,5 +136,17 @@ public abstract class Object extends Annotatable {
 
     public void setContributor(UserAccount contributor) {
         this.contributor = contributor;
+    }
+
+    public <T extends Association> List<T> getAssociationsOfType(Class<T> type) {
+        return (List<T>) associations.stream()
+                .filter(t -> t.getClass() == type).collect(Collectors.toList());
+    }
+
+    public List<gr.iti.mklab.simmo.associations.Reference> getLinks() {
+        List<gr.iti.mklab.simmo.associations.Reference> refs = getAssociationsOfType(gr.iti.mklab.simmo.associations.Reference.class);
+        return refs.stream()
+                .filter(t -> t.getType() == gr.iti.mklab.simmo.associations.Reference.ReferenceType.LINK)
+                .collect(Collectors.toList());
     }
 }
