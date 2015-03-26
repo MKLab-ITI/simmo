@@ -1,6 +1,7 @@
 package gr.iti.mklab.simmo.items;
 
 import gr.iti.mklab.simmo.*;
+import gr.iti.mklab.simmo.cluster.Clusterable;
 import gr.iti.mklab.simmo.util.Location;
 import org.mongodb.morphia.annotations.Embedded;
 
@@ -14,7 +15,7 @@ import org.mongodb.morphia.annotations.Embedded;
  * @since July 3, 2014
  * @author kandreadou
  */
-public abstract class Media extends Item {
+public abstract class Media extends Item implements Clusterable {
 
     @Embedded
     protected Location location;

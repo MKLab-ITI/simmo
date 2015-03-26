@@ -3,6 +3,7 @@ package gr.iti.mklab.simmo.morphia;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import gr.iti.mklab.simmo.jobs.CrawlJob;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
@@ -16,6 +17,7 @@ import java.util.Map;
  */
 public class MorphiaManager {
 
+    private final static String CRAWLS_DB_NAME = "simmo_crawls";
     private static MongoClient mongoClient;
     private static Map<String, DB> dbases = new HashMap<String, DB>();
     private static final Morphia morphia = new Morphia();
@@ -67,5 +69,9 @@ public class MorphiaManager {
             ds.ensureIndexes();
         }
         return dbases.get(dbName);
+    }
+
+    public static DB getCrawlsDB(){
+       return getDB(CRAWLS_DB_NAME);
     }
 }

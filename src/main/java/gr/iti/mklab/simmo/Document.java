@@ -1,9 +1,5 @@
 package gr.iti.mklab.simmo;
 
-import gr.iti.mklab.simmo.associations.Contribution;
-import org.mongodb.morphia.annotations.Reference;
-import org.mongodb.morphia.annotations.Transient;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,11 +54,11 @@ public abstract class Document extends Object {
         this.language = language;
     }
 
-    public void addAssociation(Association a){
+    public void addAssociation(Association a) {
         associations.add(a);
     }
 
-    public void removeAssociation(Association a){
+    public void removeAssociation(Association a) {
         associations.remove(a);
     }
 

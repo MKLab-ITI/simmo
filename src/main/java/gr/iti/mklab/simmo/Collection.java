@@ -1,7 +1,5 @@
 package gr.iti.mklab.simmo;
 
-import gr.iti.mklab.simmo.documents.Post;
-
 import java.util.ArrayList;
 import java.util.List;
 

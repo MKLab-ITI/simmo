@@ -4,11 +4,13 @@ import gr.iti.mklab.simmo.*;
 import gr.iti.mklab.simmo.Object;
 import gr.iti.mklab.simmo.associations.Contribution;
 import gr.iti.mklab.simmo.associations.Interaction;
+import gr.iti.mklab.simmo.cluster.Cluster;
 import gr.iti.mklab.simmo.documents.Post;
 import gr.iti.mklab.simmo.documents.Webpage;
 import gr.iti.mklab.simmo.items.Image;
 import gr.iti.mklab.simmo.items.Text;
 import gr.iti.mklab.simmo.items.Video;
+import gr.iti.mklab.simmo.jobs.CrawlJob;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.dao.BasicDAO;
 import org.mongodb.morphia.dao.DAO;
@@ -34,6 +36,8 @@ public class DAOManager {
     public final DAO<WebDomain, String> domainDAO;
     //public final DAO<Association, ObjectId> associationDAO;
     public final AssociationDAO associationDAO;
+    public final DAO<CrawlJob, String> crawlsDAO;
+    public final DAO<Cluster, String> clusterDAO;
 
     public DAOManager(String dbName) {
         imageDAO = new MediaDAO<Image>(Image.class, dbName);
@@ -43,6 +47,8 @@ public class DAOManager {
         pageDAO = new ObjectDAO<Webpage>(Webpage.class, dbName);
         userDAO = new BasicDAO<UserAccount, String>(UserAccount.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB(dbName).getName());
         domainDAO = new BasicDAO<WebDomain, String>(WebDomain.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB(dbName).getName());
+        clusterDAO = new BasicDAO<>(Cluster.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB(dbName).getName());
+        crawlsDAO = new BasicDAO<>(CrawlJob.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getCrawlsDB().getName());
         associationDAO = new AssociationDAO(dbName);
         //associationDAO = new BasicDAO<Association, ObjectId>(Association.class, MorphiaManager.getMongoClient(), MorphiaManager.getMorphia(), MorphiaManager.getDB(dbName).getName());
     }

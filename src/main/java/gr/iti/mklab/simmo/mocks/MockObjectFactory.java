@@ -67,7 +67,7 @@ public class MockObjectFactory {
         Image img = new Image();
         img.setWidth(800);
         img.setHeight(500);
-        //img.setId(id);
+        img.setId(id);
         img.setThumbnail("/home/fake/path");
         img.setDescription("this is not an image");
         //img.setAuthor("me");

@@ -1,7 +1,10 @@
 package gr.iti.mklab.simmo;
 
+import gr.iti.mklab.simmo.cluster.Cluster;
 import gr.iti.mklab.simmo.documents.Post;
 import gr.iti.mklab.simmo.documents.Webpage;
+import gr.iti.mklab.simmo.items.Image;
+import gr.iti.mklab.simmo.jobs.CrawlJob;
 import gr.iti.mklab.simmo.mocks.MockObjectFactory;
 import gr.iti.mklab.simmo.morphia.DAOManager;
 
@@ -25,7 +28,21 @@ public class DAOManagerTest extends DAOTest {
 
     @Test
     public void test() {
-        //testPost();
+        testCrawl();
+    }
+
+    public void testCrawl(){
+        mgr.crawlsDAO.save(new CrawlJob("daf","sdf", null, true));
+    }
+
+    public void testCluster(){
+        Image im = MockObjectFactory.getImage("blabla");
+        mgr.imageDAO.save(im);
+        Cluster c = new Cluster();
+        c.addMember(im);
+        mgr.clusterDAO.save(c);
+        Image im1 = (Image) mgr.clusterDAO.get("5514268300b04db3ca890382").members.get(0);
+        int m = 5;
     }
 
     public void testPost() {
