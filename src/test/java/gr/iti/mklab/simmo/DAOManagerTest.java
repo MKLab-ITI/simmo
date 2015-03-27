@@ -41,8 +41,6 @@ public class DAOManagerTest extends DAOTest {
         Cluster c = new Cluster();
         c.addMember(im);
         mgr.clusterDAO.save(c);
-        Image im1 = (Image) mgr.clusterDAO.get("5514268300b04db3ca890382").members.get(0);
-        int m = 5;
     }
 
     public void testPost() {

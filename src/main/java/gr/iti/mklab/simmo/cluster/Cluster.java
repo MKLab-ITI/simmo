@@ -45,4 +45,8 @@ public class Cluster {
     public void setSize(int size) {
         this.size = size;
     }
+
+    public List<Clusterable> getMembers() {
+        return members;
+    }
 }
