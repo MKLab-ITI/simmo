@@ -35,4 +35,32 @@ public abstract class Job {
      * Useful for finding out how long a job has been waiting or running for instance
      */
     protected Date lastStateChange;
+
+    public STATE getState() {
+        return requestState;
+    }
+
+    public void setState(STATE requestState) {
+        this.requestState = requestState;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Date getLastStateChange() {
+        return lastStateChange;
+    }
+
+    public void setLastStateChange(Date lastStateChange) {
+        this.lastStateChange = lastStateChange;
+    }
+
+    public String getId() {
+        return id;
+    }
 }

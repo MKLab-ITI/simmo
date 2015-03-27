@@ -24,7 +24,9 @@ public class Cluster {
     protected String id = new ObjectId().toString();
 
     @Reference
-    public List<Clusterable> members = new ArrayList<>();
+    protected List<Clusterable> members = new ArrayList<>();
+
+    protected int size;
 
     public Cluster(){}
 
@@ -36,4 +38,11 @@ public class Cluster {
         members.remove(c);
     }
 
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
 }

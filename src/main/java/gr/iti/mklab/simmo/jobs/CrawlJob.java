@@ -2,6 +2,7 @@ package gr.iti.mklab.simmo.jobs;
 
 import org.mongodb.morphia.annotations.Entity;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -45,6 +46,9 @@ public class CrawlJob extends Job {
         this.collection = collection;
         this.keywords = keywords;
         this.isNew = isNew;
+        this.requestState = STATE.WAITING;
+        this.lastStateChange = new Date();
+        this.creationDate = new Date();
     }
 
     public void addKeyword(String keyword) {
@@ -56,4 +60,35 @@ public class CrawlJob extends Job {
         keywords.remove(keyword);
     }
 
+    public String getCrawlDataPath() {
+        return crawlDataPath;
+    }
+
+    public void setCrawlDataPath(String crawlDataPath) {
+        this.crawlDataPath = crawlDataPath;
+    }
+
+    public String getCollection() {
+        return collection;
+    }
+
+    public void setCollection(String collection) {
+        this.collection = collection;
+    }
+
+    public Set<String> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(Set<String> keywords) {
+        this.keywords = keywords;
+    }
+
+    public boolean isNew() {
+        return isNew;
+    }
+
+    public void setNew(boolean isNew) {
+        this.isNew = isNew;
+    }
 }

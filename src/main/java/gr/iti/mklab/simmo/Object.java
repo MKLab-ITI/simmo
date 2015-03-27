@@ -144,9 +144,17 @@ public abstract class Object extends Annotatable {
     }
 
     public List<gr.iti.mklab.simmo.associations.Reference> getLinks() {
+        return getReferenceOfType(gr.iti.mklab.simmo.associations.Reference.ReferenceType.LINK);
+    }
+
+    public List<gr.iti.mklab.simmo.associations.Reference> getReplies() {
+        return getReferenceOfType(gr.iti.mklab.simmo.associations.Reference.ReferenceType.REPLY);
+    }
+
+    private List<gr.iti.mklab.simmo.associations.Reference> getReferenceOfType(gr.iti.mklab.simmo.associations.Reference.ReferenceType type) {
         List<gr.iti.mklab.simmo.associations.Reference> refs = getAssociationsOfType(gr.iti.mklab.simmo.associations.Reference.class);
         return refs.stream()
-                .filter(t -> t.getType() == gr.iti.mklab.simmo.associations.Reference.ReferenceType.LINK)
+                .filter(t -> t.getType() == type)
                 .collect(Collectors.toList());
     }
 }

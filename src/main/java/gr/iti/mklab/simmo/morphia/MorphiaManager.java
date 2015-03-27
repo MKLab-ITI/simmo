@@ -72,6 +72,16 @@ public class MorphiaManager {
     }
 
     public static DB getCrawlsDB(){
-       return getDB(CRAWLS_DB_NAME);
+        if (!dbases.containsKey(CRAWLS_DB_NAME)) {
+            DB db = mongoClient.getDB(CRAWLS_DB_NAME);
+            dbases.put(CRAWLS_DB_NAME, db);
+            Morphia crawlsMoprhia = new Morphia();
+            Datastore ds = crawlsMoprhia.createDatastore(mongoClient, db.getName());
+            crawlsMoprhia.map(CrawlJob.class);
+            ds.ensureCaps();
+            ds.ensureIndexes();
+        }
+        return dbases.get(CRAWLS_DB_NAME);
+       //return getDB(CRAWLS_DB_NAME);
     }
 }
