@@ -1,12 +1,11 @@
 package gr.iti.mklab.simmo;
 
-import gr.iti.mklab.simmo.cluster.Cluster;
-import gr.iti.mklab.simmo.documents.Post;
-import gr.iti.mklab.simmo.documents.Webpage;
-import gr.iti.mklab.simmo.items.Image;
-import gr.iti.mklab.simmo.jobs.CrawlJob;
-import gr.iti.mklab.simmo.mocks.MockObjectFactory;
-import gr.iti.mklab.simmo.morphia.DAOManager;
+import gr.iti.mklab.simmo.core.cluster.Cluster;
+import gr.iti.mklab.simmo.core.documents.Webpage;
+import gr.iti.mklab.simmo.core.items.Image;
+import gr.iti.mklab.simmo.core.jobs.CrawlJob;
+import gr.iti.mklab.simmo.core.mocks.MockObjectFactory;
+import gr.iti.mklab.simmo.core.morphia.DAOManager;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,13 +21,13 @@ public class DAOManagerTest extends DAOTest {
 
     @Before
     public void setup() {
-        mgr = new DAOManager("morphia");
+        mgr = new DAOManager("morphia3");
         //mgr2 = new DAOManager("morphia2");
     }
 
     @Test
     public void test() {
-        testCrawl();
+        testPost();
     }
 
     public void testCrawl(){

@@ -3,10 +3,10 @@ package gr.iti.mklab.simmo;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import gr.iti.mklab.simmo.documents.Post;
-import gr.iti.mklab.simmo.items.Text;
-import gr.iti.mklab.simmo.items.Video;
-import gr.iti.mklab.simmo.associations.Reference;
+import gr.iti.mklab.simmo.core.UserAccount;
+import gr.iti.mklab.simmo.core.documents.Post;
+import gr.iti.mklab.simmo.core.items.Text;
+import gr.iti.mklab.simmo.core.items.Video;
 
 import java.text.DateFormat;
 import java.util.Calendar;

@@ -1,6 +1,6 @@
 package gr.iti.mklab.simmo;
 
-import gr.iti.mklab.simmo.morphia.MorphiaManager;
+import gr.iti.mklab.simmo.core.morphia.MorphiaManager;
 import org.junit.After;
 import org.junit.Before;
 

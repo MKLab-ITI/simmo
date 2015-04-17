@@ -1,10 +1,10 @@
 package gr.iti.mklab.simmo;
 
-import gr.iti.mklab.simmo.annotations.Original;
-import gr.iti.mklab.simmo.associations.Similarity;
-import gr.iti.mklab.simmo.items.Image;
-import gr.iti.mklab.simmo.mocks.MockObjectFactory;
-import gr.iti.mklab.simmo.morphia.MediaDAO;
+import gr.iti.mklab.simmo.core.annotations.Original;
+import gr.iti.mklab.simmo.core.associations.Similarity;
+import gr.iti.mklab.simmo.core.items.Image;
+import gr.iti.mklab.simmo.core.mocks.MockObjectFactory;
+import gr.iti.mklab.simmo.core.morphia.MediaDAO;
 import org.junit.Test;
 
 import java.util.Calendar;
