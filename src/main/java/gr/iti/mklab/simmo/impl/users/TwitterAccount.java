@@ -13,6 +13,8 @@ import twitter4j.User;
 @Entity("UserAccount")
 public class TwitterAccount extends UserAccount {
 
+    public TwitterAccount(){
+    }
 
     public TwitterAccount(User user) {
 
