@@ -11,13 +11,16 @@ import java.util.Date;
 
 /**
  * Class that holds the information of a youtube user
+ * YouTube API v3
  *
  * @author kandreadou
  */
 @Entity("UserAccount")
-public class YoutubeChannel extends UserAccount {
+public class YoutubeChannel_APIv3 extends UserAccount {
 
-    public YoutubeChannel(Channel c) {
+    public YoutubeChannel_APIv3(){}
+
+    public YoutubeChannel_APIv3(Channel c) {
         setId(Sources.YOUTUBE + '#' + c.getId());
         source = Sources.YOUTUBE;
         name = c.getSnippet().getTitle();

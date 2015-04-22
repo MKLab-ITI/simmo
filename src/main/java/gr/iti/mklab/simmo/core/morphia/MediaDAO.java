@@ -1,5 +1,6 @@
 package gr.iti.mklab.simmo.core.morphia;
 
+import gr.iti.mklab.simmo.core.annotations.lowleveldescriptors.LocalDescriptors;
 import gr.iti.mklab.simmo.core.items.Media;
 import org.mongodb.morphia.query.Query;
 
@@ -47,8 +48,8 @@ public class MediaDAO<M extends Media> extends ObjectDAO<M> {
                 filter("height" + " >", height).offset(offset).limit(count).asList();
     }
 
-    public List<M> getNotVIndexed(Class annotationClazz, int numImages) {
+    public List<M> getNotVIndexed(int numImages) {
         //Disable validation because className is not a declared field
-        return getDatastore().find(clazz).disableValidation().filter("annotations.className nin", annotationClazz.getName()).limit(numImages).asList();
+        return getDatastore().find(clazz).disableValidation().filter("annotations.className nin", LocalDescriptors.class.getName()).limit(numImages).asList();
     }
 }

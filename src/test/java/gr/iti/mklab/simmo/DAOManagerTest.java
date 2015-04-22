@@ -50,7 +50,7 @@ public class DAOManagerTest extends DAOTest {
 
     public void testPost() {
         //mgr.savePost(MockObjectFactory.getPost("testid"));
-        List<Image> im = mgr.imageDAO.getNotVIndexed(LocalDescriptors.class, 5);
+        List<Image> im = mgr.imageDAO.getNotVIndexed(5);
         //Post post = mgr.postDAO.get("testid");
         //post.associations = mgr.associationDAO.findAssociationsForObject(post);
     }
