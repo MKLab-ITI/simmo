@@ -56,6 +56,7 @@ public class MockObjectFactory {
         p.setLocation(new Location(48.8577, 2.4567));
         p.addItem(getImage("image09990"));
         p.addTag("a tag");
+        p.addLabel("twitter");
         p.addAnnotation(new Original(false));
         p.setContributor(getUserAccount("John Doe"));
         p.setReplied(getUserAccount("Some person"));

@@ -2,6 +2,7 @@ package gr.iti.mklab.simmo.impl.media;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 
 import com.google.api.client.util.Key;
 
@@ -33,7 +34,7 @@ public class DailyMotionVideo extends Video {
         //Title
         this.setTitle(video.title);
         //Tags
-        this.setTags(Arrays.asList(video.tags));
+        this.setTags(new HashSet<>(Arrays.asList(video.tags)));
         //Popularity
         //comments = new Long(video.comments_total);
         numViews = video.views_total;

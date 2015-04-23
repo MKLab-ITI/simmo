@@ -3,6 +3,7 @@ package gr.iti.mklab.simmo.impl.media;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 
 import com.google.api.client.util.Key;
 
@@ -43,7 +44,7 @@ public class VimeoVideo extends Video {
 		//Tags
 		String tags = video.tags;
 		if(tags != null) {
-			this.setTags(Arrays.asList(tags.split(",")));
+			this.setTags(new HashSet<>(Arrays.asList(tags.split(","))));
 		}
 		//Description
 		this.setDescription(video.description);

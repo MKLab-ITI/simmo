@@ -4,9 +4,7 @@ import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
 import org.mongodb.morphia.annotations.Transient;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -33,7 +31,13 @@ public abstract class Object extends Annotatable {
      * A list of tags in case of a social media item or a list of keywords
      * in case of an html based item
      */
-    protected List<String> tags = new ArrayList<String>();
+    protected Set<String> tags = new HashSet<String>();
+
+    /**
+     * A list of tags for internal use, e.g. crawler tags
+     */
+    protected Set<String> labels = new HashSet<>();
+
     protected Date creationDate;
     protected Date lastModifiedDate;
     protected Date crawlDate;
@@ -80,11 +84,11 @@ public abstract class Object extends Annotatable {
         this.description = description;
     }
 
-    public List<String> getTags() {
+    public Set<String> getTags() {
         return tags;
     }
 
-    public void setTags(List<String> tags){this.tags = tags;}
+    public void setTags(Set<String> tags){this.tags = tags;}
 
     public void addTag(String tag) {
         tags.add(tag);
@@ -92,6 +96,20 @@ public abstract class Object extends Annotatable {
 
     public void removeTag(String tag) {
         tags.remove(tag);
+    }
+
+    public Set<String> getLabels() {
+        return labels;
+    }
+
+    public void setLabels(Set<String> labels){this.labels = labels;}
+
+    public void addLabel(String label) {
+        labels.add(label);
+    }
+
+    public void removeLabel(String label) {
+        labels.remove(label);
     }
 
     public Date getCreationDate() {

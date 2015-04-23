@@ -47,13 +47,11 @@ public class FlickrPost extends Post {
         //Tags of the photo
         Collection<Tag> photoTags = photo.getTags();
         if (photoTags != null) {
-            List<String> tagsList = new ArrayList<String>();
             for (Tag tag : photoTags) {
                 String tagStr = tag.getValue();
                 if (tagStr != null && !tagStr.contains(":"))
-                    tagsList.add(tagStr);
+                   tags.add(tagStr);
             }
-            tags = tagsList;
         }
 
         //User that posted the photo

@@ -3,6 +3,7 @@ package gr.iti.mklab.simmo.impl.media;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 
 import com.google.api.client.util.Key;
 
@@ -48,7 +49,7 @@ public class TwitPicImage extends Image {
         this.setTitle(image.message);
         //Tags
         if (image.tags != null) {
-            this.setTags(Arrays.asList(image.tags.split(",")));
+            this.setTags(new HashSet<>(Arrays.asList(image.tags.split(","))));
         }
         //Popularity
         numComments = image.number_of_comments;

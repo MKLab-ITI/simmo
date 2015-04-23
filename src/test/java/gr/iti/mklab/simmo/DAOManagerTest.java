@@ -1,8 +1,5 @@
 package gr.iti.mklab.simmo;
 
-import gr.iti.mklab.simmo.core.annotations.Original;
-import gr.iti.mklab.simmo.core.annotations.lowleveldescriptors.LocalDescriptors;
-import gr.iti.mklab.simmo.core.associations.Origin;
 import gr.iti.mklab.simmo.core.cluster.Cluster;
 import gr.iti.mklab.simmo.core.documents.Post;
 import gr.iti.mklab.simmo.core.documents.Webpage;
@@ -13,8 +10,6 @@ import gr.iti.mklab.simmo.core.morphia.DAOManager;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.List;
 
 
 /**
@@ -27,7 +22,7 @@ public class DAOManagerTest extends DAOTest {
 
     @Before
     public void setup() {
-        mgr = new DAOManager("morphia3");
+        mgr = new DAOManager("morphia4");
         //mgr2 = new DAOManager("morphia2");
     }
 
@@ -49,9 +44,9 @@ public class DAOManagerTest extends DAOTest {
     }
 
     public void testPost() {
-        //mgr.savePost(MockObjectFactory.getPost("testid"));
-        List<Image> im = mgr.imageDAO.getNotVIndexed(5);
-        //Post post = mgr.postDAO.get("testid");
+        mgr.savePost(MockObjectFactory.getPost("testid"));
+        //List<Image> im = mgr.imageDAO.getNotVIndexed(5);
+       Post post = mgr.postDAO.get("testid");
         //post.associations = mgr.associationDAO.findAssociationsForObject(post);
     }
 

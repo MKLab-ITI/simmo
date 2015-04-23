@@ -74,15 +74,13 @@ public class GooglePlusPost extends Post {
         description = object.getContent();
         if (description != null) {
             try {
-                List<String> tagsList = new ArrayList<String>();
                 Document doc = Jsoup.parse(description);
                 Elements elements = doc.getElementsByClass("ot-hashtag");
                 for (Element e : elements) {
                     String tag = e.text();
                     if (tag != null)
-                        tagsList.add(tag.replaceAll("#", ""));
+                        tags.add(tag.replaceAll("#", ""));
                 }
-                tags = tagsList;
             } catch (Exception e) {
             }
         }
