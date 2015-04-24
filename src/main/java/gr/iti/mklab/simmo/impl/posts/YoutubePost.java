@@ -21,7 +21,6 @@ import java.net.URL;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.mongodb.morphia.annotations.Entity;
 
 /**
@@ -30,7 +29,7 @@ import org.mongodb.morphia.annotations.Entity;
  *
  * @author kandreadou
  */
-@Entity("Video")
+@Entity("Post")
 public class YoutubePost extends Post {
 
     public YoutubePost() {
