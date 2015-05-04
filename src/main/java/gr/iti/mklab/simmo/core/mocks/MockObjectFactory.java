@@ -5,6 +5,7 @@ import gr.iti.mklab.simmo.core.annotations.Original;
 import gr.iti.mklab.simmo.core.associations.Affiliation;
 import gr.iti.mklab.simmo.core.associations.Contribution;
 import gr.iti.mklab.simmo.core.associations.Interaction;
+import gr.iti.mklab.simmo.core.associations.Reference;
 import gr.iti.mklab.simmo.core.documents.Post;
 import gr.iti.mklab.simmo.core.documents.Webpage;
 import gr.iti.mklab.simmo.core.items.Image;
@@ -61,6 +62,12 @@ public class MockObjectFactory {
         p.setContributor(getUserAccount("John Doe"));
         p.setReplied(getUserAccount("Some person"));
         p.addAssociation(new Interaction(p, getUserAccount("Some other person"), Interaction.InteractionType.DISLIKE));
+        Webpage page = new Webpage();
+        page.setId("Web#"+56);
+        page.setUrl("www.google.com");
+        page.setDescription("oh how boring");
+        p.addAnnotation(new Original(false));
+        p.addAssociation(new Reference(p, page, Reference.ReferenceType.LINK));
         return p;
     }
 

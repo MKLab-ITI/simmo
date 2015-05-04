@@ -3,6 +3,7 @@ package gr.iti.mklab.simmo.core.morphia;
 import gr.iti.mklab.simmo.core.*;
 import gr.iti.mklab.simmo.core.associations.Contribution;
 import gr.iti.mklab.simmo.core.associations.Interaction;
+import gr.iti.mklab.simmo.core.associations.Reference;
 import gr.iti.mklab.simmo.core.cluster.Cluster;
 import gr.iti.mklab.simmo.core.documents.Post;
 import gr.iti.mklab.simmo.core.documents.Webpage;
@@ -128,6 +129,11 @@ public class DAOManager {
     private void saveAssociations(List<? extends Association> associations) {
         for (Association a : associations) {
             associationDAO.save(a);
+            if(a instanceof Reference){
+                Reference ref = (Reference) a;
+                if(ref.getType()== Reference.ReferenceType.LINK)
+                    pageDAO.save((Webpage)ref.getRefDocument());
+            }
         }
     }
 
