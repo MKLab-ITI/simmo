@@ -40,6 +40,9 @@ public class YoutubePost extends Post {
         if (videoEntry == null || videoEntry.getId() == null)
             return;
 
+        //Crawl date
+        Date now = new Date();
+        setCrawlDate(now);
         YouTubeMediaGroup mediaGroup = videoEntry.getMediaGroup();
         //Id
         id = Sources.YOUTUBE + "#" + mediaGroup.getVideoId();
@@ -63,6 +66,7 @@ public class YoutubePost extends Post {
         YtStatistics statistics = videoEntry.getStatistics();
         if (statistics != null) {
             numLikes = (int) statistics.getFavoriteCount();
+            numViews = (int) statistics.getViewCount();
         }
 
         //Getting the video
@@ -129,8 +133,8 @@ public class YoutubePost extends Post {
             mediaItem.setTags(tags);
             //Popularity
             if (statistics != null) {
-                mediaItem.setNumLikes((int) statistics.getFavoriteCount());
-                mediaItem.setNumViews((int) statistics.getViewCount());
+                mediaItem.setNumLikes(numLikes);
+                mediaItem.setNumViews(numViews);
             }
             Rating rating = videoEntry.getRating();
             if (rating != null) {
@@ -139,7 +143,8 @@ public class YoutubePost extends Post {
             //Size
             mediaItem.setWidth(thumbnail.getWidth());
             mediaItem.setHeight(thumbnail.getHeight());
-
+            //Crawl date
+            mediaItem.setCrawlDate(now);
             items.add(mediaItem);
         }
 

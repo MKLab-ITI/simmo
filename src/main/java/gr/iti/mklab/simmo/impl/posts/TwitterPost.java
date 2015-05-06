@@ -39,6 +39,9 @@ public class TwitterPost extends Post {
 
         if (status == null) return;
 
+        //Crawl date
+        Date now = new Date();
+        setCrawlDate(now);
         //Id
         setId(Sources.TWITTER + "#" + status.getId());
         //SocialNetwork Name
@@ -204,11 +207,19 @@ public class TwitterPost extends Post {
                     //Location
                     img.setLocation(location);
                     img.setSourceDocumentId(id);
+                    //Crawl date
+                    img.setCrawlDate(now);
 
                     //Size
                     Map<Integer, Size> sizes = mediaEntity.getSizes();
-                    Size size = sizes.get(Size.MEDIUM);
+                    Size size = sizes.get(Size.LARGE);
                     if (size != null) {
+                        img.setWidth(size.getWidth());
+                        img.setHeight(size.getHeight());
+                    } else if ((size = sizes.get(Size.MEDIUM)) != null) {
+                        img.setWidth(size.getWidth());
+                        img.setHeight(size.getHeight());
+                    }else if ((size = sizes.get(Size.SMALL)) != null) {
                         img.setWidth(size.getWidth());
                         img.setHeight(size.getHeight());
                     }

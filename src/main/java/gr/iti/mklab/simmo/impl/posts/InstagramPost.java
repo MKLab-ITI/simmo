@@ -62,6 +62,7 @@ public class InstagramPost extends Post {
         }
         //Popularity
         numLikes = image.getLikes().getCount();
+        numComments = image.getComments().getCount();
 
         //Getting the photo
         Images imageContent = image.getImages();
@@ -111,7 +112,7 @@ public class InstagramPost extends Post {
                 img.setTags(tags);
                 //Popularity
                 img.setNumLikes(numLikes);
-                img.setNumComments(image.getComments().getCount());
+                img.setNumComments(numComments);
                 //Location
                 img.setLocation(location);
                 addItem(img);

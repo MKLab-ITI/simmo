@@ -30,9 +30,6 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity("Post")
 public class TumblrPost extends gr.iti.mklab.simmo.core.documents.Post {
 
-
-    private Logger logger = Logger.getLogger(TumblrPost.class);
-
     public TumblrPost(Post post) throws MalformedURLException {
 
         if (post == null || post.getId() == null) {
@@ -48,6 +45,8 @@ public class TumblrPost extends gr.iti.mklab.simmo.core.documents.Post {
         creationDate = new Date(post.getTimestamp() * 1000);
 
         url = post.getPostUrl();
+
+        title = post.getBlogName();
 
         //Tags
         post.getTags().stream().forEach(hashtag -> {
@@ -97,9 +96,9 @@ public class TumblrPost extends gr.iti.mklab.simmo.core.documents.Post {
                     }
                 }
             } catch (MalformedURLException e1) {
-                logger.error("Photo URL is distorted: " + e1);
+                System.out.println("Photo URL is distorted: " + e1);
             } catch (Exception e2) {
-                logger.error("Exception: " + e2);
+                System.out.println("Exception: " + e2);
             }
         } else if (post.getType().equals("video")) {
             VideoPost vidPost = (VideoPost) post;
@@ -157,7 +156,7 @@ public class TumblrPost extends gr.iti.mklab.simmo.core.documents.Post {
             try {
                 url = new URL(videoUrl);
             } catch (MalformedURLException e1) {
-                logger.error("Video URL is distorted : " + e1);
+                System.out.println("Video URL is distorted : " + e1);
             }
             number++;
 
@@ -189,7 +188,7 @@ public class TumblrPost extends gr.iti.mklab.simmo.core.documents.Post {
                 p.setUrl(link);
                 p.setId(id);
                 p.setSource(Sources.TUMBLR);
-                addAssociation(new Reference(this, p, Reference.ReferenceType.LINK));
+                //addAssociation(new Reference(this, p, Reference.ReferenceType.LINK));
             }
         }
 

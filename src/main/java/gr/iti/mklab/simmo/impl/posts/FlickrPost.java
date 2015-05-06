@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import com.flickr4java.flickr.people.User;
@@ -32,6 +33,9 @@ public class FlickrPost extends Post {
 
         if (photo == null || photo.getId() == null) return;
 
+        //Crawl date
+        Date now = new Date();
+        setCrawlDate(now);
         //Id
         id = Sources.FLICKR + "#" + photo.getId();
         //SocialNetwork Name
@@ -75,6 +79,8 @@ public class FlickrPost extends Post {
 
         //Popularity
         numComments = photo.getComments();
+        numViews = photo.getStats().getViews();
+        numLikes = photo.getStats().getFavorites();
 
         //Getting the photo
         try {
@@ -118,9 +124,12 @@ public class FlickrPost extends Post {
                 img.setTags(tags);
                 //Popularity
                 img.setNumComments(numComments);
-                img.setNumViews(photo.getViews());
+                img.setNumViews(numViews);
+                img.setNumLikes(numLikes);
                 //Location
                 img.setLocation(location);
+                //Crawl date
+                img.setCrawlDate(now);
                 addItem(img);
             }
 
