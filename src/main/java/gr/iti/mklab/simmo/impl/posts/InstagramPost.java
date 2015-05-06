@@ -29,6 +29,9 @@ public class InstagramPost extends Post {
         if (image == null || image.getId() == null)
             return;
 
+        //Crawl date
+        Date now = new Date();
+        setCrawlDate(now);
         //Id
         id = Sources.INSTAGRAM + "#" + image.getId();
         //SocialNetwork Name
@@ -115,6 +118,7 @@ public class InstagramPost extends Post {
                 img.setNumComments(numComments);
                 //Location
                 img.setLocation(location);
+                img.setCrawlDate(now);
                 addItem(img);
             }
 

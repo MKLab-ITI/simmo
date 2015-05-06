@@ -54,7 +54,7 @@ public class FlickrPost extends Post {
             for (Tag tag : photoTags) {
                 String tagStr = tag.getValue();
                 if (tagStr != null && !tagStr.contains(":"))
-                   tags.add(tagStr);
+                    tags.add(tagStr);
             }
         }
 
@@ -73,14 +73,19 @@ public class FlickrPost extends Post {
             double longitude = (double) geo.getLongitude();
 
             location = new Location(latitude, longitude);
+        }else if(photo.getCountry()!=null){
+            location = new Location();
+            location.setCountry(photo.getCountry().getName());
         }
 
         url = photo.getUrl();
 
         //Popularity
         numComments = photo.getComments();
-        numViews = photo.getStats().getViews();
-        numLikes = photo.getStats().getFavorites();
+        if (photo.getStats() != null) {
+            numViews = photo.getStats().getViews();
+            numLikes = photo.getStats().getFavorites();
+        }
 
         //Getting the photo
         try {
@@ -128,6 +133,9 @@ public class FlickrPost extends Post {
                 img.setNumLikes(numLikes);
                 //Location
                 img.setLocation(location);
+                //Size
+                img.setWidth(photo.getOriginalWidth());
+                img.setHeight(photo.getOriginalHeight());
                 //Crawl date
                 img.setCrawlDate(now);
                 addItem(img);

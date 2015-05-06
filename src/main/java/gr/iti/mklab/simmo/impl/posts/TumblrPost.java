@@ -36,6 +36,10 @@ public class TumblrPost extends gr.iti.mklab.simmo.core.documents.Post {
             return;
         }
 
+        //Crawl date
+        Date now = new Date();
+        setCrawlDate(now);
+
         id = Sources.TUMBLR + "#" + post.getId();
 
         //SocialNetwork Name
@@ -91,6 +95,7 @@ public class TumblrPost extends gr.iti.mklab.simmo.core.documents.Post {
                         img.setTags(tags);
                         img.setContributor(getContributor());
                         img.setSourceDocumentId(id);
+                        img.setCrawlDate(now);
                         items.add(img);
 
                     }
@@ -176,7 +181,7 @@ public class TumblrPost extends gr.iti.mklab.simmo.core.documents.Post {
             video.setSourceDocumentId(id);
             video.setTags(tags);
             video.setContributor(getContributor());
-
+            video.setCrawlDate(now);
             items.add(video);
 
         } else if (post.getType().equals("link")) {
@@ -188,7 +193,8 @@ public class TumblrPost extends gr.iti.mklab.simmo.core.documents.Post {
                 p.setUrl(link);
                 p.setId(id);
                 p.setSource(Sources.TUMBLR);
-                //addAssociation(new Reference(this, p, Reference.ReferenceType.LINK));
+                p.setCrawlDate(now);
+                addAssociation(new Reference(this, p, Reference.ReferenceType.LINK));
             }
         }
 
