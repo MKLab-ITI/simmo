@@ -14,6 +14,8 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity("UserAccount")
 public class FlickrAccount extends UserAccount {
 
+    public FlickrAccount(){}
+
     public FlickrAccount(User user) {
 
         if (user == null) return;

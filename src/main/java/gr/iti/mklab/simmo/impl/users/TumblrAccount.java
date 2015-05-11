@@ -16,6 +16,8 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity("UserAccount")
 public class TumblrAccount extends UserAccount {
 
+    public TumblrAccount(){}
+
     public TumblrAccount(Blog blog) {
 
         //Id

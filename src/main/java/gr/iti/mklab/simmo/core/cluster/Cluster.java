@@ -26,13 +26,14 @@ public class Cluster {
 
     protected int size;
 
-    public Cluster(){}
+    public Cluster() {
+    }
 
-    public void addMember(Clusterable c){
+    public void addMember(Clusterable c) {
         members.add(c);
     }
 
-    public void removeMember(Clusterable c){
+    public void removeMember(Clusterable c) {
         members.remove(c);
     }
 
@@ -46,5 +47,9 @@ public class Cluster {
 
     public List<Clusterable> getMembers() {
         return members;
+    }
+
+    public String getId() {
+        return id;
     }
 }

@@ -1,5 +1,6 @@
 package gr.iti.mklab.simmo.core.morphia;
 
+import gr.iti.mklab.simmo.core.annotations.Clustered;
 import gr.iti.mklab.simmo.core.annotations.lowleveldescriptors.LocalDescriptors;
 import gr.iti.mklab.simmo.core.items.Media;
 import org.mongodb.morphia.query.Query;
@@ -51,5 +52,11 @@ public class MediaDAO<M extends Media> extends ObjectDAO<M> {
     public List<M> getNotVIndexed(int numImages) {
         //Disable validation because className is not a declared field
         return getDatastore().find(clazz).disableValidation().filter("annotations.className nin", LocalDescriptors.class.getName()).limit(numImages).asList();
+    }
+
+    public List<M> getIndexedNotClustered(int numImages) {
+        //Disable validation because className is not a declared field
+        return getDatastore().find(clazz).disableValidation().filter("annotations.className nin", LocalDescriptors.class.getName()).
+                filter("annotations.className nin", Clustered.class.getName()).limit(numImages).asList();
     }
 }

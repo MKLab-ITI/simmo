@@ -15,6 +15,7 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity("UserAccount")
 public class InstagramAccount extends UserAccount {
 
+    public InstagramAccount(){}
 
     public InstagramAccount(User user) {
 
