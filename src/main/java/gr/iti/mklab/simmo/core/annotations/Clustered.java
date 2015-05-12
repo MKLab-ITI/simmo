@@ -14,6 +14,8 @@ public class Clustered implements Annotation {
      */
     private String clusterId;
 
+    public Clustered(){}
+
     public Clustered(String clusterId) {
         this.clusterId = clusterId;
     }
