@@ -24,4 +24,10 @@ public class Sources {
     public final static String TWITPIC = "TwitPic";
 
     public final static String DAILYMOTION = "DailyMotion";
+
+    public final static String GOOGLE_STREETVIEW = "StreetView";
+
+    public final static String PANORAMIO = "Panoramio";
+
+    public final static String WIKIMAPIA = "Wikimapia";
 }
