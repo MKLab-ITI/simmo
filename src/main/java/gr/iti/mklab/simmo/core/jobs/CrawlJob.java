@@ -33,6 +33,12 @@ public class CrawlJob extends Job {
     protected Set<String> keywords = new HashSet<String>();
 
     /**
+     * A bound box (minimum and maximum longitude and latitude)
+     * for geographic crawls
+     */
+    protected double lon_min, lat_min, lon_max, lat_max;
+
+    /**
      * Will be this a new or an already existing crawl?
      * By default start a new crawl
      */
@@ -46,6 +52,17 @@ public class CrawlJob extends Job {
         this.collection = collection;
         this.keywords = keywords;
         this.isNew = isNew;
+        this.requestState = STATE.WAITING;
+        this.lastStateChange = new Date();
+        this.creationDate = new Date();
+    }
+
+    public CrawlJob(String collection, double lon_min, double lat_min, double lon_max, double lat_max) {
+        this.collection = collection;
+        this.lon_min = lon_min;
+        this.lat_min = lat_min;
+        this.lon_max = lon_max;
+        this.lat_max = lat_max;
         this.requestState = STATE.WAITING;
         this.lastStateChange = new Date();
         this.creationDate = new Date();
@@ -90,5 +107,21 @@ public class CrawlJob extends Job {
 
     public void setNew(boolean isNew) {
         this.isNew = isNew;
+    }
+
+    public double getLon_min() {
+        return lon_min;
+    }
+
+    public double getLat_min() {
+        return lat_min;
+    }
+
+    public double getLon_max() {
+        return lon_max;
+    }
+
+    public double getLat_max() {
+        return lat_max;
     }
 }
