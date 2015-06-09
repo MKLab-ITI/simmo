@@ -27,7 +27,7 @@ public class PanoramioImage extends Image {
         setWidth(item.width);
         setHeight(item.height);
         setLocation(new Location(item.latitude, item.longitude));
-        setContributor(new PanoramioAccount(String.valueOf(item.owner_id), item.owner_url, item.owner_name));
+        //setContributor(new PanoramioAccount(String.valueOf(item.owner_id), item.owner_url, item.owner_name));
     }
 
     /*

@@ -1,6 +1,9 @@
 package gr.iti.mklab.simmo.core.annotations;
 
 import gr.iti.mklab.simmo.core.Annotation;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 
 
 /**
@@ -8,15 +11,22 @@ import gr.iti.mklab.simmo.core.Annotation;
  * @version 1.0.1
  * @since November 5, 2014
  */
+@Entity
 public class NamedEntity implements Annotation {
 
-	
-    public enum NAMED_ENTITY_TYPE{PERSON, LOCATION, ORGANISATION, BRAND, TIME, AMOUNT, COMMUNICATION, NAME};
-    
-    
-	/** The modality  of descriptor */
-	private NAMED_ENTITY_TYPE namedEntityType;
-	
+    @Id
+    public String id = new ObjectId().toString();
+
+    public enum NAMED_ENTITY_TYPE {PERSON, LOCATION, ORGANISATION, BRAND, TIME, AMOUNT, COMMUNICATION, NAME}
+
+    ;
+
+
+    /**
+     * The modality  of descriptor
+     */
+    private NAMED_ENTITY_TYPE namedEntityType;
+
     /**
      * The named entity token, for instance "Yesterday"
      */
@@ -27,40 +37,51 @@ public class NamedEntity implements Annotation {
      */
     private String type;
 
-    
+
     /**
      * The named entity attribute, for instance "year"
      */
     private String attribute;
 
-    
-    
-    public NamedEntity(String token, String type){
+    /**
+     * The number of occurences of this NamedEntity
+     */
+    private int count;
+
+    public NamedEntity() {
+    }
+
+    public NamedEntity(String token, String type) {
         this.token = token;
         this.type = type;
     }
 
-    
-    public NamedEntity(String token, NAMED_ENTITY_TYPE namedEntityType, String attribute){
+    public NamedEntity(String token, String type, int count) {
+        this.token = token;
+        this.type = type;
+        this.count = count;
+    }
+
+    public NamedEntity(String token, NAMED_ENTITY_TYPE namedEntityType, String attribute) {
         this.token = token;
         this.namedEntityType = namedEntityType;
         this.attribute = attribute;
     }
 
-    public String getToken(){
+    public String getToken() {
         return token;
     }
 
-    public String getType(){
+    public String getType() {
         return type;
     }
-    
-    
-    public NAMED_ENTITY_TYPE getNamedEntityType(){
+
+
+    public NAMED_ENTITY_TYPE getNamedEntityType() {
         return namedEntityType;
     }
-    
-    public String getAttribute(){
+
+    public String getAttribute() {
         return attribute;
     }
 }
