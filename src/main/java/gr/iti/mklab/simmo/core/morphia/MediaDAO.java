@@ -1,12 +1,15 @@
 package gr.iti.mklab.simmo.core.morphia;
 
+import gr.iti.mklab.simmo.core.UserAccount;
 import gr.iti.mklab.simmo.core.annotations.Clustered;
 import gr.iti.mklab.simmo.core.annotations.lowleveldescriptors.LocalDescriptors;
+import gr.iti.mklab.simmo.core.items.Image;
 import gr.iti.mklab.simmo.core.items.Media;
 import org.mongodb.morphia.query.Query;
 
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Image Data Access Object
@@ -34,6 +37,11 @@ public class MediaDAO<M extends Media> extends ObjectDAO<M> {
         return getDatastore().find(clazz).field("location.coordinates").near(latitude, longitude).limit(numImages).asList();
     }
 
+    @Override
+    public List<M> getItems(int count, int offset) {
+        return getDatastore().find(clazz).order("crawlDate").offset(offset).limit(count).asList();
+    }
+
     /**
      * A search function
      *
@@ -44,9 +52,53 @@ public class MediaDAO<M extends Media> extends ObjectDAO<M> {
      * @param offset
      * @return
      */
-    public List<M> search(String datefield, Date date, int width, int height, int count, int offset) {
-        return getDatastore().find(clazz).filter(datefield + " >", date).filter("width" + " >", width).
-                filter("height" + " >", height).offset(offset).limit(count).asList();
+    public List<M> search(String datefield, Date date, int width, int height, int count, int offset, UserAccount account, String query) {
+        if (date == null)
+            date = new Date(0);
+        Query<M> q;
+        if (query != null && account != null) {
+            Pattern p = Pattern.compile("(.*)" + query + "(.*)", Pattern.CASE_INSENSITIVE);
+            q = getDatastore().createQuery(clazz);
+            q.and(
+                    q.criteria(datefield).greaterThanOrEq(date),
+                    q.criteria("width").greaterThanOrEq(width),
+                    q.criteria("height").greaterThanOrEq(height),
+                    q.criteria("contributor").equal(account),
+                    q.or(
+                            q.criteria("title").equal(p),
+                            q.criteria("description").equal(p)
+                    )
+            );
+        } else if (query == null && account != null) {
+            q = getDatastore().createQuery(clazz);
+            q.and(
+                    q.criteria(datefield).greaterThanOrEq(date),
+                    q.criteria("width").greaterThanOrEq(width),
+                    q.criteria("height").greaterThanOrEq(height),
+                    q.criteria("contributor").equal(account)
+            );
+        } else if (query != null && account == null) {
+            Pattern p = Pattern.compile("(.*)" + query + "(.*)", Pattern.CASE_INSENSITIVE);
+            q = getDatastore().createQuery(clazz);
+            q.and(
+                    q.criteria(datefield).greaterThanOrEq(date),
+                    q.criteria("width").greaterThanOrEq(width),
+                    q.criteria("height").greaterThanOrEq(height),
+                    q.or(
+                            q.criteria("title").equal(p),
+                            q.criteria("description").equal(p)
+                    )
+            );
+        } else {
+            q = getDatastore().createQuery(clazz);
+            q.and(
+                    q.criteria(datefield).greaterThanOrEq(date),
+                    q.criteria("width").greaterThanOrEq(width),
+                    q.criteria("height").greaterThanOrEq(height)
+            );
+        }
+
+        return q.order("crawlDate").offset(offset).limit(count).asList();
     }
 
     public List<M> getNotVIndexed(int numImages) {
