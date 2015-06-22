@@ -15,7 +15,10 @@ import com.google.gdata.data.youtube.YtUserProfileStatistics;
  * YouTube API v2
  *
  * @author kandreadou
+ * @deprecated because Youtube API v2 is now obsolete
+ * use {@link gr.iti.mklab.simmo.impl.users.YoutubeChannel} instead
  */
+@Deprecated
 @Entity("UserAccount")
 public class YoutubeAccount extends UserAccount {
 

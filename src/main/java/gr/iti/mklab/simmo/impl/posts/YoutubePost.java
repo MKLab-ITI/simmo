@@ -28,7 +28,10 @@ import org.mongodb.morphia.annotations.Entity;
  * YouTube API v2
  *
  * @author kandreadou
+ * @deprecated because Youtube API v2 is now obsolete
+ * use {@link gr.iti.mklab.simmo.impl.media.YoutubeVideo} instead
  */
+@Deprecated
 @Entity("Post")
 public class YoutubePost extends Post {
 
