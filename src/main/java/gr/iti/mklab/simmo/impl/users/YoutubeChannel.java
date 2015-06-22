@@ -16,11 +16,11 @@ import java.util.Date;
  * @author kandreadou
  */
 @Entity("UserAccount")
-public class YoutubeChannel_APIv3 extends UserAccount {
+public class YoutubeChannel extends UserAccount {
 
-    public YoutubeChannel_APIv3(){}
+    public YoutubeChannel(){}
 
-    public YoutubeChannel_APIv3(Channel c) {
+    public YoutubeChannel(Channel c) {
         setId(Sources.YOUTUBE + '#' + c.getId());
         source = Sources.YOUTUBE;
         name = c.getSnippet().getTitle();

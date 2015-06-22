@@ -30,7 +30,7 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity("Post")
 public class TumblrPost extends gr.iti.mklab.simmo.core.documents.Post {
 
-    public TumblrPost(Post post) throws MalformedURLException {
+    public TumblrPost(Post post, TumblrAccount user) throws MalformedURLException {
 
         if (post == null || post.getId() == null) {
             return;
@@ -51,6 +51,8 @@ public class TumblrPost extends gr.iti.mklab.simmo.core.documents.Post {
         url = post.getPostUrl();
 
         title = post.getBlogName();
+
+        contributor = user;
 
         //Tags
         post.getTags().stream().forEach(hashtag -> {
@@ -93,11 +95,10 @@ public class TumblrPost extends gr.iti.mklab.simmo.core.documents.Post {
                         img.setDescription(caption);
                         img.setThumbnail(thumbnail);
                         img.setTags(tags);
-                        img.setContributor(getContributor());
+                        img.setContributor(user);
                         img.setSourceDocumentId(id);
                         img.setCrawlDate(now);
                         items.add(img);
-
                     }
                 }
             } catch (MalformedURLException e1) {
@@ -180,7 +181,7 @@ public class TumblrPost extends gr.iti.mklab.simmo.core.documents.Post {
             video.setTitle(title);
             video.setSourceDocumentId(id);
             video.setTags(tags);
-            video.setContributor(getContributor());
+            video.setContributor(user);
             video.setCrawlDate(now);
             items.add(video);
 
@@ -197,12 +198,6 @@ public class TumblrPost extends gr.iti.mklab.simmo.core.documents.Post {
                 addAssociation(new Reference(this, p, Reference.ReferenceType.LINK));
             }
         }
-
-    }
-
-    public TumblrPost(Post post, TumblrAccount user) throws MalformedURLException {
-        this(post);
-        setContributor(user);
 
     }
 }

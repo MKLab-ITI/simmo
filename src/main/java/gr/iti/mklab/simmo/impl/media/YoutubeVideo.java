@@ -9,7 +9,7 @@ import com.google.api.services.youtube.model.VideoStatistics;
 import gr.iti.mklab.simmo.core.UserAccount;
 import gr.iti.mklab.simmo.core.items.Video;
 import gr.iti.mklab.simmo.impl.Sources;
-import gr.iti.mklab.simmo.impl.users.YoutubeChannel_APIv3;
+import gr.iti.mklab.simmo.impl.users.YoutubeChannel;
 import org.mongodb.morphia.annotations.Entity;
 
 
@@ -20,9 +20,9 @@ import org.mongodb.morphia.annotations.Entity;
  * @author kandreadou
  */
 @Entity("Video")
-public class YoutubeVideo_APIv3 extends Video {
+public class YoutubeVideo extends Video {
 
-    public YoutubeVideo_APIv3(com.google.api.services.youtube.model.Video v) {
+    public YoutubeVideo(com.google.api.services.youtube.model.Video v) {
         setId(Sources.YOUTUBE + '#' + v.getId());
         setSource(Sources.YOUTUBE);
         title = v.getSnippet().getTitle();
@@ -50,9 +50,9 @@ public class YoutubeVideo_APIv3 extends Video {
         setContributor(u);
     }
 
-    public YoutubeVideo_APIv3(com.google.api.services.youtube.model.Video v, Channel c) {
+    public YoutubeVideo(com.google.api.services.youtube.model.Video v, Channel c) {
         this(v);
-        setContributor(new YoutubeChannel_APIv3(c));
+        setContributor(new YoutubeChannel(c));
     }
 
 }

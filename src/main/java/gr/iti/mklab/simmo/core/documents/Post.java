@@ -142,7 +142,6 @@ public class Post extends Document {
         this.numSubscriptions = numSubscriptions;
     }
 
-
     public Location getLocation() {
         return location;
     }

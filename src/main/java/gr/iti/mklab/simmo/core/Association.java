@@ -30,5 +30,4 @@ public abstract class Association {
         this.one = one;
         this.other = other;
     }
-
 }
