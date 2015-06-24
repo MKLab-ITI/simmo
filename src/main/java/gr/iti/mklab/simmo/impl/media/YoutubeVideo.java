@@ -21,6 +21,8 @@ import org.mongodb.morphia.annotations.Entity;
  */
 @Entity("Video")
 public class YoutubeVideo extends Video {
+    
+    public YoutubeVideo(){}
 
     public YoutubeVideo(com.google.api.services.youtube.model.Video v) {
         setId(Sources.YOUTUBE + '#' + v.getId());
