@@ -5,10 +5,13 @@ import gr.iti.mklab.simmo.core.annotations.Clustered;
 import gr.iti.mklab.simmo.core.annotations.lowleveldescriptors.LocalDescriptors;
 import gr.iti.mklab.simmo.core.items.Image;
 import gr.iti.mklab.simmo.core.items.Media;
+import org.mongodb.morphia.query.Criteria;
 import org.mongodb.morphia.query.Query;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 /**
@@ -52,52 +55,29 @@ public class MediaDAO<M extends Media> extends ObjectDAO<M> {
      * @param offset
      * @return
      */
-    public List<M> search(String datefield, Date date, int width, int height, int count, int offset, UserAccount account, String query) {
-        if (date == null)
-            date = new Date(0);
-        Query<M> q;
-        if (query != null && account != null) {
-            Pattern p = Pattern.compile("(.*)" + query + "(.*)", Pattern.CASE_INSENSITIVE);
-            q = getDatastore().createQuery(clazz);
-            q.and(
-                    q.criteria(datefield).greaterThanOrEq(date),
-                    q.criteria("width").greaterThanOrEq(width),
-                    q.criteria("height").greaterThanOrEq(height),
-                    q.criteria("contributor").equal(account),
-                    q.or(
-                            q.criteria("title").equal(p),
-                            q.criteria("description").equal(p)
-                    )
-            );
-        } else if (query == null && account != null) {
-            q = getDatastore().createQuery(clazz);
-            q.and(
-                    q.criteria(datefield).greaterThanOrEq(date),
-                    q.criteria("width").greaterThanOrEq(width),
-                    q.criteria("height").greaterThanOrEq(height),
-                    q.criteria("contributor").equal(account)
-            );
-        } else if (query != null && account == null) {
-            Pattern p = Pattern.compile("(.*)" + query + "(.*)", Pattern.CASE_INSENSITIVE);
-            q = getDatastore().createQuery(clazz);
-            q.and(
-                    q.criteria(datefield).greaterThanOrEq(date),
-                    q.criteria("width").greaterThanOrEq(width),
-                    q.criteria("height").greaterThanOrEq(height),
-                    q.or(
-                            q.criteria("title").equal(p),
-                            q.criteria("description").equal(p)
-                    )
-            );
-        } else {
-            q = getDatastore().createQuery(clazz);
-            q.and(
-                    q.criteria(datefield).greaterThanOrEq(date),
-                    q.criteria("width").greaterThanOrEq(width),
-                    q.criteria("height").greaterThanOrEq(height)
-            );
-        }
+    public List<M> search(String datefield, Date date, int width, int height, int count, int offset, UserAccount account, String query, List<String> sources) {
 
+        List<Criteria> l = new ArrayList<>();
+        Query<M> q = getDatastore().createQuery(clazz);
+        if (query != null) {
+            Pattern p = Pattern.compile("(.*)" + query + "(.*)", Pattern.CASE_INSENSITIVE);
+            l.add(q.or(
+                    q.criteria("title").equal(p),
+                    q.criteria("description").equal(p)
+            ));
+        }
+        if (account != null) {
+            l.add(q.criteria("contributor").equal(account));
+        }
+        if (width > 0)
+            l.add(q.criteria("width").greaterThanOrEq(width));
+        if (height > 0)
+            l.add(q.criteria("height").greaterThanOrEq(height));
+        if (date != null)
+            l.add(q.criteria(datefield).greaterThanOrEq(date));
+        if (sources != null)
+            l.add(q.criteria("source").in(sources));
+        q.and(l.toArray(new Criteria[l.size()]));
         return q.order("crawlDate").offset(offset).limit(count).asList();
     }
 

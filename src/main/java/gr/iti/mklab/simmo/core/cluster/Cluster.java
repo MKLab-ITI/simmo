@@ -49,6 +49,10 @@ public class Cluster {
         return members;
     }
 
+    public void setMembers(List<Clusterable> members){
+        this.members = members;
+    }
+
     public String getId() {
         return id;
     }
