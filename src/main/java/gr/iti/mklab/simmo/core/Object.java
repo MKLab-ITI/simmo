@@ -38,6 +38,12 @@ public abstract class Object extends Annotatable {
      */
     protected Set<String> labels = new HashSet<>();
 
+    /**
+     * Parameter used by the simmo-stream-manager to store this item to
+     * the specified collection
+     */
+    protected String label;
+
     protected Date creationDate;
     protected Date lastModifiedDate;
     protected Date crawlDate;
@@ -154,6 +160,14 @@ public abstract class Object extends Annotatable {
 
     public void setContributor(UserAccount contributor) {
         this.contributor = contributor;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
     }
 
     public <T extends Association> List<T> getAssociationsOfType(Class<T> type) {
