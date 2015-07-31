@@ -84,4 +84,36 @@ public class NamedEntity implements Annotation {
     public String getAttribute() {
         return attribute;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setNamedEntityType(NAMED_ENTITY_TYPE namedEntityType) {
+        this.namedEntityType = namedEntityType;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setAttribute(String attribute) {
+        this.attribute = attribute;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 }
