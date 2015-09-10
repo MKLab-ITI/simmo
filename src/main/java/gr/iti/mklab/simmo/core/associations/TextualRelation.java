@@ -15,6 +15,11 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity("Association")
 public class TextualRelation extends Association {
 
+    /**
+     * The frequency of appearance of the relation
+     */
+    private int count;
+
     private String relation;
 
     public TextualRelation() {
@@ -23,6 +28,12 @@ public class TextualRelation extends Association {
     public TextualRelation(NamedEntity first, NamedEntity second, String relation) {
         super(first, second);
         this.relation = relation;
+    }
+
+    public TextualRelation(NamedEntity first, NamedEntity second, String relation, int count) {
+        super(first, second);
+        this.relation = relation;
+        this.count = count;
     }
 
     public NamedEntity getFirstEntity() {
@@ -35,5 +46,13 @@ public class TextualRelation extends Association {
 
     public String getRelation() {
         return relation;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }
