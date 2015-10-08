@@ -12,7 +12,7 @@ import java.util.HashMap;
  * @version 1.0.0
  * @since August 25, 2014
  */
-public class Concepts extends HashMap<String, Float> implements Annotation {
+public class Concepts extends HashMap<String, Double> implements Annotation {
 
     public enum CONCEPT_MODALITY{TEXTUAL, VISUAL, HYBRID};
     
@@ -29,13 +29,18 @@ public class Concepts extends HashMap<String, Float> implements Annotation {
     private double score;
 
 	
+    public Concepts(){ }
+    
+    
     public Concepts(String concept, double score, CONCEPT_MODALITY conceptModality){
         this.concept = concept;
         this.score = score;
         this.conceptModality = conceptModality;
     }
 	
-    
+     public void putConcept(String concept, double score){
+    	 this.put(concept, score);
+     }
 
 
     public void setScore(double score) {
