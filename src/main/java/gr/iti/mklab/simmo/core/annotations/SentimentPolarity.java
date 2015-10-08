@@ -46,14 +46,25 @@ public class SentimentPolarity implements Annotation {
         return negative;
     }
     
-      
+    
+    public void setPolarity(double polarity) {
+        this.polarity = polarity;
+    }
+
+    
+    public double getPolarity() {
+        return polarity;
+    }
+    
+   
+    public void setSentiment(double sentiment) {
+        this.sentiment = sentiment;
+    }
+
    
     public double getSentiment() {
         return sentiment;
     }
 
-    public double getPolarity() {
-        return polarity;
-    }
-    
+
 }
