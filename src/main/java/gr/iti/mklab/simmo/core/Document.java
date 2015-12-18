@@ -16,7 +16,7 @@ public abstract class Document extends Object {
     /**
      * A list of items that the Documents contains
      */
-    @org.mongodb.morphia.annotations.Reference
+    @org.mongodb.morphia.annotations.Reference(ignoreMissing = true)
     protected List<Item> items = new ArrayList<Item>();
 
     /**

@@ -65,10 +65,10 @@ public class Post extends Document {
     @Embedded
     protected Location location;
 
-    @Reference
+    @Reference(ignoreMissing = true)
     protected UserAccount replied;
 
-    @Reference
+    @Reference(ignoreMissing = true)
     protected UserAccount shared;
 
     public Post() {

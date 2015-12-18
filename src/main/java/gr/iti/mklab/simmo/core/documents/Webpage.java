@@ -23,7 +23,7 @@ public class Webpage extends Document {
     /**
      * A list of posts that the Webpage contains
      */
-    @Reference
+    @Reference(ignoreMissing = true)
     protected List<Post> posts = new ArrayList<Post>();
 
     /**

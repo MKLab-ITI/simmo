@@ -48,7 +48,7 @@ public abstract class Object extends Annotatable {
     protected Date lastModifiedDate;
     protected Date crawlDate;
 
-    @Reference
+    @Reference(ignoreMissing = true)
     protected UserAccount contributor;
 
     /**
