@@ -15,7 +15,7 @@ import java.util.Date;
 public abstract class Job {
 
     public enum STATE {
-        WAITING, STOPPING, PAUSED, RUNNING, FINISHED, DELETING, STARTING
+        WAITING, STOPPING, KILLING, PAUSED, RUNNING, FINISHED, DELETING, STARTING
     }
 
     @Id
