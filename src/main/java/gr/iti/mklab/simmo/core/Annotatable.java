@@ -33,6 +33,10 @@ public abstract class Annotatable implements Associated {
     public Annotation getAnnotation(int position) {
         return annotations.get(position);
     }
+    
+    public List<Annotation> getAnnotations() {
+        return annotations;
+    }
 
     public List<? extends Annotation> getAnnotationsByClass(Class clazz) {
         return annotations.stream().filter(t -> t.getClass() == clazz)
