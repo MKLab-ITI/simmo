@@ -33,9 +33,15 @@ public class YoutubeVideo extends Video {
         crawlDate = new Date();
         VideoStatistics statistics = v.getStatistics();
         if (statistics != null) {
-            numLikes = statistics.getFavoriteCount().intValue();
-            numViews = statistics.getViewCount().intValue();
-            numComments = statistics.getCommentCount().intValue();
+        	if(statistics.getFavoriteCount() != null) {
+        		numLikes = statistics.getFavoriteCount().intValue();
+        	}
+            if(statistics.getViewCount() != null) {
+            	numViews = statistics.getViewCount().intValue();
+            }
+            if(statistics.getCommentCount() != null) {
+            	numComments = statistics.getCommentCount().intValue();
+            }
         }
         VideoContentDetails details = v.getContentDetails();
         if (details != null) {

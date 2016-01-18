@@ -6,6 +6,7 @@ import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,6 +27,10 @@ public class Cluster {
 
     protected int size;
 
+    protected Date startDate;
+    
+    protected Date endDate;
+    
     public Cluster() {
     }
 
@@ -41,7 +46,23 @@ public class Cluster {
         return size;
     }
 
-    public void setSize(int size) {
+    public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public void setSize(int size) {
         this.size = size;
     }
 
