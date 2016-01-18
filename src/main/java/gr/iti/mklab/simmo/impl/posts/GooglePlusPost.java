@@ -37,7 +37,10 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity("Post")
 public class GooglePlusPost extends Post {
 
-
+	public GooglePlusPost() {
+		
+	}		
+	
     public GooglePlusPost(Activity activity) {
 
         if (activity == null || activity.getId() == null) return;

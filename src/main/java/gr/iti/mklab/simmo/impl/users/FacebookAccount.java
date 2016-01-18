@@ -16,6 +16,11 @@ import org.mongodb.morphia.annotations.Entity;
  */
 @Entity("UserAccount")
 public class FacebookAccount extends UserAccount {
+	
+	public FacebookAccount() {
+		
+	}
+			
     /**
      * Maps the information of a facebook user
      *

@@ -34,7 +34,10 @@ import twitter4j.UserMentionEntity;
 @Entity("Post")
 public class TwitterPost extends Post {
 
-
+	public TwitterPost() {
+		
+	}
+	
     public TwitterPost(Status status) {
 
         if (status == null) return;

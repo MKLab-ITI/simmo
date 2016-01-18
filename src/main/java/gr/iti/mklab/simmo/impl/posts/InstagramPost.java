@@ -24,6 +24,10 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity("Post")
 public class InstagramPost extends Post {
 
+	public InstagramPost() {
+		
+	}
+	
     public InstagramPost(MediaFeedData image) throws MalformedURLException {
 
         if (image == null || image.getId() == null)

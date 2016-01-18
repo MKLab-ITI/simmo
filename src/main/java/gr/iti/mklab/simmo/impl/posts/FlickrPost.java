@@ -28,6 +28,10 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity("Post")
 public class FlickrPost extends Post {
 
+	 public FlickrPost() {
+		 
+	 }
+			 
     @SuppressWarnings("deprecation")
     public FlickrPost(Photo photo) {
 

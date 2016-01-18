@@ -36,6 +36,7 @@ import org.mongodb.morphia.annotations.Entity;
 public class YoutubePost extends Post {
 
     public YoutubePost() {
+    	
     }
 
     public YoutubePost(VideoEntry videoEntry) {

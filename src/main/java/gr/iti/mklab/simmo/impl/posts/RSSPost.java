@@ -13,6 +13,10 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity("Post")
 public class RSSPost extends Post {
 
+	public RSSPost() {
+		
+	}
+	
 	public RSSPost(SyndEntry rssEntry) {
 		
 		if(rssEntry == null || rssEntry.getLink() == null)

@@ -15,7 +15,10 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity("UserAccount")
 public class GooglePlusAccount extends UserAccount {
 
-
+	public GooglePlusAccount() {
+		
+	}
+	
     public GooglePlusAccount(Actor actor) {
 
         if (actor == null) return;

@@ -16,6 +16,7 @@ import org.mongodb.morphia.annotations.Entity;
 public class PanoramioImage extends Image {
 
     public PanoramioImage() {
+    	
     }
 
     public PanoramioImage(PanoramioItem item) {

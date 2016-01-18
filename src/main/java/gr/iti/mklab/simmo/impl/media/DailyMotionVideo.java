@@ -19,6 +19,10 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity("Video")
 public class DailyMotionVideo extends Video {
 
+	public DailyMotionVideo() {
+		
+	}
+	
     public DailyMotionVideo(DailyMotionVideoItem video) throws Exception {
         url = video.embed_url;
         //id

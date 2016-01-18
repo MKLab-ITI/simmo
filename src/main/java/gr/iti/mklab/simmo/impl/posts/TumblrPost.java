@@ -30,6 +30,10 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity("Post")
 public class TumblrPost extends gr.iti.mklab.simmo.core.documents.Post {
 
+	public TumblrPost() {
+		
+	}
+			
     public TumblrPost(Post post, TumblrAccount user) throws MalformedURLException {
 
         if (post == null || post.getId() == null) {

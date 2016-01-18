@@ -26,6 +26,10 @@ public class TwitPicImage extends Image {
     private static String thumbBase = "http://d3j5vwomefv46c.cloudfront.net/photos/thumb/";
     private static String pageBase = "http://twitpic.com/";
 
+    public TwitPicImage() {
+    	
+    }
+    
     public TwitPicImage(TwitPicImageItem image) throws Exception {
         url = urlBase + image.id + "." + image.type;
 

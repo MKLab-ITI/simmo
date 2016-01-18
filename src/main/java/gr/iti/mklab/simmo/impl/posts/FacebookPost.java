@@ -26,7 +26,10 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity("Post")
 public class FacebookPost extends gr.iti.mklab.simmo.core.documents.Post {
 
-
+	public FacebookPost() {
+		 
+	}
+	 
     public FacebookPost(Post post) {
 
         if (post == null || post.getId() == null) return;

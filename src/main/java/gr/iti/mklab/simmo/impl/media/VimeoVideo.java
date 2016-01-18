@@ -21,6 +21,10 @@ public class VimeoVideo extends Video {
 	
 	private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
+	public VimeoVideo() {
+		
+	}
+	
 	public VimeoVideo(VimeoVideoItem video) throws Exception {
 		//url
         url = "http://vimeo.com/moogaloop.swf?clip_id="+video.id;
