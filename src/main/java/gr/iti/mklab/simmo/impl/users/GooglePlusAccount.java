@@ -26,6 +26,8 @@ public class GooglePlusAccount extends UserAccount {
         //Id
         setId(Sources.GOOGLE_PLUS + "#" + actor.getId());
 
+        userId = actor.getId();
+        
         //The id of the user in the network
         username = actor.getId();
 
@@ -56,6 +58,8 @@ public class GooglePlusAccount extends UserAccount {
         //Id
         setId(Sources.GOOGLE_PLUS + "#" + person.getId());
 
+        userId = person.getId();
+        
         //The id of the user in the network
         username = person.getId();
 

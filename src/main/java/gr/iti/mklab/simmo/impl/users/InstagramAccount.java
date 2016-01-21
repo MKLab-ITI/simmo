@@ -2,9 +2,12 @@ package gr.iti.mklab.simmo.impl.users;
 
 import gr.iti.mklab.simmo.core.UserAccount;
 import gr.iti.mklab.simmo.impl.Sources;
+
 import org.jinstagram.entity.common.User;
 import org.jinstagram.entity.users.basicinfo.Counts;
+import org.jinstagram.entity.users.basicinfo.UserInfo;
 import org.jinstagram.entity.users.basicinfo.UserInfoData;
+import org.jinstagram.entity.users.feed.UserFeedData;
 import org.mongodb.morphia.annotations.Entity;
 
 /**
@@ -19,7 +22,9 @@ public class InstagramAccount extends UserAccount {
 
     public InstagramAccount(User user) {
 
-        if (user == null) return;
+        if (user == null) {
+        	return;
+        }
 
         //Id
         setId(Sources.INSTAGRAM + "#" + user.getId());
@@ -41,9 +46,16 @@ public class InstagramAccount extends UserAccount {
         pageUrl = "http://instagram.com/" + username;
     }
 
+    
+    
+    public InstagramAccount(UserInfo user) {
+    	 this(user.getData()==null ? null : user.getData());
+    }
+    
     public InstagramAccount(UserInfoData user) {
 
-        if (user == null) return;
+        if (user == null) 
+        	return;
 
         //Id
         setId(Sources.INSTAGRAM + "#" + user.getId());
@@ -70,4 +82,33 @@ public class InstagramAccount extends UserAccount {
         }
 
     }
+    
+    public InstagramAccount(UserFeedData user) {
+
+        if (user == null) {
+        	return;
+        }
+
+        //Id
+        setId(Sources.INSTAGRAM + "#" + user.getId());
+        //The id of the user in the network
+        username = user.getId();
+        //The name of the user
+        name = user.getFullName();
+        //The username of the user
+        username = user.getUserName();
+        //streamId
+        source = Sources.INSTAGRAM;
+        //The description of the user
+        description = user.getBio();
+        //Profile picture of the user
+        avatarBig = user.getProfilePictureUrl();
+        //The link to the user's profile
+        userUrl = user.getWebsite();
+        //The link to the user's profile
+        pageUrl = "http://instagram.com/" + username;
+    }
+    
+    
+    
 }

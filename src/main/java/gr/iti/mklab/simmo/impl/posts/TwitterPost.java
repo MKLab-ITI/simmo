@@ -45,12 +45,16 @@ public class TwitterPost extends Post {
         //Crawl date
         Date now = new Date();
         setCrawlDate(now);
+        
         //Id
         setId(Sources.TWITTER + "#" + status.getId());
+        
         //SocialNetwork Name
         type = Sources.TWITTER;
+        
         //Timestamp of the creation of the tweet
         setCreationDate(status.getCreatedAt());
+        
         //User that wrote the tweet
         User user = status.getUser();
         if (user != null) {
@@ -121,6 +125,7 @@ public class TwitterPost extends Post {
             double longitude = status.getGeoLocation().getLongitude();
             location = new Location(latitude, longitude);
         }
+        
         Place place = status.getPlace();
         if (place != null) {
             if (location == null) {
@@ -146,9 +151,10 @@ public class TwitterPost extends Post {
                     }
                 }
 
-                if (urlStr == null)
+                if (urlStr == null) {
                     continue;
-
+                }
+                
                 try {
                     URL url = new URL(urlStr);
                     urls.add(url);
@@ -157,6 +163,7 @@ public class TwitterPost extends Post {
                     webpage.setId(id);
                     webpage.setSource(Sources.TWITTER);
                     webpage.setCreationDate(status.getCreatedAt());
+                    
                     addAssociation(new Reference(this, webpage, Reference.ReferenceType.LINK));
                 } catch (Exception e) {
                     continue;

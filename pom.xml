@@ -93,7 +93,7 @@
         <dependency>
             <groupId>com.google.apis</groupId>
             <artifactId>google-api-services-youtube</artifactId>
-            <version>v3-rev126-1.19.1</version>
+            <version>v3-rev121-1.19.0</version>
         </dependency>
         <!-- Facebook -->
         <dependency>
