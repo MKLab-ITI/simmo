@@ -711,6 +711,8 @@ public class GooglePlusPost extends Post {
 			//id
 			mediaItem.setId(id);
 			
+			mediaItem.setUrl(mediaUrl.toString());
+			
 			mediaItem.setThumbnail(mediaUrl.toString());
 			
 			//Reference
