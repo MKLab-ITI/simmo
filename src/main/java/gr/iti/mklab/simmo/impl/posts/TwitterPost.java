@@ -198,25 +198,34 @@ public class TwitterPost extends Post {
                     img.setId(Sources.TWITTER + "#" + mediaEntity.getId());
                     img.setSource(Sources.TWITTER);
                     img.setCreationDate(status.getCreatedAt());
+                    
                     //PageUrl
                     img.setWebPageUrl(pageUrl);
+                    
                     //Thumbnail
                     String thumbnail = mediaUrl + ":thumb";
                     img.setThumbnail(thumbnail);
+                    
                     //Title
                     img.setTitle(title);
+                    
                     //Description
                     img.setDescription(description);
+                    
                     //Tags
                     img.setTags(tags);
+                    
                     //Popularity
                     img.setNumLikes(numLikes);
                     img.setNumShares(numShares);
+                    
                     //Author
                     img.setContributor(getContributor());
+                    
                     //Location
                     img.setLocation(location);
                     img.setSourceDocumentId(id);
+                    
                     //Crawl date
                     img.setCrawlDate(now);
 
@@ -226,13 +235,16 @@ public class TwitterPost extends Post {
                     if (size != null) {
                         img.setWidth(size.getWidth());
                         img.setHeight(size.getHeight());
-                    } else if ((size = sizes.get(Size.MEDIUM)) != null) {
-                        img.setWidth(size.getWidth());
-                        img.setHeight(size.getHeight());
-                    }else if ((size = sizes.get(Size.SMALL)) != null) {
+                    } 
+                    else if ((size = sizes.get(Size.MEDIUM)) != null) {
                         img.setWidth(size.getWidth());
                         img.setHeight(size.getHeight());
                     }
+                    else if ((size = sizes.get(Size.SMALL)) != null) {
+                        img.setWidth(size.getWidth());
+                        img.setHeight(size.getHeight());
+                    }
+                    
                     items.add(img);
                 }
 

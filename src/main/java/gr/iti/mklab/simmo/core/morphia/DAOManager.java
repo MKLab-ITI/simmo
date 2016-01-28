@@ -99,8 +99,11 @@ public class DAOManager {
         }
 
         //First save the inner Items because they are just references in the Document
-        for (Item i : doc.getItems())
-            saveItem(i);
+        for (Item i : doc.getItems()) {
+        	if(i.getContributor() != null) {
+        		saveItem(i);
+        	}
+        }
 
         saveAssociations(doc.getAssociations());
     }

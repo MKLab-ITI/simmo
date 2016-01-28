@@ -154,7 +154,9 @@ public class FlickrPost extends Post {
         this(photo);
         setContributor(account);
 
-        getItems().stream().forEach(i -> i.setContributor(account));
+        getItems().stream().forEach(i -> 
+        		i.setContributor(account)
+        	);
 
     }
 
