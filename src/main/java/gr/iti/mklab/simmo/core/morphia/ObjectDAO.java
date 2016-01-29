@@ -3,8 +3,11 @@ package gr.iti.mklab.simmo.core.morphia;
 import gr.iti.mklab.simmo.core.Association;
 import gr.iti.mklab.simmo.core.associations.Similarity;
 import gr.iti.mklab.simmo.core.items.Image;
+
 import org.mongodb.morphia.dao.BasicDAO;
+
 import gr.iti.mklab.simmo.core.Object;
+
 import org.mongodb.morphia.query.Query;
 
 import java.util.Date;
@@ -116,5 +119,9 @@ public class ObjectDAO<O extends Object> extends BasicDAO<O, String> {
         );
         return q.asList();
     }
+
+	public List<O> getItems(int count, int offset, String field, String condition) {
+		return getDatastore().find(clazz, field, condition).offset(offset).limit(count).asList();
+	}
 
 }

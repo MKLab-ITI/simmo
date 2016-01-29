@@ -45,6 +45,11 @@ public class MediaDAO<M extends Media> extends ObjectDAO<M> {
         return getDatastore().find(clazz).order("crawlDate").offset(offset).limit(count).asList();
     }
 
+    @Override
+    public List<M> getItems(int count, int offset, String field, String condition) {
+        return getDatastore().find(clazz, field, condition).order("crawlDate").offset(offset).limit(count).asList();
+    }
+    
     /**
      * A search function
      *
