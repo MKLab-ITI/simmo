@@ -31,6 +31,16 @@ public class Cluster {
     
     protected Date endDate;
     
+    public Clusterable getCentroid() {
+		return centroid;
+	}
+
+	public void setCentroid(Clusterable centroid) {
+		this.centroid = centroid;
+	}
+
+	protected Clusterable centroid;
+    
     public Cluster() {
     }
 

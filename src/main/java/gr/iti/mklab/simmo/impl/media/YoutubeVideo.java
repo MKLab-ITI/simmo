@@ -73,10 +73,15 @@ public class YoutubeVideo extends Video {
         
         webPageUrl = url;
         
-        UserAccount u = new UserAccount();
-        u.setId(Sources.YOUTUBE + '#' + v.getSnippet().getChannelId());
+        UserAccount channel = new YoutubeChannel();
         
-        setContributor(u);
+        channel.setId(Sources.YOUTUBE + '#' + snippet.getChannelId());
+        channel.setSource(Sources.YOUTUBE);
+        channel.setUserId(snippet.getChannelId());
+        channel.setName(snippet.getChannelTitle());
+        channel.setPageUrl("https://www.youtube.com/channel/" + snippet.getChannelId());
+        channel.setDescription(snippet.getDescription());
+        setContributor(channel);
     }
 
     public YoutubeVideo(com.google.api.services.youtube.model.Video v, Channel c) {
