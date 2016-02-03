@@ -1,6 +1,8 @@
 package gr.iti.mklab.simmo.core.items;
 
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Index;
+import org.mongodb.morphia.annotations.Indexes;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,11 +17,11 @@ import java.util.Map;
  * @since July 7, 2014
  * @author amoumtzidou
  */
-/*@Indexes({
-        @Index("id"),
-        @Index("location.coordinates")
-})*/
 @Entity
+@Indexes({
+	@Index("location.coordinates"),
+	@Index("-crawlDate")
+})
 public class Image extends Media {
 
     /** The size of the image in bytes */

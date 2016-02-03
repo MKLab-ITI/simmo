@@ -1,6 +1,8 @@
 package gr.iti.mklab.simmo.core.items;
 
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Index;
+import org.mongodb.morphia.annotations.Indexes;
 
 /**
  * A video item
@@ -12,6 +14,10 @@ import org.mongodb.morphia.annotations.Entity;
  * @since July 3, 2014
  */
 @Entity
+@Indexes({
+	@Index("location.coordinates"),
+	@Index("-crawlDate")
+})
 public class Video extends Media {
 
     /**
