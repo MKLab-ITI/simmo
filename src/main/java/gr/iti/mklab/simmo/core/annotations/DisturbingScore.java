@@ -6,6 +6,10 @@ public class DisturbingScore implements Annotation {
 	
 	private double score;
 
+	public DisturbingScore() {
+		
+	}
+	
 	public DisturbingScore(double score) {
 		this.score = score;
 	}
