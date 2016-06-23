@@ -16,7 +16,9 @@ public class SummaryScore implements Annotation {
 	 /** The divRank score of the item */
     private double divRankScore = 0;
 
-    public SummaryScore() {
+    private String annotationType = "SummaryScore";
+    		
+	public SummaryScore() {
     	
     }
 
@@ -59,5 +61,13 @@ public class SummaryScore implements Annotation {
 		this.popularityScore = popularityScore;
 	}
     
+    public String getAnnotationType() {
+		return annotationType;
+	}
+
+	public void setAnnotationType(String annotationType) {
+		this.annotationType = annotationType;
+	}
+
     
 }

@@ -17,6 +17,15 @@ public class Place extends Location implements Annotation {
 
     public Place(long longitude, long latitude, float score) {
         super(longitude, latitude);
-        this.score = score;
+        this.setScore(score);
     }
+
+	public float getScore() {
+		return score;
+	}
+
+	public void setScore(float score) {
+		this.score = score;
+	}
+	
 }
