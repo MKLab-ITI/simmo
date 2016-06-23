@@ -4,7 +4,7 @@ import gr.iti.mklab.simmo.core.Annotation;
 
 public class DisturbingScore implements Annotation {
 	
-	private double score;
+	private double confidenceScore;
 	
 	private String annotationType = "DisturbingScore";
 	
@@ -13,15 +13,15 @@ public class DisturbingScore implements Annotation {
 	}
 	
 	public DisturbingScore(double score) {
-		this.score = score;
+		this.confidenceScore = score;
 	}
 	
-	public double getScore() {
-		return score;
+	public double getConfidenceScore() {
+		return confidenceScore;
 	}
 
-	public void setScore(double score) {
-		this.score = score;
+	public void setConfidenceScore(double score) {
+		this.confidenceScore = score;
 	}
 
     public String getAnnotationType() {
