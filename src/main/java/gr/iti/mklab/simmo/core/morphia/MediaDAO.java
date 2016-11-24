@@ -88,12 +88,18 @@ public class MediaDAO<M extends Media> extends ObjectDAO<M> {
 
     public List<M> getNotVIndexed(int numImages) {
         //Disable validation because className is not a declared field
-        return getDatastore().find(clazz).disableValidation().filter("annotations.className nin", LocalDescriptors.class.getName()).limit(numImages).asList();
+    	Query<M> q = getDatastore().find(clazz).disableValidation().filter("annotations.className nin", LocalDescriptors.class.getName()).limit(numImages);
+    	List<M> result = q.asList();
+    	
+    	return result;
     }
 
     public List<M> getIndexedNotClustered(int numImages) {
         //Disable validation because className is not a declared field
-        return getDatastore().find(clazz).disableValidation().filter("annotations.className in", LocalDescriptors.class.getName()).
-                filter("annotations.className nin", Clustered.class.getName()).limit(numImages).asList();
+        Query<M> q = getDatastore().find(clazz).disableValidation().filter("annotations.className in", LocalDescriptors.class.getName())
+        		.filter("annotations.className nin", Clustered.class.getName()).limit(numImages);
+        List<M> result = q.asList();
+        
+        return result;
     }
 }
