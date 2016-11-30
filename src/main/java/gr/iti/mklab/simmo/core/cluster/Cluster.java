@@ -7,7 +7,9 @@ import org.mongodb.morphia.annotations.Reference;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * A Cluster class
@@ -31,15 +33,29 @@ public class Cluster {
     
     protected Date endDate;
     
-    public Clusterable getCentroid() {
-		return centroid;
+	protected Clusterable centroid;
+	
+    protected Set<String> centroids = new HashSet<String>();
+    
+    public Set<String> getCentroids() {
+		return centroids;
 	}
 
+	public void setCentroids(Set<String> centroids) {
+		this.centroids = centroids;
+	}
+
+	public void addCentroid(String centroid) {
+		this.centroids.add(centroid);
+	}
+	
+	public Clusterable getCentroid() {
+		return centroid;
+	}
+    
 	public void setCentroid(Clusterable centroid) {
 		this.centroid = centroid;
 	}
-
-	protected Clusterable centroid;
     
     public Cluster() {
     }
