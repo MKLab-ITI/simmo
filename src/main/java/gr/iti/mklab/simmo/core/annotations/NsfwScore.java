@@ -6,7 +6,7 @@ public class NsfwScore implements Annotation {
 
 private double confidenceScore;
 	
-	private String annotationType = "DisturbingScore";
+	private String annotationType = "NsfwScore";
 	
 	public NsfwScore() {
 		
