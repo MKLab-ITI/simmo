@@ -1,6 +1,5 @@
 package gr.iti.mklab.simmo.core.cluster;
 
-import org.apache.commons.lang3.tuple.Pair;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
@@ -8,7 +7,6 @@ import org.mongodb.morphia.annotations.Reference;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,7 +34,17 @@ public class Cluster {
     
 	protected Clusterable centroid;
 	
-    protected List<Map<String, String>> centroids = new ArrayList<Map<String, String>>();
+	protected Map<String, Double> avgDistances;
+	
+    public Map<String, Double> getAvgDistance() {
+		return avgDistances;
+	}
+
+	public void setAvgDistances(Map<String, Double> avgDistances) {
+		this.avgDistances = avgDistances;
+	}
+
+	protected List<Map<String, String>> centroids = new ArrayList<Map<String, String>>();
     
     public List<Map<String, String>> getCentroids() {
 		return centroids;
