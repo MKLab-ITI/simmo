@@ -1,5 +1,6 @@
 package gr.iti.mklab.simmo.core.cluster;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
@@ -35,18 +36,18 @@ public class Cluster {
     
 	protected Clusterable centroid;
 	
-    protected Map<String, String> centroids = new HashMap<String, String>();
+    protected List<Map<String, String>> centroids = new ArrayList<Map<String, String>>();
     
-    public Map<String, String> getCentroids() {
+    public List<Map<String, String>> getCentroids() {
 		return centroids;
 	}
 
-	public void setCentroids(Map<String, String> centroids) {
+	public void setCentroids(List<Map<String, String>> centroids) {
 		this.centroids = centroids;
 	}
 
 	public void addCentroid(Map<String, String> centroid) {
-		this.centroids.putAll(centroid);
+		this.centroids.add(centroid);
 	}
 	
 	public Clusterable getCentroid() {
