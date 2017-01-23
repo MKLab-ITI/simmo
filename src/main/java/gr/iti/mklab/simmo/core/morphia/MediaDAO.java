@@ -1,5 +1,6 @@
 package gr.iti.mklab.simmo.core.morphia;
 
+import gr.iti.mklab.simmo.core.Annotation;
 import gr.iti.mklab.simmo.core.UserAccount;
 import gr.iti.mklab.simmo.core.annotations.Clustered;
 import gr.iti.mklab.simmo.core.annotations.lowleveldescriptors.LocalDescriptors;
@@ -7,6 +8,7 @@ import gr.iti.mklab.simmo.core.items.Image;
 import gr.iti.mklab.simmo.core.items.Media;
 import org.mongodb.morphia.query.Criteria;
 import org.mongodb.morphia.query.Query;
+import org.mongodb.morphia.query.UpdateOperations;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -111,5 +113,31 @@ public class MediaDAO<M extends Media> extends ObjectDAO<M> {
         List<M> result = q.asList();
         
         return result;
+    }
+    
+    public List<M> getClustered(int numImages) {
+        //Disable validation because className is not a declared field
+        Query<M> q = getDatastore().find(clazz).disableValidation()
+        		.filter("annotations.className in", Clustered.class.getName())
+        		.limit(numImages);
+        List<M> result = q.asList();
+        
+        return result;
+    }
+    
+    public void removeClusterAnnotations() {
+    	Query<M> q = getDatastore().find(clazz).disableValidation().filter("annotations.className in", Clustered.class.getName());
+    	List<M> result = q.asList();
+    	
+    	for(M media : result) {
+        	if(media != null) {
+        		Query<M> query = createQuery().filter("_id", media.getId());
+        		List<? extends Annotation> annotations = media.getAnnotationsByClass(Clustered.class);
+        		if(annotations != null && !annotations.isEmpty()) {
+        			UpdateOperations<M> ops = createUpdateOperations().removeAll("annotations", annotations);
+                	update(query, ops);
+        		}
+        	}
+    	}
     }
 }
