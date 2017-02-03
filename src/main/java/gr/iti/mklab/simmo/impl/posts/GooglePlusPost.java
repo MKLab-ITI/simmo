@@ -539,6 +539,8 @@ public class GooglePlusPost extends Post {
 				mediaItem.setNumLikes(numLikes);
 				mediaItem.setNumShares(numShares);
     			
+				mediaItem.setCrawlDate(new Date());
+				
 				//Size
 				Long width = image.getWidth();
         		Long height = image.getHeight();
@@ -612,6 +614,8 @@ public class GooglePlusPost extends Post {
 			//Popularity
 			mediaItem.setNumLikes(numLikes);
 			mediaItem.setNumShares(numShares);	
+			
+			mediaItem.setCrawlDate(new Date());
 		}
 		
 		return mediaItem;
@@ -685,6 +689,7 @@ public class GooglePlusPost extends Post {
 			mediaItem.setWidth(width);
 			mediaItem.setHeight(height);
 			
+			mediaItem.setCrawlDate(new Date());
 		}
 		return mediaItem;
 	}
@@ -720,6 +725,8 @@ public class GooglePlusPost extends Post {
 			
 			//Time of publication
 			mediaItem.setCreationDate(creationDate);
+			
+			mediaItem.setCrawlDate(new Date());
 			
 			//PageUrl
 			mediaItem.setWebPageUrl(getUrl());
