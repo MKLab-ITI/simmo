@@ -46,7 +46,7 @@ public class MediaDAO<M extends Media> extends ObjectDAO<M> {
     public List<M> getItems(int count, int offset) {
         return getDatastore().find(clazz).order("crawlDate").offset(offset).limit(count).asList();
     }
-
+    
     @Override
     public List<M> getItems(int count, int offset, String field, String condition) {
         return getDatastore().find(clazz, field, condition).order("crawlDate").offset(offset).limit(count).asList();
@@ -88,6 +88,10 @@ public class MediaDAO<M extends Media> extends ObjectDAO<M> {
         return q.order("crawlDate").offset(offset).limit(count).asList();
     }
 
+    public List<M> getItems(int count, int offset, String orderBy) {
+        return getDatastore().find(clazz).order(orderBy).offset(offset).limit(count).asList();
+    }
+    
     public List<M> getNotVIndexed(int numImages) {
         //Disable validation because className is not a declared field
     	Query<M> q = getDatastore().find(clazz).disableValidation().filter("annotations.className nin", LocalDescriptors.class.getName()).limit(numImages);
