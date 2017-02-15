@@ -4,12 +4,15 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoClientOptions.Builder;
 import com.mongodb.MongoClientURI;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoDatabase;
 
 import gr.iti.mklab.simmo.core.jobs.CrawlJob;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +42,21 @@ public class MorphiaManager {
         }
     }
 
+    private MorphiaManager(String host, int port, String username, String password) {
+        try {
+            if (mongoClient == null) {
+            	Builder optionsBuilder = new MongoClientOptions.Builder().socketKeepAlive(true);
+     
+            	ServerAddress srvAdr = new ServerAddress(host != null ? host : "localhost" , port);
+            	MongoCredential credential = MongoCredential.createScramSha1Credential(username, "admin", password.toCharArray());
+            	
+            	mongoClient = new MongoClient(srvAdr, Arrays.asList(credential), optionsBuilder.build());
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
     public synchronized static void setup(String host) {
         setup(host, 27017);
     }
@@ -49,7 +67,16 @@ public class MorphiaManager {
         }
     }
 
+    public synchronized static void setup(String host, String username, String password) {
+        setup(host, 27017, username, password);
+    }
 
+    public synchronized static void setup(String host, int port, String username, String password) {
+        if (instance == null) {
+            instance = new MorphiaManager(host, port, username, password);
+        }
+    }
+    
     public static void tearDown() {
         mongoClient.close();
     }
